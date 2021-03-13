@@ -9,13 +9,16 @@
 <body>
 
 <?php
-        require "./php/includes/db.php";
+       try {
+        require "php/includes/rb.php";
+        R::setup('mysql:host=localhost;dbname=chimu-team', 'root', '' );
 
         $firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
         $lastname = filter_var(trim($_POST['lastname']), FILTER_SANITIZE_STRING);
         $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
         $pass = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
         $pass2 = filter_var(trim($_POST['password_2']), FILTER_SANITIZE_STRING);
+
 
         if ($pass != $pass2) {
             header('Location: /chimu-app/register.php/');
@@ -25,12 +28,16 @@
         // if (mb_strlen($name) < 1 || mb_strlen($name) > 90) {
         //     echo "Недопустимая длина имени";
         // }
+        
+        $user = R::dispense('users');
+        $user->first_name = $firstname;
+        $user->last_name = $lastname;
+        $user->email = $email;
+        $user->pass = password_hash($pass, PASSWORD_DEFAULT);
+        
+        R::store($user);
+        R::close();
 
-        $pass = md5($pass);
-
-        $mysql->query("INSERT INTO `users` (`email`, `pass`, `first_name`, `last_name`) VALUES('$email', '$pass', '$firstname', '$lastname')");
-
-        $mysql->close();
         if ($_POST['do_signup'] == true) {
             header("Location: /chimu-app");
         }
@@ -67,6 +74,9 @@
         //         echo '<div id="error" style="color: red;">'.array_shift($errors).'</div><hr>';
         //     }
         // }
+       } catch (Throwable $e) {
+           echo $e;
+       }
 ?>
 
 

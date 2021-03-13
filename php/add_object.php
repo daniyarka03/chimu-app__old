@@ -1,12 +1,17 @@
 <?php 
+    require "includes/rb.php";
+    R::setup('mysql:host=localhost;dbname=chimu-team', 'root', '' );
 
-require "includes/db.php";
+    $title_object = filter_var(trim($_POST['title_object']), FILTER_SANITIZE_STRING);
+    $creator = $_COOKIE['user'];
 
-$title_object = filter_var(trim($_POST['title_object']), FILTER_SANITIZE_STRING);
-$creator = $_COOKIE['user'];
+    $project = R::dispense('projects');
+    $project->title = $title_object;
+    $project->creator = $creator;
 
-$mysql->query("INSERT INTO `projects` (`title`, `creator`) VALUES('$title_object', '$creator')");
-$mysql->close();
+    R::store($project);
+    R::close();
 
-header('Location: ../')
+
+    header('Location: ../');
 ?>
