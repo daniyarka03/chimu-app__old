@@ -1,13 +1,14 @@
 <?php
 
-require "includes/db.php";
+    require "includes/db.php";
 
-$id = $_GET['id'];
+    echo 'loading';
 
-$mysql->query("DELETE FROM `projects` WHERE `projects`.`id` = '$id'");
-$mysql->close();
+    $id = $_GET['id'];
+    $project = R::load('projects', $id);
+    R::trash($project);
 
-header('Location: ../');
+    header('Location: ../list_objects.php');
 
 
 ?>

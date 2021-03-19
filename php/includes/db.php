@@ -1,3 +1,4 @@
 <?php
-    $mysql = new mysqli('localhost', 'root', '', 'chimu-team');
+    require "rb.php";
+    R::setup('mysql:host=localhost;dbname=chimu-team', 'root', '' );
 ?>

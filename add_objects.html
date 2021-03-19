@@ -13,14 +13,22 @@
 </head>
 <body>
     <h2>Добавление нового объекта</h2>
-    <form action="./php/add_object.php" method="post">
+    <form action="php/add_object.php" method="post">
         <div class="form-block">
             <span></span>
-            <input type="text" placeholder="Название" name="title_object">
+            <input type="text" placeholder="Название" name="title_object" id="input_form">
         </div>
         <div class="form-block">
-            <input type="submit" value="Создать">
+            <input type="submit" value="Создать" id="submit">
         </div>
     </form>
+
+<!--    <script>-->
+<!--        const button_submit = document.querySelector("#submit");-->
+<!--        const input_form = document.querySelector("#input_form");-->
+<!--        button_submit.addEventListener('click', () => {-->
+<!--            input_form.value = "";-->
+<!--        });-->
+<!--    </script>-->
 </body>
 </html>

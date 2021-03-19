@@ -8,18 +8,20 @@
 </head>
 <body>
     <?php
-    
-        require "./php/includes/db.php";
+        require "php/includes/db.php";
+        $id = $_GET['id'];
+        $project = R::load('projects', $id);
 
-        $project_id = $_GET['id'];
-        $project = $mysql->query("SELECT * FROM `projects` WHERE `id` = '$project_id'");
-        $project = mysqli_fetch_assoc($project);
-
-
-    
     ?>
 
     <h2>Название проекта: <?= $project['title'] ?></h2>
-    <span>Создатель: <?= $project['creator'] ?></span>
+    <span>Создатель: <?= $project['creator_name'] ?></span>
+
+    <?php if ($_COOKIE['id'] == $project['creator_id']): ?>
+        <a href="update_objects.php?id=<?= $project->id?>">Update data</a>
+        <a href="php/delete.php?id=<?= $project->id?>">Delete data</a>
+    <?php else: ?>
+    <?php endif; ?>
+
 </body>
 </html>

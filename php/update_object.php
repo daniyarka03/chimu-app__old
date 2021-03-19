@@ -1,14 +1,17 @@
 <?php
 
-require "includes/db.php";
+    require "includes/db.php";
 
-$title_object = filter_var(trim($_POST['title_object']), FILTER_SANITIZE_STRING);
-$creator = $_COOKIE['user'];
-$id = $_POST['id'];
+    $title_object = filter_var(trim($_POST['title_object']), FILTER_SANITIZE_STRING);
+    $creator = $_COOKIE['user'];
+    $id = $_POST['id'];
 
-$mysql->query("UPDATE `projects` SET `title` = '$title_object', `creator` = '$creator' WHERE `projects`.`id` = '$id'");
-$mysql->close();
+    $project = R::load('projects', $id);
+    $project->title = $title_object;
+    R::store($project);
+    R::close();
 
-header('Location: ../');
+    header('Location: ../list_objects.php');
+    exit();
 
 ?>

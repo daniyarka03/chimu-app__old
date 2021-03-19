@@ -11,16 +11,16 @@
 
         require "./php/includes/db.php";
 
-        $project_id = $_GET['id'];
-        $project = $mysql->query("SELECT * FROM `projects` WHERE `id` = '$project_id'");
-        $project = mysqli_fetch_assoc($project);
+        $id = $_GET['id'];
+        $project = R::load('projects', $id);
+
 
 
     ?>
 
     <h2>Изменение объекта: <?= $project['title'] ?></h2>
     <form action="./php/update_object.php" method="post">
-        <input type="hidden" name="id" value="<?= $project_id?>"/>
+        <input type="hidden" name="id" value="<?= $id?>"/>
         <div class="form-block">
             <span></span>
             <input type="text" placeholder="Название" name="title_object" value="<?= $project['title'] ?>">
