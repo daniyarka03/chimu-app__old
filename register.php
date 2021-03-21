@@ -9,76 +9,41 @@
 <body>
 
 <?php
+    try {
+        require "php/includes/db.php";
 
+        $firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
+        $lastname = filter_var(trim($_POST['lastname']), FILTER_SANITIZE_STRING);
+        $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
+        $pass = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
+        $pass2 = filter_var(trim($_POST['password_2']), FILTER_SANITIZE_STRING);
 
-       try {
-           require "php/includes/db.php";
+        if ($_POST['do_signup']) {
+            $id = uniqid(rand(), true);
 
-            $firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
-            $lastname = filter_var(trim($_POST['lastname']), FILTER_SANITIZE_STRING);
-            $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
-            $pass = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
-            $pass2 = filter_var(trim($_POST['password_2']), FILTER_SANITIZE_STRING);
-
-
-            if ($pass != $pass2) {
-                header('Location: /chimu-app/register.php/');
-                exit();
+            $users = R::findAll('users');
+            foreach ($users as $item) {
+                if ($item->id_user == $id) {
+                    $id = uniqid(rand(), true);
+                }
             }
 
-            // if (mb_strlen($name) < 1 || mb_strlen($name) > 90) {
-            //     echo "Недопустимая длина имени";
-            // }
-//            $id_user = uniqid(rand(), true);
             $user = R::dispense('users');
-            $user->id = '32131';
+            $user->id_user = $id;
             $user->first_name = $firstname;
             $user->last_name = $lastname;
             $user->email = $email;
-            $user->pass = password_hash($pass, PASSWORD_DEFAULT);
+            $user->pass = password_hash($pass, PASSWORD_DEFAULT);;
 
             R::store($user);
-            R::close();
 
-            if ($_POST['do_signup'] == true) {
-                header("Location: /chimu-app");
-            }
+        }
 
 
 
-
-            // $data = $_POST;
-            // if (isset($data['do_signup'])) {
-            //     // регистрация
-            //     $errors = array();
-
-            //     if (trim($data['login']) == '') {
-            //         $errors[] = 'Введите логин';
-            //     }
-            //     if (trim($data['email']) == '') {
-            //         $errors[] = 'Введите почту';
-            //     }
-            //     if ($data['password'] == '') {
-            //         $errors[] = 'Введите пароль';
-            //     }
-            //     if ($data['password_2'] != $data['password']) {
-            //         $errors[] = 'Повторный пароль введен неверно';
-            //     }
-
-            //     if (empty($errors)) {
-            //         $user = R::dispense('users');
-            //         $user->login = $data['login'];
-            //         $user->email = $data['email'];
-            //         $user->login = $data['password'];
-            //         R:store($user);
-            //         echo 'Success';
-            //     } else {
-            //         echo '<div id="error" style="color: red;">'.array_shift($errors).'</div><hr>';
-            //     }
-            // }
-       } catch (Throwable $e) {
-           echo $e;
-       }
+    } catch (Throwable $e) {
+        echo $e;
+    }
 ?>
 
 

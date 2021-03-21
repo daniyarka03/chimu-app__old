@@ -24,7 +24,7 @@
             if ($user) {
                 if (password_verify($pass, $user->pass)) {
                     setcookie('user', $user['first_name'], time() + 3600 * 24 * 30, "/");
-                    setcookie('id', $user['id'], time() + 3600 * 24 * 30, "/");
+                    setcookie('id', $user['id_user'], time() + 3600 * 24 * 30, "/");
                     header('Location: /chimu-app');
                 } else {
                     $errors[] = 'Пароль введен не верно!';

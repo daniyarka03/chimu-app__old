@@ -6,7 +6,6 @@
     try {
         $title_object = filter_var(trim($_POST['title_object']), FILTER_SANITIZE_STRING);
 
-        echo 'Hello';
         $project = R::dispense('projects');
         $project->creator_name = $_COOKIE['user'];
         $project->title = $title_object;
