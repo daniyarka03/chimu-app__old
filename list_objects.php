@@ -15,6 +15,8 @@
     </style>
 </head>
 <body>
+    <a href="add_objects.html"><button>Add object</button></a>
+    <a href="index.php"><button>Main menu</button></a><br /> <br>
     <?php
         try {
             require "php/includes/db.php";

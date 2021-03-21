@@ -9,6 +9,8 @@
 <body>
 
 <?php
+
+
        try {
            require "php/includes/db.php";
 
@@ -27,8 +29,9 @@
             // if (mb_strlen($name) < 1 || mb_strlen($name) > 90) {
             //     echo "Недопустимая длина имени";
             // }
-
+//            $id_user = uniqid(rand(), true);
             $user = R::dispense('users');
+            $user->id = '32131';
             $user->first_name = $firstname;
             $user->last_name = $lastname;
             $user->email = $email;

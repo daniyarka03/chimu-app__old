@@ -13,6 +13,7 @@
 
     <?php else: ?>
         <p>Привет <?=$_COOKIE['user']?>. Чтобы выйти нажмите <a href="./php/exit.php">здесь</a></p>
+        <a href="./profile.php">Зайти в профиль</a> <br>
         <a href="./add_objects.html">Добавить объекты</a> <br>
         <a href="./list_objects.php">Показать объекты</a>
 
