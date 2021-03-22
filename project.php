@@ -15,7 +15,8 @@
     ?>
 
     <h2>Название проекта: <?= $project['title'] ?></h2>
-    <span>Создатель: <?= $project['creator_name'] ?></span>
+    <span>Создатель: <?= $project['creator_name'] ?></span> <br>
+    <span>Категория: <b><?= $project['category'] ?></b></span> <br>
 
     <?php if ($_COOKIE['id'] == $project['creator_id']): ?>
         <a href="update_objects.php?id=<?= $project->id?>">Update data</a>
