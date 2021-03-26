@@ -5,7 +5,7 @@
 
     try {
         $title_object = filter_var(trim($_POST['title_object']), FILTER_SANITIZE_STRING);
-        $category_object = filter_var(trim($_POST['category_object']), FILTER_SANITIZE_STRING);
+        $category_object = implode(', ', $_REQUEST['category_object']);
 
         $project = R::dispense('projects');
         $project->creator_name = $_COOKIE['user'];

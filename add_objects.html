@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/multiselect_plugin/chosen.min.css">
     <title>Add object</title>
     <style>
         .form-block {
@@ -13,26 +14,31 @@
 </head>
 <body>
     <h2>Добавление нового объекта</h2>
-    <form action="php/add_object.php" method="post">
+    <form action="php/add_object.php" method="POST">
         <div class="form-block">
             <span></span>
             <input type="text" placeholder="Название" name="title_object" class="input_form">
         </div>
         <div class="form-block">
-            <span></span>
-            <input type="text" placeholder="Категория" name="category_object" class="input_form">
+            <select name="category_object[]" id="mselect" multiple="" style="width: 300px;">
+                <optgroup label="Программирование">
+                    <option value="#iOS" selected="">#iOS</option>
+                    <option value="#Java">#Java</option>
+                    <option value="#PHP">#PHP</option>
+                </optgroup>
+            </select>
         </div>
         <div class="form-block">
             <input type="submit" value="Создать" id="submit">
         </div>
     </form>
 
-<!--    <script>-->
-<!--        const button_submit = document.querySelector("#submit");-->
-<!--        const input_form = document.querySelector("#input_form");-->
-<!--        button_submit.addEventListener('click', () => {-->
-<!--            input_form.value = "";-->
-<!--        });-->
-<!--    </script>-->
+    <script src="js/jquery.js"></script>
+    <script src="js/multiselect_plugin/chosen.jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#mselect').chosen();
+        });
+    </script>
 </body>
 </html>
