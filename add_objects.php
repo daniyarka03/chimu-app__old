@@ -22,9 +22,17 @@
         <div class="form-block">
             <select name="category_object[]" id="mselect" multiple="" style="width: 300px;">
                 <optgroup label="Программирование">
-                    <option value="#iOS" selected="">#iOS</option>
-                    <option value="#Java">#Java</option>
-                    <option value="#PHP">#PHP</option>
+                    <?php
+                        require 'php/includes/db.php';
+
+                        $tags = R::findAll('TBLTags');
+                        foreach ($tags as $tag) {
+                            ?>
+                            <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
+                            <?php
+                        }
+
+                    ?>
                 </optgroup>
             </select>
         </div>

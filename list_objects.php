@@ -39,7 +39,7 @@
     </style>
 </head>
 <body>
-    <a href="add_objects.html"><button>Add object</button></a>
+    <a href="add_objects.php"><button>Add object</button></a>
     <a href="index.php"><button>Main menu</button></a><br /> <br>
     <a href='?type=id&&sort=<?=$status?>'><input type="submit" value="Сортировка по дате"/></a>
     <a href='?type=title&&sort=<?=$status?>'><button type="submit">Сортировка по алфавиту</button></a>
