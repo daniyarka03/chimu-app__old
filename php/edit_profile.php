@@ -11,6 +11,7 @@
        $user->first_name = $firstname;
        $user->last_name = $lastname;
        $user->email = $email;
+       $user->id_user = $_COOKIE['id'];
 
        R::store($user);
        R::close();
