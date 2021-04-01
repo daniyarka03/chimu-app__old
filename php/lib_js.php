@@ -4,5 +4,8 @@
 <script>
     $(document).ready(function(){
         $('#mselect').chosen();
+        $('#mselectCountry').chosen();
+        $('#mselectCity').chosen();
+        $('#mselectWork').chosen();
     });
 </script>
