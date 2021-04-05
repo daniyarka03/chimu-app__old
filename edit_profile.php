@@ -3,11 +3,13 @@
     require 'php/includes/db.php';
 
     $profile = R::findOne('users', 'id_user = ?', array($_COOKIE['id']));
-    $profile_tags = explode(', ', $profile->work_activity);
+    $work_activity_tags = explode(', ', $profile->work_activity);
+    $profile_tags = explode(', ', $profile->keywords_profile);
     $profile_country = explode(', ', $profile->country);
     $gender = explode(', ', $profile->gender);
     $city = explode(', ', $profile->city);
     $birthdate = $profile->birthdate;
+    $descr = $profile->descr;
 
 ?>
 
@@ -112,12 +114,20 @@
         <div class="form-block">
             <span>Город</span>
             <select name="city" id="mselectCity" style="width: 300px;">
-                <option value=""></option>
-                <option value="Астана">Астана</option>
-                <option value="Актау">Актау</option>
-                <option value="Атырау">Атырау</option>
-                <option value="Алматы">Алматы</option>
-                <option value="Актобе">Алматы</option>
+                <?php
+                $tagsCity = R::findAll('TBLCity');
+                foreach ($tagsCity as $tag) {
+                    if(in_array($tag->city_name, $city)) {
+                        ?>
+                        <option value="<?=$tag->city_name?>" selected><?=$tag->city_name?></option>
+                        <?php
+                    } else {
+                        ?>
+                        <option value="<?=$tag->city_name?>"><?=$tag->city_name?></option>
+                        <?php
+                    }
+                }
+                ?>
             </select>
         </div>
         <div class="form-block">
@@ -125,9 +135,14 @@
             <select name="work_activity[]" id="mselectWork" multiple="" style="width: 300px;">
                 <?php
 
-                foreach ($tags as $tag) {
 
-                        if(in_array($tag->name_tag, $profile_tags)) {
+                $work_tags = R::findAll('TBLWorkActivity');
+
+
+
+                foreach ($work_tags as $tag) {
+
+                        if(in_array($tag->name_tag, $work_activity_tags)) {
                             ?>
                             <option value="<?=$tag->name_tag?>" selected><?=$tag->name_tag?></option>
                             <?php
@@ -170,7 +185,7 @@
         </div>
         <div>
             <span>Описание</span>
-            <textarea name="descr" value="<?php @$_POST['descr'] ?>"></textarea>
+            <textarea name="descr" value="<?php @$_POST['descr'] ?>"><?= $descr  ?></textarea>
         </div>
         <input type="submit" value="Изменить" name="do_signup">
     </form>
