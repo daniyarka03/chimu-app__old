@@ -14,10 +14,17 @@
             $status = 'DESC';
         }
 
-        $projects = R::findAll('projects', ('ORDER BY ' . $type . ' ' . $status));
+
+        $query = $_GET['query'];
+        if (isset($_GET['query'])) {
+            $projects = R::findAll('projects', "title LIKE '%$query%'");
+        } else {
+            $projects = R::findAll('projects', ('ORDER BY ' . $type . ' ' . $status));
+        }
         $id = $_COOKIE['id'];
 
         $status == 'DESC' ? $status = 'ASC' : $status = 'DESC';
+
 
 ?>
 
@@ -45,6 +52,10 @@
     <a href='?type=title&&sort=<?=$status?>'><button type="submit">Сортировка по алфавиту</button></a>
     <a href='?type=category&&sort=<?=$status?>'><button type="submit">Сортировка по категориям</button></a>
 
+    <form action="list_objects.php" method="get">
+        <input type="search" name="query" placeholder="Поиск..." />
+        <input type="submit" value="Поиск">
+    </form>
 
     <?php
         foreach($projects as $project) {
