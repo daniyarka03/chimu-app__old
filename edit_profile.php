@@ -11,6 +11,8 @@
     $birthdate = $profile->birthdate;
     $descr = $profile->descr;
 
+    echo $profile->descr;
+
 ?>
 
 <!doctype html>

@@ -18,12 +18,26 @@
         $query = $_GET['query'];
         if (isset($_GET['query'])) {
             $projects = R::findAll('projects', "title LIKE '%$query%'");
+            if (isset($_GET['type'])) {
+                $projects = R::findAll('projects', ("title LIKE '%$query%' ORDER BY " . $type . ' ' . $status));
+            }
+
         } else {
             $projects = R::findAll('projects', ('ORDER BY ' . $type . ' ' . $status));
         }
         $id = $_COOKIE['id'];
 
         $status == 'DESC' ? $status = 'ASC' : $status = 'DESC';
+
+
+        $test = str_split($_SERVER['REQUEST_URI']);
+        $e = array_search('q', $test);
+
+        if ($e) {
+            echo 'True';
+        } else {
+            echo 'False';
+        }
 
 
 ?>
@@ -48,9 +62,25 @@
 <body>
     <a href="add_objects.php"><button>Add object</button></a>
     <a href="index.php"><button>Main menu</button></a><br /> <br>
+    <?php
+    if ($e) {
+    ?>
+
+    <a href='?query=<?= $_GET['query'] ?>&&type=id&&sort=<?=$status?>'><input type="submit" value="Сортировка по дате"/></a>
+    <a href='?query=<?= $_GET['query'] ?>&&type=title&&sort=<?=$status?>'><button type="submit">Сортировка по алфавиту</button></a>
+    <a href='?query=<?= $_GET['query'] ?>&&type=category&&sort=<?=$status?>'><button type="submit">Сортировка по категориям</button></a>
+
+    <?php
+    } else {
+    ?>
+
     <a href='?type=id&&sort=<?=$status?>'><input type="submit" value="Сортировка по дате"/></a>
     <a href='?type=title&&sort=<?=$status?>'><button type="submit">Сортировка по алфавиту</button></a>
     <a href='?type=category&&sort=<?=$status?>'><button type="submit">Сортировка по категориям</button></a>
+
+    <?php
+        }
+    ?>
 
     <form action="list_objects.php" method="get">
         <input type="search" name="query" placeholder="Поиск..." />
