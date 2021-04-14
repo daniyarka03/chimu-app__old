@@ -312,7 +312,7 @@
 
             R::store($user);
 
-            // Beta code
+
             header('Location: /chimu-app');
             }
         }

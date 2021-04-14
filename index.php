@@ -23,6 +23,7 @@
         <a href="./profile.php">Зайти в профиль</a> <br>
         <a href="add_objects.php">Добавить объекты</a> <br>
         <a href="./list_objects.php">Показать объекты</a>
+        <a href="./notifications.php">Уведомление</a>
 
     <?php endif; ?>
 </body>
