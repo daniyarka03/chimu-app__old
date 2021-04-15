@@ -88,22 +88,37 @@
 </head>
 <body>
     <?php
-        require "php/includes/db.php";
-        $id = $_GET['id'];
-        $project = R::load('projects', $id);
+        try {
+            require "php/includes/db.php";
+            $id = $_GET['id'];
+            $project = R::load('projects', $id);
 
-        $req_message = filter_var(trim($_POST['request_message']), FILTER_SANITIZE_STRING);
-        $project_creator = filter_var(trim($_POST['creator_id']), FILTER_SANITIZE_STRING);
-        echo $project_creator;
-                $notifications = R::dispense('notifications');
-                $notifications->text = $req_message;
-                $notifications->user_sender = $_COOKIE['id'];
-                $notifications->is_checked = "false";
-                $notifications->user_recipient = $project_creator;
-                $notifications->theme = "Вступление в проект";
+            $id_notification = uniqid(rand(), true);
+            $notifications_item = R::findAll('notifications');
+            foreach ($notifications_item as $item) {
+                if ($item->id_notification == $id_notification) {
+                    $id_notification = uniqid(rand(), true);
+                }
+            }
+
+            $req_message = filter_var(trim($_POST['request_message']), FILTER_SANITIZE_STRING);
+            $project_creator = filter_var(trim($_POST['creator_id']), FILTER_SANITIZE_STRING);
+            $id_project = filter_var(trim($_POST['id_project']), FILTER_SANITIZE_STRING);
+
+            $notifications = R::dispense('notifications');
+            $notifications->id_notification = $id_notification;
+            $notifications->id_project = $id_project;
+            $notifications->text = $req_message;
+            $notifications->user_sender = $_COOKIE['id'];
+            $notifications->is_checked = "false";
+            $notifications->user_recipient = $project_creator;
+            $notifications->theme = "Вступление в проект";
 
 
-                R::store($notifications);
+            R::store($notifications);
+        } catch (Throwable $e) {
+            echo $e;
+        }
 
 
 
@@ -130,6 +145,7 @@
 
             <form action="project.php" method="POST">
                 <input type="hidden" name="creator_id" value=<?= $project['creator_id'] ?>>
+                <input type="hidden" name="id_project" value=<?= $project['id_project'] ?>>
                 <textarea type="text" name="request_message" placeholder="Пишите здесь..."></textarea>
                 <button type="submit" name="request">Отправить</button>
             </form>

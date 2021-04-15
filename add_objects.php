@@ -26,6 +26,9 @@
                         require 'php/includes/db.php';
 
                         $tags = R::findAll('TBLTags');
+
+
+
                         foreach ($tags as $tag) {
                             ?>
                             <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
