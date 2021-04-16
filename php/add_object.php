@@ -21,6 +21,7 @@
         $project->title = $title_object;
         $project->category = $category_object;
         $project->creator_id = $_COOKIE['id'];
+        $project->members_project = $_COOKIE['id'];
 
         R::store($project);
         R::close();

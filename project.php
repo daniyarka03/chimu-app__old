@@ -115,6 +115,7 @@
             $notifications->theme = "Вступление в проект";
 
 
+
             R::store($notifications);
         } catch (Throwable $e) {
             echo $e;
