@@ -1718,8 +1718,12 @@ class OODBBean implements \IteratorAggregate,\ArrayAccess,\Countable,Jsonable
 	 * @var boolean
 	 */
 	protected $all = FALSE;
+    /**
+     * @var array|bool|mixed|null
+     */
 
-	/**
+
+    /**
 	 * If fluid count is set to TRUE then $bean->ownCount() will
 	 * return 0 if the table does not exists.
 	 * Only for backward compatibility.

@@ -91,6 +91,11 @@
         try {
             require "php/includes/db.php";
             $id = $_GET['id'];
+
+            if (!isset($id)) {
+                header("Location: /chimu-app");
+            }
+
             $project = R::load('projects', $id);
 
             $id_notification = uniqid(rand(), true);
