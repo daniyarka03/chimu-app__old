@@ -8,8 +8,12 @@
         echo $e;
     }
 
-
-
+   if(isset($_POST['delete_notification'])) {
+       $id_notification = $_POST['id_notification'];
+       $notification = R::findOne('notifications', 'id = ?', array($id_notification));
+       R::trash($notification);
+       header('Location: ./notifications.php');
+   }
 
 
 ?>
@@ -57,8 +61,17 @@
                         ?>
                         <a href="?order=<?= $notification['id_notification'] ?>&#cancel_join" class="open_popup">Открыть уведомление</a>
                         <?php
+                    } else if ($notification['theme'] == 'Приглашение в проект') {
+
+                        ?>
+                    <a href="?order=<?= $notification['id_notification'] ?>&#invite_project" class="open_popup">Открыть уведомление</a>
+                    <?php
                     }
                 ?>
+                    <form action="notifications.php" method="post">
+                        <input type="hidden" name="id_notification" value=<?= $notification['id'] ?>>
+                        <button type="submit" name="delete_notification">Delete</button>
+                    </form>
                 </div>
                 <?php
             }
@@ -77,6 +90,7 @@
     <?php include 'php/components/notifications/join_project_user.php'; ?>
     <?php include 'php/components/notifications/accept_to_project.php'; ?>
     <?php include 'php/components/notifications/cancel_join_project.php'; ?>
+    <?php include 'php/components/notifications/invite_to_project.php'; ?>
 
 
 </body>

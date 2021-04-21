@@ -8,9 +8,6 @@
     <title>Document</title>
     <style>
 
-    </style>
-    <style>
-
         .project__card {
             width: 400px;
             min-height: 80px;
@@ -112,9 +109,9 @@ try {
     require "php/includes/db.php";
     $id = $_GET['id'];
 
-//    if (!isset($id)) {
-//        header("Location: /chimu-app");
-//    }
+    if (!isset($id)) {
+        header("Location: /chimu-app");
+    }
 
     $user = R::load('users', $id);
 
@@ -200,7 +197,7 @@ try {
 <div id="additional_modal" class="modal">
     <div class="modal__content">
         <?php
-        $id_user = $_COOKIE['id'];
+        $id_user = $_GET['id'];
         $user = R::load('users', $id_user);
         $selected_project = R::load('projects', $_GET['id_project']);
 
