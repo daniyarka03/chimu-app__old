@@ -31,7 +31,7 @@
 
 </head>
 <body>
-
+    <a href="index.php"><button>Main menu</button></a>
     <h2>Notifications</h2>
     <div>
         <?php

@@ -20,9 +20,16 @@ try {
         array_push($array, $user_sender_id);
         $array2 = implode(',', $array);
 
+
+        $current_notification = R::findOne('notifications', 'id_notification = ?', array($_POST['current_notification_id']));
+        $current_notification->is_checked = "true";
+        R::store($current_notification);
+
+
         $upload_project = R::findOne('projects', 'id_project = ?', array($project));
         $upload_project->members_project = $array2;
         R::store($upload_project);
+
 
 
         // Добавление уведомления, что пользователя приняли в проект
@@ -46,7 +53,6 @@ try {
         header("Location: ./notifications.php");
 
     } else {
-        echo 'False';
     }
 
     if (isset($_POST['check_project'])) {
@@ -106,6 +112,7 @@ try {
             <input type="hidden" name="user_sender" value=<?= $user_sender['id_user'] ?>>
             <input type="hidden" name="id_project" value=<?= $data_project['id_project'] ?>>
             <input type="hidden" name="members_project" value=<?= $data_project['members_project'] ?>>
+            <input type="hidden" name="current_notification_id" value=<?= $_GET['order'] ?>>
             <button type="submit" value="ss" name="request_invite" >Вступить в проект</button>
             <button type="submit" name="cancel_invite">Отказать в предложении</button>
             <button type="submit" name="check_project">Посмотреть профиль пользователя</button>

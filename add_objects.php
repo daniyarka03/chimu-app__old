@@ -21,23 +21,81 @@
         </div>
         <div class="form-block">
             <select name="category_object[]" id="mselect" multiple="" style="width: 300px;">
-                <optgroup label="Программирование">
                     <?php
                         require 'php/includes/db.php';
 
-                        $tags = R::findAll('TBLTags');
+                        $work_tags = R::findAll('TBLWorkActivity');
+                        foreach ($work_tags as $tag) {
+                            ?>
+                            <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
+                        <?php
+                        }
+                    ?>
+            </select>
+        </div>
+        <div>
+            <span>Кто нужен в проект? (Теги)</span>
+            <select name="keywords_need_users[]" id="mselectKeywords" multiple="" style="width: 300px;">
+                <optgroup label="Программирование">
+                    <?php
+                    $tags = R::findAll('TBLTags');
+
+                    foreach ($tags as $tag) {
+                        if ($tag->type == "prog") {
+
+                            ?>
+                            <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
+                            <?php
+
+                        }
+                    }
+
+                    ?>
+                </optgroup>
+                <optgroup label="Дизайн">
+                    <?php
+                    $tags = R::findAll('TBLTags');
+
+                    foreach ($tags as $tag) {
+                        if ($tag->type == "design") {
 
 
 
-                        foreach ($tags as $tag) {
+                            ?>
+                            <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
+                            <?php
+
+                        }
+                    }
+
+                    ?>
+                </optgroup>
+                <optgroup label="Другое">
+                    <?php
+                    $tags = R::findAll('TBLTags');
+
+                    foreach ($tags as $tag) {
+                        if ($tag->type == "" ) {
+
+
                             ?>
                             <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
                             <?php
                         }
 
+                    }
+
                     ?>
                 </optgroup>
             </select>
+        </div>
+        <div>
+            <span>Описание</span>
+            <textarea name="descr" value="<?php @$_POST['descr'] ?>"></textarea>
+        </div>
+        <div>
+            <span>Социальные сети</span>
+            <input name="social_media" value="<?php @$_POST['social_media'] ?>" />
         </div>
         <div class="form-block">
             <input type="submit" value="Создать" id="submit">
@@ -49,6 +107,7 @@
     <script>
         $(document).ready(function(){
             $('#mselect').chosen();
+            $('#mselectKeywords').chosen();
         });
     </script>
 </body>

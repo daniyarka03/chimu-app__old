@@ -10,7 +10,7 @@ try {
     $user_sender = R::findOne('users', 'id_user = ?', array($data['user_sender']));
 
 
-    if (isset($_POST['request'])) {
+    if (isset($_POST['request_join'])) {
         $project = $_POST['id_project'];
         $user_sender_id = $_POST['user_sender'];
         $array = explode(',',  filter_var(trim($_POST['members_project']), FILTER_SANITIZE_STRING));
@@ -18,9 +18,17 @@ try {
         array_push($array, $user_sender_id);
         $array2 = implode(',', $array);
 
+
+        $current_notification = R::findOne('notifications', 'id_notification = ?', array($_POST['current_notification_id']));
+        $current_notification->is_checked = "true";
+        R::store($current_notification);
+
+
+
         $upload_project = R::findOne('projects', 'id_project = ?', array($project));
         $upload_project->members_project = $array2;
         R::store($upload_project);
+
 
 
         // Добавление уведомления, что пользователя приняли в проект
@@ -34,22 +42,26 @@ try {
         $notifications = R::dispense('notifications');
         $notifications->id_notification = $id_notification;
         $notifications->id_project = $project;
-        $notifications->text = 'Тебя приняли в проект: ' . $project->title;
+        $notifications->text = 'Тебя приняли в проект: ' . $upload_project->title;
         $notifications->user_sender = $_COOKIE['id'];
         $notifications->is_checked = "false";
         $notifications->user_recipient = $user_sender_id;
         $notifications->theme = "Принятие в проект";
         R::store($notifications);
+        R::close();
 
-    } else {
-        echo 'False';
+
+
+//        header("Location: notifications.php");
     }
 
     if (isset($_POST['check_profile'])) {
-
+        $user_sender_id = $_POST['user_sender'];
+        $project = R::findOne('users', 'id_user = ?', array($user_sender_id));
+        header("Location: user.php?id=$project->id");
     }
 
-    if (isset($_POST['cancel'])) {
+    if (isset($_POST['cancel_join'])) {
         $project = $_POST['id_project'];
         $user_sender_id = $_POST['user_sender'];
         $data_project = R::findOne('projects', 'id_project = ?', array($project));
@@ -97,10 +109,12 @@ try {
                 <input type="hidden" name="user_sender" value=<?= $user_sender['id_user'] ?>>
                 <input type="hidden" name="id_project" value=<?= $data_project['id_project'] ?>>
                 <input type="hidden" name="members_project" value=<?= $data_project['members_project'] ?>>
+                <input type="hidden" name="current_notification_id" value=<?= $_GET['order'] ?>>
                 <textarea type="text" name="request_message" placeholder="Пишите здесь..."></textarea>
-                <button type="submit" value="ss" name="request" >Принять пользователя в команду</button>
-                <button type="submit" name="cancel">Отказать во вступлении!</button>
+                <button type="submit" value="ss" name="request_join" >Принять пользователя в команду</button>
+                <button type="submit" name="cancel_join">Отказать во вступлении!</button>
                 <button type="submit" name="check_profile">Посмотреть профиль пользователя</button>
+                <?=  $_GET['order'] ?>
             </form>
 
             <a href="?" class="modal__close">&times;</a>
