@@ -3,7 +3,7 @@
 <script src="js/multiselect_plugin/chosen.jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('#mselect').chosen();
+        $('#category_object').chosen();
         $('#mselectCountry').chosen();
         $('#mselectCity').chosen();
         $('#mselectWork').chosen();

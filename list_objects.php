@@ -32,14 +32,6 @@
 
         $test = str_split($_SERVER['REQUEST_URI']);
         $e = array_search('q', $test);
-
-        if ($e) {
-            echo 'True';
-        } else {
-            echo 'False';
-        }
-
-
 ?>
 
 <!DOCTYPE html>
