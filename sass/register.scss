@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+@import "colors", "mixins";
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: $purple_color;
+}
+
+.register__step_2, .register__step_3, .register__step_4 {
+    display: none;
+}
+
+
+
+.section-register {
+    margin: 0 auto;
+    width: 559px;
+    min-height: 568px;
+    height: auto;
+    border-radius: 40px;
+    background-color: #B4ADE6;
+    margin-top: 83px;
+    margin-bottom: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+
+    @media (max-height: 667px) {
+        margin-top: 40px;
+    }
+
+    @media (max-height: 607px) {
+        margin-top: 0;
+        height: 100vh;
+    }
+
+    @media (max-width: 560px) {
+        border-radius: 0;
+        width: auto;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    @media (max-width: 464px) {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    @media (max-width: 400px) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+
+    &__title {
+        font-size: 24px;
+        text-align: center;
+        padding-top: 60px;
+        margin-bottom: 20px;
+        color: $white_color;
+        font-weight: 700;
+    }
+
+    &-forms {
+        display: block;
+        margin: auto;
+        width: 100%;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        height: 26px;
+        border: none;
+        border-bottom: 1px solid $white_color;
+        background-color: transparent;
+        margin-top: 30px;
+        font-family: 'Rubik', sans-serif;
+
+        // Style for text
+        font-size: 18px;
+        color: $white_color;
+        font-weight: 500;
+        padding-bottom: 10px;
+
+        &::placeholder {
+            color: #E3DFFF;
+        }
+
+        transition: 0.1s ease-in;
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid #FFDE88;
+        }
+
+    }
+
+    &-controls {
+        width: 100%;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    &__button_next {
+        display: block;
+        width: 100%;
+        height: 51px;
+        border-radius: 11px;
+        border: none;
+        color: $dark_color;
+        margin-top: 30px;
+
+        // Styles for text
+        @include text (500);
+        font-size: 18px;
+        background-color: $yellow_color;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        transition: 0.6s ease;
+        color: $dark_color;
+
+        &:hover {
+            background-color: #FFDE88;
+
+        }
+
+        &:focus {
+            background-color: #d6b561;
+            outline: none;
+        }
+    }
+
+    &__button_login {
+        @include text (500);
+        display: block;
+        text-align: center;
+        color: $dark_color;
+        text-decoration: none;
+        font-size: 14px;
+        margin-top: 15px;
+        margin-bottom: 22px;
+
+    }
+
+    &__button_back {
+        @include text (500);
+        display: block;
+        text-align: center;
+        color: $dark_color;
+        text-decoration: none;
+        font-size: 18px;
+        margin-top: 15px;
+        padding-top: 20px;
+        margin-bottom: 40px;
+        margin: 0 auto;
+        border: none;
+        background: none;
+    }
+
+}
+
+
+.register__step_4  {
+    padding-bottom: 20px;
+
+    @media (max-height: 607px) {
+        height: auto;
+    }
+
+    .section-register {
+        
+
+        &__input {
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &__description {
+            margin-top: 50px;
+            width: 100%;
+            min-height: 227px;
+            background-color: transparent;
+            border: 2px solid #F5F5F5;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 18px;
+            color: $white_color;
+            font-weight: 600;
+
+            &::placeholder {
+                color: #FAFAFA;
+            }
+
+            &:focus {
+                outline: none;
+                border: 2px solid #FFDE88;
+            }
+        }
+
+        &__file_block {
+            display: flex;
+            width: 155px;
+            height: 155px;
+            background-color: $white_color;
+            border-radius: 1000px;
+            align-items: center;
+            justify-content: center;
+
+            @media (max-width: 374px) {
+                margin: auto;
+            }
+
+            label {
+
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+                color: $purple_color;
+            }
+        }
+
+        &__button_back {
+        
+        }
+    }
+}
+
+.filled {
+    border-bottom: 2px solid #FFDE88;
+}
+
+.section-register__input[name="gender"] {
+    height: auto;
+    option {
+        color: #000;
+    }
+}

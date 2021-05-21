@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <section class="section-register register__step_1">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-register__title">Регистрация</h2>
+            </div>
+            <div class="section-forms">
+                <input type="text" class="section-register__input" placeholder="Имя" />
+                <input type="text" class="section-register__input" placeholder="Фамилия" />
+                <input type="email" class="section-register__input" placeholder="Эл. почта" />
+                <input type="password" class="section-register__input" placeholder="Пароль" />
+                <input type="password" class="section-register__input" placeholder="Повторите пароль" />
+            </div>
+            <div class="section-controls">
+                <button class="section-register__button_next next_1">Далее</button>
+                <a href="#" class="section-register__button_login">Есть уже аккаунт? Войти</a>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Step 2 -->
+    <section class="section-register register__step_2">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-register__title">Основная информация</h2>
+            </div>
+            <div class="section-forms">
+                <input type="text" class="section-register__input" placeholder="Интересующая область" />
+                <input type="text" class="section-register__input" placeholder="Навыки" />
+                <input type="email" class="section-register__input" placeholder="Страна" />
+                <input type="password" class="section-register__input" placeholder="Город" />
+                <input type="password" class="section-register__input" placeholder="Дата рождения" />
+            </div>
+            <div class="section-controls">
+                <button class="section-register__button_next next_2">Далее</button>
+                <button class="section-register__button_back back_2">Назад</button>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Step 3 -->
+    <section class="section-register register__step_3">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-register__title">Дополнительная информация</h2>
+            </div>
+            <form action="#">
+                <div class="section-forms">
+                    <input type="text" class="section-register__input" placeholder="Пол" />
+                    <input type="text" class="section-register__input" placeholder="Facebook" />
+                    <input type="email" class="section-register__input" placeholder="Instagram" />
+                    <input type="password" class="section-register__input" placeholder="Vk" />
+                    <input type="password" class="section-register__input" placeholder="Telegram" />
+                </div>
+                <div class="section-controls">
+                    <button type="submit" class="section-register__button_next next_3">Далее</button>
+                    <a href="#" class="section-register__button_back back_3">Назад</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Step 4 -->
+    <section class="section-register register__step_4">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-register__title">О себе</h2>
+            </div>
+            <div class="section-forms">
+                <div class="section-register__file_block">
+                    <label for="file_upload">Добавить <br> фото</label>
+                    <input type="file" class="section-register__input" id="file_upload" placeholder="Пол" />
+                </div>
+                <textarea class="section-register__description" name="description_profile" placeholder="О себе"></textarea>
+            </div>
+            <div class="section-controls">
+                <button class="section-register__button_next next_4">Завершить</button>
+                <a href="#" class="section-register__button_back back_4">Назад</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/inputs.js"></script>
+    <script src="js/multiple_windows.js"></script>
+</body>
+</html>

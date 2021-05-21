@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/multiselect_plugin/chosen.min.css">
+    <link rel="stylesheet" href="css/multiselect_plugin/chosen.css">
+    <link rel="stylesheet" href="css/register.css">
     <title>Register page</title>
 </head>
 <body>
@@ -270,12 +271,16 @@
         $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
         $pass = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
         $pass2 = filter_var(trim($_POST['password_2']), FILTER_SANITIZE_STRING);
-        $country = filter_var(trim($option[$_POST['country']]), FILTER_SANITIZE_STRING);
+        $country = filter_var(trim($_POST['country']), FILTER_SANITIZE_STRING);
         $city = filter_var(trim($_POST['city']), FILTER_SANITIZE_STRING);
         $birthdate = filter_var(trim($_POST['birthdate']), FILTER_SANITIZE_STRING);
         $gender = filter_var(trim($_POST['gender']), FILTER_SANITIZE_STRING);
         $descr = filter_var(trim($_POST['descr']), FILTER_SANITIZE_STRING);
 
+        $social_media_vk = filter_var(trim($_POST['social_media_vk']), FILTER_SANITIZE_STRING);
+        $social_media_facebook = filter_var(trim($_POST['social_media_facebook']), FILTER_SANITIZE_STRING);
+        $social_media_instagram = filter_var(trim($_POST['social_media_instagram']), FILTER_SANITIZE_STRING);
+        $social_media_telegram = filter_var(trim($_POST['social_media_telegram']), FILTER_SANITIZE_STRING);
 
 
 
@@ -309,6 +314,10 @@
             $user->birthdate = $birthdate;
             $user->gender = $gender;
             $user->descr = $descr;
+            $user->social_media_vk = $social_media_vk;
+            $user->social_media_facebook = $social_media_facebook;
+            $user->social_media_instagram = $social_media_instagram;
+            $user->social_media_telegram = $social_media_telegram;
 
             R::store($user);
 
@@ -324,171 +333,36 @@
     }
 ?>
 
-
     <form action="./register.php" method="POST">
-        <div>
-            <span>Имя</span>
-            <input type="text" name="firstname" value="<?php @$_POST['firstname'] ?>">
-        </div>
-        <div>
-            <span>Фамилия</span>
-            <input type="text" name="lastname" value="<?php @$_POST['lastname'] ?>">
-        </div>
-        <div>
-            <span>Email</span>
-            <input type="email" name="email" value="<?php @$_POST['email'] ?>">
-        </div>
-        <div>
-            <span>Пароль</span>
-            <input type="password" name="password" value="<?php @$_POST['password'] ?>">
-        </div>
-        <div>
-            <span>Подтвердите пароль</span>
-            <input type="password" name="password_2" value="<?php @$_POST['password_2'] ?>">
-        </div>
-
-
-       <div>
-           <span>Страна</span>
-           <select name="country" id="mselectCountry" style="width: 300px;">
-               <?php
-               $tagsCountry = R::findAll('TBLCountries');
-
-               foreach ($tagsCountry as $tag) {
-
-
-
-                       ?>
-                       <option value="<?=$tag->country_name?>"><?=$tag->country_name?></option>
-                       <?php
-
-               }
-               ?>
-           </select>
-       </div>
-        <div>
-            <span>Город</span>
-            <select name="city" id="mselectCity" style="width: 300px;">
-                <?php
-                $tagsCity = R::findAll('TBLCity');
-                foreach ($tagsCity as $tag) {
-                        ?>
-                        <option value="<?=$tag->city_name?>"><?=$tag->city_name?></option>
-                    <?php
-                }
-                ?>
-            </select>
-        </div>
-        <div>
-            <span>Сфера деятельности</span>
-
-                <select name="work_activity[]" id="mselectWork" multiple="" style="width: 300px;">
-                    <?php
-
-
-                    $work_tags = R::findAll('TBLWorkActivity');
-
-
-
-                    foreach ($work_tags as $tag) {
-                            ?>
-                            <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                            <?php
-
-
-                    }
-
-                    ?>
-                </select>
-
-        </div>
-        <div>
-            <span>Ключевые слова (Теги)</span>
-            <select name="keywords_profile[]" id="mselectKeywords" multiple="" style="width: 300px;">
-                <optgroup label="Программирование">
-                    <?php
-                    $tags = R::findAll('TBLTags');
-
-                    foreach ($tags as $tag) {
-                        if ($tag->type == "prog") {
-
-                                ?>
-                                <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                                <?php
-
-                        }
-                    }
-
-                    ?>
-                </optgroup>
-                <optgroup label="Дизайн">
-                    <?php
-                    $tags = R::findAll('TBLTags');
-
-                    foreach ($tags as $tag) {
-                        if ($tag->type == "design") {
-
-
-
-                                ?>
-                                <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                                <?php
-
-                        }
-                    }
-
-                    ?>
-                </optgroup>
-                <optgroup label="Другое">
-                    <?php
-                    $tags = R::findAll('TBLTags');
-
-                    foreach ($tags as $tag) {
-                        if ($tag->type == "" ) {
-
-
-                                ?>
-                                <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                                <?php
-                            }
-
-                    }
-
-                    ?>
-                </optgroup>
-            </select>
-        </div>
-        <div>
-            <span>Дата рождения</span>
-            <input type="date" name="birthdate" value="<?php @$_POST['birthdate'] ?>">
-        </div>
-        <div>
-            <span>Пол</span>
-            <select name="gender" id="mselectGender" style="width: 300px;">
-                    <option value="Выберите" disabled>Выберите</option>
-                    <option value="Мужчина">Мужчина</option>
-                    <option value="Женщина">Женщина</option>
-                    <option value="Другое">Другое</option>
-            </select>
-        </div>
-        <div>
-            <span>Описание</span>
-            <textarea name="descr" value="<?php @$_POST['descr'] ?>"></textarea>
-        </div>
-        <div>
-            <button type="submit" value="register" name="do_signup">Зарегистрироваться</button>
-        </div>
+        <?php include 'php/components/register_user/step_1.php' ?>    
+        <?php include 'php/components/register_user/step_2.php' ?>    
+        <?php include 'php/components/register_user/step_3.php' ?>    
+        <?php include 'php/components/register_user/step_4.php' ?>    
     </form>
 
     <script src="js/jquery.js"></script>
     <script src="js/multiselect_plugin/chosen.jquery.min.js"></script>
+    <script src="js/inputs.js"></script>
+    <script src="js/multiple_windows.js"></script>
     <script>
         $(document).ready(function(){
             $('#mselectCountry').chosen();
             $('#mselectCity').chosen();
-            $('#mselectWork').chosen();
-            $('#mselectKeywords').chosen();
+            $('#mselectWork').chosen({width: "100%", placeholder_text_multiple: "Интересующая область"});
+            $('#mselectKeywords').chosen({width: "100%", placeholder_text_multiple: "Навыки"});
         });
+
+        const require_input = document.querySelectorAll('.require');
+
+        // $('.section-register__button_next').on('click', () => {
+        //     for (let i = 0; i < require_input.length; i++) {
+        //         if (require_input.value == "") {
+        //             alert('Заполните все поля');
+        //         } else {
+        //             alert('Error')
+        //         }
+        //     }
+        // });
     </script>
 </body>
 </html>

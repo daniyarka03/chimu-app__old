@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #8075FF;
+}
+
+.register__step_2, .register__step_3, .register__step_4 {
+  display: none;
+}
+
+.section-register {
+  margin: 0 auto;
+  width: 559px;
+  min-height: 568px;
+  height: auto;
+  border-radius: 40px;
+  background-color: #B4ADE6;
+  margin-top: 83px;
+  margin-bottom: 200px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 20px;
+}
+
+@media (max-height: 667px) {
+  .section-register {
+    margin-top: 40px;
+  }
+}
+
+@media (max-height: 607px) {
+  .section-register {
+    margin-top: 0;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 560px) {
+  .section-register {
+    border-radius: 0;
+    width: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media (max-width: 464px) {
+  .section-register {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .section-register {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.section-register__title {
+  font-size: 24px;
+  text-align: center;
+  padding-top: 60px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.section-register-forms {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+.section-register__input {
+  display: block;
+  width: 100%;
+  height: 26px;
+  border: none;
+  border-bottom: 1px solid #FFFFFF;
+  background-color: transparent;
+  margin-top: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 500;
+  padding-bottom: 10px;
+  transition: 0.1s ease-in;
+}
+
+.section-register__input::placeholder {
+  color: #E3DFFF;
+}
+
+.section-register__input:focus {
+  outline: none;
+  border-bottom: 2px solid #FFDE88;
+}
+
+.section-register-controls {
+  width: 100%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.section-register__button_next {
+  display: block;
+  width: 100%;
+  height: 51px;
+  border-radius: 11px;
+  border: none;
+  color: #323232;
+  margin-top: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  color: #FFFFFF;
+  font-size: 18px;
+  background-color: #E1BF66;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: 0.6s ease;
+  color: #323232;
+}
+
+.section-register__button_next:hover {
+  background-color: #FFDE88;
+}
+
+.section-register__button_next:focus {
+  background-color: #d6b561;
+  outline: none;
+}
+
+.section-register__button_login {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  color: #FFFFFF;
+  display: block;
+  text-align: center;
+  color: #323232;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 22px;
+}
+
+.section-register__button_back {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  color: #FFFFFF;
+  display: block;
+  text-align: center;
+  color: #323232;
+  text-decoration: none;
+  font-size: 18px;
+  margin-top: 15px;
+  padding-top: 20px;
+  margin-bottom: 40px;
+  margin: 0 auto;
+  border: none;
+  background: none;
+}
+
+.register__step_4 {
+  padding-bottom: 20px;
+}
+
+@media (max-height: 607px) {
+  .register__step_4 {
+    height: auto;
+  }
+}
+
+.register__step_4 .section-register__input {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.register__step_4 .section-register__description {
+  margin-top: 50px;
+  width: 100%;
+  min-height: 227px;
+  background-color: transparent;
+  border: 2px solid #F5F5F5;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.register__step_4 .section-register__description::placeholder {
+  color: #FAFAFA;
+}
+
+.register__step_4 .section-register__description:focus {
+  outline: none;
+  border: 2px solid #FFDE88;
+}
+
+.register__step_4 .section-register__file_block {
+  display: flex;
+  width: 155px;
+  height: 155px;
+  background-color: #FFFFFF;
+  border-radius: 1000px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 374px) {
+  .register__step_4 .section-register__file_block {
+    margin: auto;
+  }
+}
+
+.register__step_4 .section-register__file_block label {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #8075FF;
+}
+
+.filled {
+  border-bottom: 2px solid #FFDE88;
+}
+
+.section-register__input[name="gender"] {
+  height: auto;
+}
+
+.section-register__input[name="gender"] option {
+  color: #000;
+}

@@ -8,16 +8,16 @@
 </head>
 <body>
     <?php if ($_COOKIE['user'] == ''): ?>
-    <a href="./register.php">Регистрация</a>
-    <a href="./login.php">Авторизация</a>
+    <a href="./register">Регистрация</a>
+    <a href="./login">Авторизация</a>
 
     <?php else: ?>
         <p>Привет <?=$_COOKIE['user']?>. Чтобы выйти нажмите <a href="./php/exit.php">здесь</a></p>
-        <a href="./profile.php">Зайти в профиль</a> <br>
-        <a href="add_objects.php">Добавить объекты</a> <br>
-        <a href="./list_objects.php">Показать объекты</a>
-        <a href="./list_users.php">Показать пользователей</a>
-        <a href="./notifications.php">Уведомление</a>
+        <a href="./profile">Зайти в профиль</a> <br>
+        <a href="add_objects">Добавить объекты</a> <br>
+        <a href="./list_objects">Показать объекты</a>
+        <a href="./list_users">Показать пользователей</a>
+        <a href="./notifications">Уведомление</a>
 
     <?php endif; ?>
 </body>
