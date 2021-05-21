@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #8075FF;
+}
+
+.section-login {
+  background-color: #B4ADE6;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.18);
+  border-radius: 40px;
+  width: 559px;
+  max-height: 484px;
+  height: auto;
+  margin: 0 auto;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 20px;
+  margin-top: 83px;
+  padding-top: 40px;
+}
+
+@media (max-height: 667px) {
+  .section-login {
+    margin-top: 40px;
+  }
+}
+
+@media (max-height: 607px) {
+  .section-login {
+    margin-top: 0;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 560px) {
+  .section-login {
+    border-radius: 0;
+    width: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media (max-width: 464px) {
+  .section-login {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .section-login {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.section-login__title {
+  display: block;
+  font-family: Montserrat;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  color: #F5F5F5;
+  margin-bottom: 36px;
+}
+
+.section-login-forms {
+  width: 100%;
+}
+
+.section-login__input {
+  display: block;
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-bottom: 1px solid #FFFFFF;
+  background-color: transparent;
+  margin-top: 40px;
+  font-size: 20px;
+  color: #FFFFFF;
+  font-weight: 600;
+  transition: 0.1s ease-in;
+  display: block;
+  width: 100%;
+  height: 26px;
+  border: none;
+  border-bottom: 1px solid #FFFFFF;
+  background-color: transparent;
+  margin-top: 30px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.section-login__input::placeholder {
+  color: #E3DFFF;
+}
+
+.section-login__input:focus {
+  outline: none;
+  border-bottom: 2px solid #FFDE88;
+}
+
+@media (max-width: 1536px) {
+  .section-login__input {
+    font-size: 16px;
+    margin-top: 20px;
+    padding-bottom: 0;
+    height: 40px;
+  }
+}
+
+.section-login__input::placeholder {
+  color: #E3DFFF;
+}
+
+.section-login__button_login {
+  display: block;
+  width: 100%;
+  height: 65px;
+  border: none;
+  color: #323232;
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #E1BF66;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: 0.6s ease;
+  width: 100%;
+  height: 51px;
+  margin: 0 auto;
+  border-radius: 11px;
+  margin-top: 120px;
+  margin-bottom: 26px;
+}
+
+.section-login__button_login:hover {
+  background-color: #FFDE88;
+}
+
+.section-login__button_login:focus {
+  background-color: #d6b561;
+  outline: none;
+}
+
+@media (max-width: 1536px) {
+  .section-login__button_login {
+    height: 50px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+}
+
+.section-login__link {
+  display: block;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 28px;
+  color: #323232;
+  transition: 0.6s ease;
+}
+
+.section-login__link:hover {
+  color: #FFFFFF;
+}

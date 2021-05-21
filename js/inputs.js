@@ -1,4 +1,4 @@
-const inputs = document.querySelectorAll('.section-register__input');
+const inputs = document.querySelectorAll('.input-form');
 for (let i = 0; i < inputs.length; i++) {
     inputs[i].onblur = function () {
         if (inputs[i].value == '') { // не email

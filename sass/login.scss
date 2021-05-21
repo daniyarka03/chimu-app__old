@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+@import "colors", "mixins";
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #8075FF;
+}
+
+.section-login {
+    background-color: #B4ADE6;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.18);
+    border-radius: 40px;
+    width: 559px;
+    max-height: 484px;
+    height: auto;
+    
+    margin: 0 auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+    margin-top: 83px;
+    padding-top: 40px;
+
+    @media (max-height: 667px) {
+        margin-top: 40px;
+    }
+
+    @media (max-height: 607px) {
+        margin-top: 0;
+        height: 100vh;
+    }
+
+    @media (max-width: 560px) {
+        border-radius: 0;
+        width: auto;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    @media (max-width: 464px) {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    @media (max-width: 400px) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+
+    &__title {
+        display: block;
+        font-family: Montserrat;
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        color: #F5F5F5;
+        margin-bottom: 36px;
+    }
+
+    &-forms {
+        width: 100%;
+    }
+
+    &__input {
+        @include input;
+        display: block;
+        width: 100%;
+        height: 26px;
+        border: none;
+        border-bottom: 1px solid $white_color;
+        background-color: transparent;
+        margin-top: 30px;
+        font-family: 'Rubik',
+            sans-serif;
+        font-size: 18px;
+        color: $white_color;
+        font-weight: 500;
+        padding-bottom: 10px;
+
+        &::placeholder {
+            color: #E3DFFF;
+        }
+
+        @media (max-width:562px) {}
+    }
+
+    &__button_login {
+        @include button;
+        width: 100%;
+        height: 51px;
+        margin: 0 auto;
+        border-radius: 11px;
+        margin-top: 120px;
+        margin-bottom: 26px;
+
+      
+    }
+
+    &__link {
+        display: block;
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+        padding-bottom: 28px;
+        color: #323232;
+        transition: 0.6s ease;
+        &:hover {
+            color: $white_color;
+        }
+
+        @media(max-width:454px) {}
+    }
+}
