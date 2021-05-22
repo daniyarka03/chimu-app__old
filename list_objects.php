@@ -52,7 +52,6 @@ try {
             <section class="search">
                 <h2 class="search__title">Поиск проектов</h2>
                 <form class="search-form">
-                    <img src="img/search/search.svg" alt="search__icon" class="search-form__img">
                     <input type="text" class="search-form__input" name="query" placeholder="Введите текст" />
                     <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter">
                 </form>
@@ -62,21 +61,21 @@ try {
             <section class="search-sort">
                 <h2 class="search-sort__title">Сортировать</h2>
                 <div class="search-sort__block">
-                <?php
+                    <?php
                     if ($e) {
-                ?>
+                    ?>
 
-                        <a href='?query=<?= $_GET['query'] ?>&&type=id&&sort=<?= $status ?>'><input class="search-sort__btn" type="submit" value="По дате" /></a>
-                        <a href='?query=<?= $_GET['query'] ?>&&type=title&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По дате</button></a>
-                        <a href='?query=<?= $_GET['query'] ?>&&type=category&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По тегам</button></a>
+                        <a href='?query=<?= $_GET['query'] ?>&&type=id&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По дате <img class="search-sort__status" src="img/search/Forward.svg" /> </button></a>
+                        <a href='?query=<?= $_GET['query'] ?>&&type=title&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По алфавиту <img class="search-sort__status" src="img/search/Forward.svg" /> </button></a>
+                        <a href='?query=<?= $_GET['query'] ?>&&type=category&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По тегам <img class="search-sort__status" src="img/search/Forward.svg" /> </button></a>
 
                     <?php
                     } else {
                     ?>
 
-                        <a href='?type=id&&sort=<?= $status ?>'><input class="search-sort__btn" type="submit" value="По дате" /></a>
-                        <a href='?type=title&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По алфавиту</button></a>
-                        <a href='?type=category&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По тегам</button></a>
+                        <a href='?type=id&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit" value="По дате">По дате <img class="search-sort__status" src="img/search/Forward.svg" /></button></a>
+                        <a href='?type=title&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По алфавиту <img class="search-sort__status" src="img/search/Forward.svg" /></button></a>
+                        <a href='?type=category&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По тегам <img class="search-sort__status" src="img/search/Forward.svg" /></button></a>
 
                     <?php
                     }
@@ -90,14 +89,47 @@ try {
             <?php
             foreach ($projects as $project) {
             ?>
-                <div>
+                <!-- <div>
                     <h4><?= $project['title'] ?></h4>
                     <span><?= $project->creator_name ?></span> <br>
                     <span><?= $project->category ?></span> <br>
-                    <a href="project.php?id=<?= $project->id ?>">View project</a>
-                    <a href="update_objects.php?id=<?= $project->id ?>">Update data</a>
-                    <a href="php/delete.php?id=<?= $project->id ?>">Delete data</a>
-                </div>
+                    <a href="project?id=<?= $project->id ?>">View project</a>
+                    <a href="update_objects?id=<?= $project->id ?>">Update data</a>
+                    <a href="php/delete?id=<?= $project->id ?>">Delete data</a>
+                </div> -->
+
+                <section class="section section-card">
+                    <div class="container">
+                        <div class="section-card__content">
+                            <img src="img/card__img.png" alt="logo" class="section-card__img">
+                            <div class="content__text">
+                                <h2 class="section-card__title"><?= $project['title'] ?></h2>
+                                <span class="section-card__description"><?= $project['descr'] ?></span>
+                            </div>
+                            <div class="content__tags">
+                                <div class="block">
+                                    <?php
+
+                                    $tags = explode(', ', $project->category);
+                                    
+                                    foreach ($tags as $tag) {
+                                        ?>
+                                        <span class="section-card__tag"><?=$tag?></span>
+                                        <?php
+                                    }
+
+                                    ?>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-card__controls">
+                            <button class="section-card__button-join">Вступить</button>
+                            <a href="project?id=<?= $project->id ?>"><button class="section-card__button-view">Посмотреть проект</button></a>
+                            <span class="section-card__date">16 Апреля</span>
+                        </div>
+                    </div>
+                </section>
         <?php
             }
         } catch (Throwable $e) {
@@ -106,5 +138,60 @@ try {
         ?>
         </main>
     </body>
+    <script>
 
-    </html>
+        const button = document.querySelectorAll('.search-sort__btn');
+        const icon_status = document.querySelectorAll('.search-sort__status');
+        const descr = document.querySelectorAll('.section-card__description');
+
+
+        if(location.toString().indexOf('id') !== -1) {
+            icon_status[0].style.display = 'block';
+            button[0].style.background = "#fff";
+            button[0].style.color = "#8075FF";
+            if(location.toString().indexOf('ASC') !== -1) {
+                icon_status[0].style.transform = 'rotateY(0deg)';
+                icon_status[0].style.paddingRight = '20px';
+            } 
+
+            if(location.toString().indexOf('DESC') !== -1) {
+                icon_status[0].style.transform = '';
+                icon_status[0].style.paddingRight = '20px';
+            } 
+        } 
+
+        if(location.toString().indexOf('title') !== -1) {
+            icon_status[1].style.display = 'block';
+            button[1].style.background = "#fff";
+            button[1].style.color = "#8075FF";
+            button[1].style.paddingLeft = "20px";
+            if(location.toString().indexOf('ASC') !== -1) {
+                icon_status[1].style.transform = 'rotateY(0deg)';
+                icon_status[1].style.paddingRight = '20px';
+            } 
+
+            if(location.toString().indexOf('DESC') !== -1) {
+                icon_status[1].style.transform = '';
+                icon_status[1].style.paddingRight = '20px';
+            } 
+        } 
+
+        if(location.toString().indexOf('category') !== -1) {
+            icon_status[2].style.display = 'block';
+            button[2].style.background = "#fff";
+            button[2].style.color = "#8075FF";
+            if(location.toString().indexOf('ASC') !== -1) {
+                icon_status[2].style.transform = 'rotateY(0deg)';
+                icon_status[2].style.paddingRight = '20px';
+            } 
+
+            if(location.toString().indexOf('DESC') !== -1) {
+                icon_status[2].style.transform = '';
+                icon_status[2].style.paddingRight = '20px';
+            } 
+        } 
+
+
+        
+    </script>
+</html>

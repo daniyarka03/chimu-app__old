@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #8075FF;
+}
+
+main {
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 200px;
+}
+
+.section-card {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 2px solid #dbdbdb;
+  padding: 50px 28px 25px 28px;
+}
+
+.section-card .card-item-info-text__title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  color: #000000;
+}
+
+.section-card .card-item-info-text__descr {
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 19px;
+  color: #383838;
+}
+
+.section-card-info {
+  display: grid;
+  grid-template-columns: 99px 2fr 1fr;
+  grid-gap: 40px;
+}
+
+.section-card-info-tag {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.section-card-info-tag .block {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 15px;
+}
+
+.section-card-info-tag .item__text {
+  background: #8075FF;
+  border-radius: 4px;
+  max-height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 15px;
+  margin: 0 auto;
+  text-align: center;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  padding-left: 11px;
+  padding-right: 11px;
+}
+
+.section-card-bottom {
+  display: grid;
+  grid-template-columns: 155px 155px 1fr;
+  grid-gap: 20px;
+}
+
+.section-card-bottom-interact__join {
+  width: 155px;
+  height: 40px;
+  left: 85px;
+  top: 325px;
+  color: white;
+  background: #8075FF;
+  border-radius: 4px;
+}
+
+.section-card-bottom-interact__info {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #8075FF;
+}
+
+.section-card-bottom-date__text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
