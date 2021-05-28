@@ -6,9 +6,15 @@
     <meta name="viewport" content="widadditional_modalth=device-width, initial-scale=1.0">
     <title>Главная страница</title>
     <link rel="stylesheet" href="css/sidebar.css" />
+    <style>
+        main {
+            margin-left: 158px;
+        }
+    </style>
 </head>
 <body>
     <?php include './php/components/sidebar.php' ?>
+    <main>
     <?php if ($_COOKIE['user'] == ''): ?>
         <a href="./register">Регистрация</a>
         <a href="./login">Авторизация</a>
@@ -20,5 +26,6 @@
         <a href="./list_users">Показать пользователей</a>
         <a href="./notifications">Уведомление</a>
     <?php endif; ?>
+    </main>
 </body>
 </html>

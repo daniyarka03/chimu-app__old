@@ -34,7 +34,6 @@ try {
 ?>
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,9 +41,7 @@ try {
         <link rel="stylesheet" href="css/list_objects.css" />
         <link rel="stylesheet" href="css/sidebar.css" />
         <title>Document</title>
-
     </head>
-
     <body>
         <?php include './php/components/sidebar.php' ?>
         <main>
@@ -104,7 +101,7 @@ try {
                             <img src="img/card__img.png" alt="logo" class="section-card__img">
                             <div class="content__text">
                                 <h2 class="section-card__title"><?= $project['title'] ?></h2>
-                                <span class="section-card__description"><?= $project['descr'] ?></span>
+                                <span class="section-card__description" id="descr_card"><?= $project['descr'] ?></span>
                             </div>
                             <div class="content__tags">
                                 <div class="block">
@@ -124,7 +121,8 @@ try {
                             </div>
                         </div>
                         <div class="section-card__controls">
-                            <button class="section-card__button-join">Вступить</button>
+                            <?php if ($project['creator_id'] == $_COOKIE['id']) echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-card__button-join">Редактировать</button></a>' ?>
+                            <?php if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="project?id=<?= $project->id ?>#demo-modal"><button class="section-card__button-join">Вступить</button></a>' ?>
                             <a href="project?id=<?= $project->id ?>"><button class="section-card__button-view">Посмотреть проект</button></a>
                             <span class="section-card__date">16 Апреля</span>
                         </div>
@@ -138,6 +136,7 @@ try {
         ?>
         </main>
     </body>
+    <script src="js/jquery.js"></script>
     <script>
 
         const button = document.querySelectorAll('.search-sort__btn');
@@ -190,6 +189,14 @@ try {
                 icon_status[2].style.paddingRight = '20px';
             } 
         } 
+
+        $(document).ready(() => {
+            const descr = $('#descr_card').text().trim();
+            
+            if (descr.length >= 400) {
+                $('#descr_card').text(descr.slice(0, 80) + '...');
+            }
+        });
 
 
         

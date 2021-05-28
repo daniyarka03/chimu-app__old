@@ -1,93 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .wrapper a {
-            display: inline-block;
-            text-decoration: none;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 3px;
-            text-transform: uppercase;
-            color: #585858;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .modal {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(77, 77, 77, .7);
-            transition: all .4s;
-        }
-
-        .modal:target {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .modal__content {
-            border-radius: 4px;
-            position: relative;
-            width: 500px;
-            max-width: 90%;
-            background: #fff;
-            padding: 1em 2em;
-        }
-
-        .modal__footer {
-            text-align: right;
-        a {
-            color: #585858;
-        }
-        i {
-            color: #d02d2c;
-        }
-        }
-        .modal__close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #585858;
-            text-decoration: none;
-            font-size: 36px;
-            color: red;
-        }
-
-        .modal__content  textarea {
-            display: block;
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-        }
-
-        .modal__content form button[type="submit"] {
-            width: 100%;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            padding: 10px 0;
-        }
-    </style>
-</head>
-<body>
-    <?php
+<?php
         try {
             require "php/includes/db.php";
             $id = $_GET['id'];
@@ -129,8 +40,23 @@
 
 
     ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/project.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <title>Project <?= $project['title'] ?></title>
+    <style>
 
-    <h2>Название проекта: <?= $project['title'] ?></h2>
+    </style>
+</head>
+<body>
+    
+
+    <!-- <h2>Название проекта: <?= $project['title'] ?></h2>
     <span>Создатель: <?= $project['creator_name'] ?></span> <br>
     <span>Категория: <b><?= $project['category'] ?></b></span> <br>
 
@@ -139,8 +65,163 @@
         <a href="php/delete.php?id=<?= $project->id?>">Delete data</a>
     <?php else: ?>
         <a href="#demo-modal" class="join_project__button">Join Project</a>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
+    <?php include "php/components/sidebar.php" ?>
+
+<main>
+    <div class="section section-basic">
+        <div class="container">
+            <div class="block">
+                <img src="img/Ellipse 1.png" alt="" class="section-basic__img">
+            </div>
+            <div class="block">
+                <h2 class="section-basic__name"><?= $project['title'] ?></h2>
+                <span class="section-basic__date">Создатель проекта: <?= $project['creator_name'] ?></span>
+                <span class="section-basic__geolocation"></span>
+            </div>
+            <div class="block">
+                <?php if ($project['creator_id'] == $_COOKIE['id']) echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-basic__button">Редактировать проект</button></a>' ?>
+                <?php if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>' ?>
+            </div>
+        </div>
+    </div>
+    <div class="section section-skills">
+        <div class="container">
+            <h2 class="section-skills__title section__title">
+                Деятельность проекта
+            </h2>
+            <div class="section-skills__block">
+                <?php 
+                    $tags = explode(', ', $project->category);
+                                
+                    foreach ($tags as $tag) {
+                        ?>
+                        <span class="section-skills__tag"><?=$tag?></span>
+                        <?php
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="section section-skills">
+        <div class="container">
+            <h2 class="section-skills__title section__title">
+                Кто нужен
+            </h2>
+            <div class="section-skills__block">
+                <?php 
+                    $tags = explode(', ', $project->keywords_need_users);
+                                
+                    foreach ($tags as $tag) {
+                        ?>
+                        <span class="section-skills__tag"><?=$tag?></span>
+                        <?php
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+    <section class="section section-about">
+        <div class="container">
+            <h2 class="section-about__title section__title">О проекте</h2>
+            <p class="section-about__text" id="descr">
+                <?php
+                
+                    if ($project->descr != "") {
+                        echo $project->descr;
+                    } else {
+                        echo '( Пользователь еще не добавил описания о себе! )';
+                    }
+                
+                ?>
+            </p>
+        </div>
+    </section>
+    <div class="section section-projects">
+        <div class="container">
+            <h2 class="section-projects__title section__title">Все участники проекта</h2>
+            <div class="section-projects__cards">
+
+            <?php
+                
+                // Нужно сделать выведение всех участников проекта
+
+                $members_project = $project->members_project.implode($members_project);
+            ?>
+            <?php 
+            
+                foreach ($members_project as $project) {
+
+            ?>
+                <div class="card__block">
+                    <img src="img/card__img.png" alt="" class="card__img">
+                    <h2 class="card__title"><?= $project->members_project ?></h2>
+                    <span class="card__text" id="descr_card"><?= $project->descr ?></span>
+                    <div class="card__tags">
+                        <?php 
+                            $tags = explode(', ', $project->category);
+                                
+                            foreach ($tags as $tag) {
+                                
+                                ?>
+                                <span class="tag"><?=$tag?></span>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                    <a href="project?id=<?= $project->id ?>"><button class="card__button">Посмотреть проект</button></a>
+                </div>
+
+            <?php } ?>
+            
+            </div>
+        </div>
+    </div>
+    <div class="section section-contacts">
+        <div class="container">
+            <h2 class="section-contacts__title section__title">Мои контакты</h2>
+            <div class="section-contacts__block">
+                <div class="social-icon">
+                    <img src="img/Mail.svg" alt="">
+                </div>
+                <div class="social-text">
+                    <span>@john_insta</span>
+                </div>
+            </div>
+            <div class="section-contacts__block">
+                <div class="social-icon">
+                    <img src="img/instagram.svg" alt="">
+                </div>
+                <div class="social-text">
+                    <span>@john_insta</span>
+                </div>
+            </div>
+            <div class="section-contacts__block">
+                <div class="social-icon">
+                    <img src="img/telegram.svg" alt="">
+                </div>
+                <div class="social-text">
+                    <span>@john_insta</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="js/jquery.js"></script>
+<script>
+
+    $(document).ready(() => {
+        const descr = $('#descr_card').text().trim();
+        
+        if (descr.length >= 80) {
+            $('#descr_card').text(descr.slice(0, 80) + '...');
+        }
+    });
+    
+    
+    
+</script>
 
     <div id="demo-modal" class="modal">
         <div class="modal__content">

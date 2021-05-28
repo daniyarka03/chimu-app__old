@@ -53,6 +53,7 @@ body {
     transition: var(--transition-speed);
 
   
+  
 }
 
 
@@ -63,6 +64,9 @@ body {
 
 .nav-icon {
     padding-left: 25px;
+    @media (max-width: 700px) {
+        padding-left: 0;
+    }
 }
 
 
@@ -140,9 +144,7 @@ body {
         justify-content: center;
     }
 
-    main {
-        margin: 0;
-    }
+  
 }
 
 /* Large screens */

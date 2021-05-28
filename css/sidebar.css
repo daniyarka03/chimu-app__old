@@ -58,6 +58,12 @@ body {
   padding-left: 25px;
 }
 
+@media (max-width: 700px) {
+  .nav-icon {
+    padding-left: 0;
+  }
+}
+
 .link-text {
   display: none;
   margin-left: 2rem;
@@ -124,9 +130,6 @@ body {
   }
   .nav-link {
     justify-content: center;
-  }
-  main {
-    margin: 0;
   }
 }
 

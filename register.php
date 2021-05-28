@@ -343,6 +343,12 @@
     <script src="js/jquery.js"></script>
     <script src="js/multiselect_plugin/chosen.jquery.min.js"></script>
     <script src="js/inputs.js"></script>
+    <script>
+            const block = document.querySelectorAll(`.section-register`);
+            const button = document.querySelectorAll(`.section-register__button_next`);
+            const button_back = document.querySelectorAll(`.section-register__button_back`);
+            step_function(4, block, button, button_back);
+    </script>
     <script src="js/multiple_windows.js"></script>
     <script>
         $(document).ready(function(){

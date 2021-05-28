@@ -1,10 +1,4 @@
-const step_function = (count) => {
-    
-    // Variables 
-    const block = document.querySelectorAll(`.section-register`);
-    const button = document.querySelectorAll(`.section-register__button_next`);
-    const button_back = document.querySelectorAll(`.section-register__button_back`);
-    
+const step_function = (count, block, button, button_back) => {
     // Loops for creating function button
     for (let i = 0; i < count; i++) {
         if (i != 3) {
@@ -21,4 +15,3 @@ const step_function = (count) => {
     }
 }
 
-step_function(4);

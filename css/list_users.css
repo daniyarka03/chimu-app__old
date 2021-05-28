@@ -1,44 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
-body {
-  background-color: #8075FF;
-}
-
-main {
-  margin-left: 187px;
-  margin-right: 100px;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-button:focus {
-  outline: none;
-}
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  transition: 0.6s ease;
 }
 
 body {
@@ -115,7 +82,6 @@ main {
   margin-top: 13px;
   background: none;
   height: 41px;
-  cursor: pointer;
   border: 2px solid #FFFFFF;
   box-sizing: border-box;
   border-radius: 20px;
@@ -146,7 +112,7 @@ main {
 
 .section-card__controls {
   display: grid;
-  grid-template-columns: 155px 155px 1fr;
+  grid-template-columns: 200px 200px 1fr;
   margin-top: 28px;
   grid-gap: 20px;
 }
@@ -159,8 +125,6 @@ main {
 
 .section-card .content__text {
   padding-left: 40px;
-  width: auto;
-  max-width: 700px;
 }
 
 .section-card .content__tags {
@@ -194,11 +158,11 @@ main {
 }
 
 .section-card__description {
-  overflow-wrap: break-word;
   font-size: 16px;
   margin-top: 19px;
   color: #FAFAFA;
   width: 200px;
+  overflow-wrap: break-word;
 }
 
 .section-card__button-join {
@@ -211,7 +175,6 @@ main {
   font-weight: 600;
   font-family: 'Rubik';
   cursor: pointer;
-  width: -webkit-fill-available;
 }
 
 .section-card__button-view {
@@ -235,4 +198,15 @@ main {
   color: #FAFAFA;
   font-family: 'Rubik';
   font-weight: 600;
+}
+
+.search-form__reset {
+  display: none;
+  height: 60px;
+  width: 60px;
+  border-radius: 1000px;
+  border: none;
+  background-color: #FAFAFA;
+  font-weight: 600;
+  font-family: 'Rubik', sans-serif;
 }

@@ -1,73 +1,208 @@
 <?php
-    try {
-        require "php/includes/db.php";
+try {
+    require "php/includes/db.php";
 
-        // Search items script
-        if ($_GET['reset_data'] == 'Сброс') {
-            header("Location: ./list_users.php");
-        } else {
-            $query = $_GET['query'];
+
+    if (isset($_GET['type'])) {
+        $type = $_GET['type'];
+    } else {
+        $type = 'id';
+    }
+
+    if (isset($_GET['sort'])) {
+        $status = $_GET['sort'];
+    } else {
+        $status = 'DESC';
+    }
+
+
+    // Search items script
+    if ($_GET['reset_data'] == 'Сброс') {
+        header("Location: ./list_users");
+    } else {
+        $query = $_GET['query'];
+
+        if (isset($query)) {
             $users = R::findAll('users', "first_name LIKE '%$query%'");
-            $id = $_COOKIE['id'];
-
-            $test = str_split($_SERVER['REQUEST_URI']);
-            $e = array_search('q', $test);
-
-            if ($e) {
-                echo 'True';
-            } else {
-                echo 'False';
+            if (isset($_GET['type'])) {
+                $users = R::findAll('users', "first_name LIKE '%$query%' ORDER BY " . $type . ' ' . $status);
             }
+        } else {
+            $users = R::findAll('users', 'ORDER BY ' . $type . ' ' . $status);
         }
 
 
+        $id = $_COOKIE['id'];
+
+        $test = str_split($_SERVER['REQUEST_URI']);
+        $e = array_search('q', $test);
+    }
+    $id = $_COOKIE['id'];
+
+    $status == 'DESC' ? $status = 'ASC' : $status = 'DESC';
+
+
+    $test = str_split($_SERVER['REQUEST_URI']);
+    $e = array_search('q', $test);
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        div {
-            width: 400px;
-            min-height: 80px;
-            height: auto;
-            background-color: #c4c4c4;
-            border: 1px solid #333;
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/list_users.css" />
+        <link rel="stylesheet" href="css/sidebar.css" />
+        <title>Document</title>
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <?php include 'php/components/sidebar.php' ?>
+
+        <main>
+
+            <section class="search">
+                <h2 class="search__title">Поиск проектов</h2>
+                <form class="search-form">
+                    <input type="text" class="search-form__input" name="query" placeholder="Введите текст" />
+                    <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter">
+                </form>
+            </section>
+
+
+            <section class="search-sort">
+                <h2 class="search-sort__title">Сортировать</h2>
+                <div class="search-sort__block">
+                    <?php
+                    if ($e) {
+                    ?>
+
+                        <a href='?query=<?= $_GET['query'] ?>&&type=id&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По дате <img class="search-sort__status" src="img/search/Forward.svg" /> </button></a>
+                        <a href='?query=<?= $_GET['query'] ?>&&type=first_name&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По алфавиту <img class="search-sort__status" src="img/search/Forward.svg" /> </button></a>
+                        <a href='?query=<?= $_GET['query'] ?>&&type=work_activity&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По тегам <img class="search-sort__status" src="img/search/Forward.svg" /> </button></a>
+
+                    <?php
+                    } else {
+                    ?>
+
+                        <a href='?type=id&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit" value="По дате">По дате <img class="search-sort__status" src="img/search/Forward.svg" /></button></a>
+                        <a href='?type=first_name&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По алфавиту <img class="search-sort__status" src="img/search/Forward.svg" /></button></a>
+                        <a href='?type=work_activity&&sort=<?= $status ?>'><button class="search-sort__btn" type="submit">По тегам <img class="search-sort__status" src="img/search/Forward.svg" /></button></a>
+
+                    <?php
+                    }
+                    ?>
+                </div>
+            </section>
+
+            <?php
+            foreach ($users as $user) {
+            ?>
+                <section class="section section-card">
+                    <div class="container">
+                        <div class="section-card__content">
+                            <img src="img/card__img.png" alt="logo" class="section-card__img">
+                            <div class="content__text">
+                                <h2 class="section-card__title"><?= $user['first_name'] ?></h2>
+                                <span class="section-card__description"><?= $user['descr'] ?></span>
+                            </div>
+                            <div class="content__tags">
+                                <div class="block">
+                                    <?php
+
+                                    $tags = explode(', ', $user->work_activity);
+
+                                    foreach ($tags as $tag) {
+                                    ?>
+                                        <span class="section-card__tag"><?= $tag ?></span>
+                                    <?php
+                                    }
+
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-card__controls">
+                            <button class="section-card__button-join">Пригласить в проект</button>
+                            <a href="project?id=<?= $user->id ?>"><button class="section-card__button-view">Посмотреть пользователя</button></a>
+                            <span class="section-card__date">16 Апреля</span>
+                        </div>
+                    </div>
+                </section>
+        <?php
+            }
+        } catch (Throwable $e) {
+            echo $e;
         }
-    </style>
-</head>
-<body>
-<a href="index.php"><button>Main menu</button></a><br /> <br>
-
-<form action="list_users.php" method="get">
-    <input type="search" name="query" placeholder="Поиск..." />
-    <input type="submit" value="Поиск">
-    <input type="submit" name="reset_data" value="Сброс">
-</form>
-
-<?php
-foreach($users as $user) {
-    ?>
-    <div>
-        <h4><?= $user['first_name'] . ' ' .  $user->last_name?></h4>
-        <span><?= $user['work_activity'] ?></span> <br>
-        <span><?= $user['keywords_profile'] ?></span> <br>
-        <a href="user.php?id=<?= $user->id?>">View user</a>
-        <a href="update_objects.php?id=<?= $user->id?>">Update data</a>
-        <a href="php/delete.php?id=<?= $user->id?>">Delete data</a>
-    </div>
-    <?php
-}
-} catch (Throwable $e) {
-    echo $e;
-}
-?>
+        ?>
+        </main>
 
 
+        <script>
+            const button = document.querySelectorAll('.search-sort__btn');
+            const icon_status = document.querySelectorAll('.search-sort__status');
+            const descr = document.querySelectorAll('.section-card__description');
+            const reset = document.querySelector('.search-form__reset');
 
-</body>
-</html>
+
+            if (location.toString().indexOf('id') !== -1) {
+                icon_status[0].style.display = 'block';
+                button[0].style.background = "#fff";
+                button[0].style.color = "#8075FF";
+                if (location.toString().indexOf('ASC') !== -1) {
+                    icon_status[0].style.transform = 'rotateY(0deg)';
+                    icon_status[0].style.paddingRight = '20px';
+                }
+
+                if (location.toString().indexOf('DESC') !== -1) {
+                    icon_status[0].style.transform = '';
+                    icon_status[0].style.paddingRight = '20px';
+                }
+            }
+
+            if (location.toString().indexOf('first_name') !== -1) {
+                icon_status[1].style.display = 'block';
+                button[1].style.background = "#fff";
+                button[1].style.color = "#8075FF";
+                button[1].style.paddingLeft = "20px";
+                if (location.toString().indexOf('ASC') !== -1) {
+                    icon_status[1].style.transform = 'rotateY(0deg)';
+                    icon_status[1].style.paddingRight = '20px';
+                }
+
+                if (location.toString().indexOf('DESC') !== -1) {
+                    icon_status[1].style.transform = '';
+                    icon_status[1].style.paddingRight = '20px';
+                }
+            }
+
+            if (location.toString().indexOf('work_activity') !== -1) {
+                icon_status[2].style.display = 'block';
+                button[2].style.background = "#fff";
+                button[2].style.color = "#8075FF";
+                if (location.toString().indexOf('ASC') !== -1) {
+                    icon_status[2].style.transform = 'rotateY(0deg)';
+                    icon_status[2].style.paddingRight = '20px';
+                }
+
+                if (location.toString().indexOf('DESC') !== -1) {
+                    icon_status[2].style.transform = '';
+                    icon_status[2].style.paddingRight = '20px';
+                }
+            }
+
+            if (location.toString().indexOf('query') !== -1) {
+                reset.style.display = 'block';
+            }
+        </script>
+    </body>
+
+    </html>
