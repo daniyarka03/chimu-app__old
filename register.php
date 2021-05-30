@@ -347,10 +347,13 @@
             const block = document.querySelectorAll(`.section-register`);
             const button = document.querySelectorAll(`.section-register__button_next`);
             const button_back = document.querySelectorAll(`.section-register__button_back`);
-            step_function(4, block, button, button_back);
+            
     </script>
     <script src="js/multiple_windows.js"></script>
     <script>
+
+    step_function(4, block, button, button_back);
+
         $(document).ready(function(){
             $('#mselectCountry').chosen();
             $('#mselectCity').chosen();

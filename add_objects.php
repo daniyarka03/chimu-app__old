@@ -18,6 +18,7 @@
     <form action="php/add_object.php" method="post">
         <?php include 'php/components/add_project/step_1.php' ?>
         <?php include 'php/components/add_project/step_2.php' ?>
+        <?php include 'php/components/add_project/step_3.php' ?>
     </form>
 
     <script src="js/jquery.js"></script>
@@ -27,6 +28,7 @@
         const block = document.querySelectorAll(`.section-add-project`);
         const button = document.querySelectorAll(`.section-add-project__button_next`);
         const button_back = document.querySelectorAll(`.section-add-project__button_back`);
+        const req_input = document.querySelectorAll(`.require`);
         
 
     </script>
@@ -36,7 +38,8 @@
 
     <script>
         $(document).ready(function(){
-            $('#mselectArea').chosen({width: "100%", placeholder_text_multiple: "Интересующая область"});
+            $('#mselectArea').chosen({width: "100%", placeholder_text_multiple: "Тип проекта"});
+            $('#mselectKeywordsProfile').chosen({width: "100%", placeholder_text_multiple: "Кто нужен в проект"});
         });
 
         step_function(3, block, button, button_back);

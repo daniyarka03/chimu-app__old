@@ -3,7 +3,7 @@
         <li class="logo">
             <a href="./" class="nav-link">
                 <span class="link-text logo-text">Chimu</span>
-                <img class="nav-icon logo-icon" src="img/logo.png" alt="">
+                <img class="nav-icon logo-icon" src="img/logo.svg" alt="">
             </a>
         </li>
         <div class="nav-item">

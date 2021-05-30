@@ -38,7 +38,8 @@ body {
 @media (max-height: 607px) {
   .section-add-project {
     margin-top: 0;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
   }
 }
 

@@ -122,7 +122,7 @@ try {
                         </div>
                         <div class="section-card__controls">
                             <?php if ($project['creator_id'] == $_COOKIE['id']) echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-card__button-join">Редактировать</button></a>' ?>
-                            <?php if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="project?id=<?= $project->id ?>#demo-modal"><button class="section-card__button-join">Вступить</button></a>' ?>
+                            <?php if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="project?id='.$project->id.'#demo-modal"><button class="section-card__button-join">Вступить</button></a>' ?>
                             <a href="project?id=<?= $project->id ?>"><button class="section-card__button-view">Посмотреть проект</button></a>
                             <span class="section-card__date">16 Апреля</span>
                         </div>

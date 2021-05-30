@@ -144,23 +144,23 @@
             <div class="section-projects__cards">
 
             <?php
-                
-                // Нужно сделать выведение всех участников проекта
-
-                $members_project = $project->members_project.implode($members_project);
+                $members = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
+               
             ?>
             <?php 
             
-                foreach ($members_project as $project) {
+                    foreach ($members as $member_id) {
+                    
+                    $member = R::findOne('users', 'id_user = ?', array($member_id));
 
             ?>
                 <div class="card__block">
                     <img src="img/card__img.png" alt="" class="card__img">
-                    <h2 class="card__title"><?= $project->members_project ?></h2>
-                    <span class="card__text" id="descr_card"><?= $project->descr ?></span>
+                    <h2 class="card__title"><?= $member['first_name'] ?></h2>
+                    <span class="card__text" id="descr_card"><?= $member['descr'] ?></span>
                     <div class="card__tags">
                         <?php 
-                            $tags = explode(', ', $project->category);
+                            $tags = explode(', ', $member['keywords_profile']);
                                 
                             foreach ($tags as $tag) {
                                 
@@ -168,12 +168,12 @@
                                 <span class="tag"><?=$tag?></span>
                                 <?php
                             }
-                        ?>
+                        ?> 
                     </div>
-                    <a href="project?id=<?= $project->id ?>"><button class="card__button">Посмотреть проект</button></a>
+                    <a href="profile?id=<?= $member->id ?>"><button class="card__button">Посмотреть</button></a>
                 </div>
 
-            <?php } ?>
+            <?php }  ?>
             
             </div>
         </div>
@@ -208,19 +208,16 @@
         </div>
     </div>
 </main>
+<?php include 'footer.php' ?>
 <script src="js/jquery.js"></script>
 <script>
-
     $(document).ready(() => {
-        const descr = $('#descr_card').text().trim();
+        const descr = $('.card__text').text().trim();
         
         if (descr.length >= 80) {
-            $('#descr_card').text(descr.slice(0, 80) + '...');
+            $('.card__text').text(descr.slice(0, 80) + '...');
         }
     });
-    
-    
-    
 </script>
 
     <div id="demo-modal" class="modal">
@@ -241,6 +238,9 @@
             <a href="#" class="modal__close">&times;</a>
         </div>
     </div>
+
+    
+   
 
     <script>
         const join_project__button = document.querySelector('.join_project__button');

@@ -132,7 +132,7 @@ try {
                         </div>
                         <div class="section-card__controls">
                             <button class="section-card__button-join">Пригласить в проект</button>
-                            <a href="project?id=<?= $user->id ?>"><button class="section-card__button-view">Посмотреть пользователя</button></a>
+                            <a href="profile?id=<?= $user->id ?>"><button class="section-card__button-view">Посмотреть пользователя</button></a>
                             <span class="section-card__date">16 Апреля</span>
                         </div>
                     </div>
@@ -145,6 +145,7 @@ try {
         ?>
         </main>
 
+        <script src="js/jquery.js"></script>
 
         <script>
             const button = document.querySelectorAll('.search-sort__btn');
@@ -202,6 +203,18 @@ try {
             if (location.toString().indexOf('query') !== -1) {
                 reset.style.display = 'block';
             }
+        </script>
+
+        <script>
+            $(document).ready(() => {
+                const descr = document.getElementsByClassName('section-card__description');
+
+                for (let i = 0; i < descr.length; i++) {
+                    if ($(descr[i]).text().length >= 200) {
+                        $(descr[i]).text($(descr[i]).text().slice(0, 200) + '...');
+                    }
+                }
+            });
         </script>
     </body>
 
