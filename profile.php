@@ -3,12 +3,7 @@
 
     $profile = R::findOne('users', 'id_user = ?', array($_COOKIE['id']));
     
-    $id = $_GET['id'];
-
-    if (!isset($id)) {
-        header("Location: /chimu-app");
-    }
-
+  
 ?>
 
 
