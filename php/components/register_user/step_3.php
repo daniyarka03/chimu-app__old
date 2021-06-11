@@ -6,7 +6,7 @@
         </div>
         <div class="section-forms">
             <select name="gender" id="mselectGender" class="section-register__input" require>
-                <option value="Выберите" disabled>Выберите</option>
+                <option value=""></option>
                 <option value="Мужчина">Мужчина</option>
                 <option value="Женщина">Женщина</option>
                 <option value="Другое">Другое</option>

@@ -272,7 +272,7 @@
         $pass = filter_var(trim($_POST['password'] ?? ""), FILTER_SANITIZE_STRING);
         $pass2 = filter_var(trim($_POST['password_2'] ?? ""), FILTER_SANITIZE_STRING);
         $country = filter_var(trim($_POST['country'] ?? ""), FILTER_SANITIZE_STRING);
-        $city = filter_var(trim($_POST['city'] ?? ""), FILTER_SANITIZE_STRING);
+        // $city = filter_var(trim($_POST['city'] ?? ""), FILTER_SANITIZE_STRING);
         $birthdate = filter_var(trim($_POST['birthdate'] ?? ""), FILTER_SANITIZE_STRING);
         $gender = filter_var(trim($_POST['gender'] ?? ""), FILTER_SANITIZE_STRING);
         $descr = filter_var(trim($_POST['descr'] ?? ""), FILTER_SANITIZE_STRING);
@@ -308,7 +308,7 @@
             $user->email = $email;
             $user->pass = password_hash($pass, PASSWORD_DEFAULT);
             $user->country = $country;
-            $user->city = $city;
+            // $user->city = $city;
             $user->work_activity = $work_activity;
             $user->keywords_profile = $keywords_profile;
             $user->birthdate = $birthdate;
@@ -355,10 +355,11 @@
     step_function(4, block, button, button_back);
 
         $(document).ready(function(){
-            $('#mselectCountry').chosen();
+            $('#mselectCountry').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_single: "Страна проживания", allow_single_deselect: true});
             $('#mselectCity').chosen();
-            $('#mselectWork').chosen({width: "100%", placeholder_text_multiple: "Интересующая область"});
-            $('#mselectKeywords').chosen({width: "100%", placeholder_text_multiple: "Навыки"});
+            $('#mselectWork').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_multiple: "Интересующая область"});
+            $('#mselectKeywords').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_multiple: "Навыки"});
+            $('#mselectGender').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_single: "Выберите пол"});
         });
 
         const require_input = document.querySelectorAll('.require');

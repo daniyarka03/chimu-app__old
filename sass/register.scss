@@ -130,6 +130,7 @@ body {
 
         &:hover {
             background-color: #FFDE88;
+            cursor: pointer;
 
         }
 
@@ -164,6 +165,11 @@ body {
         margin: 0 auto;
         border: none;
         background: none;
+        cursor: pointer;
+        transition: 0.6s ease;
+        &:hover {
+            color: $white_color;
+        }
     }
 
 }

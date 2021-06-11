@@ -27,6 +27,7 @@
   z-index: 1010;
   width: 100%;
   border: 1px solid #aaa;
+  
   border-top: 0;
   background: #fff;
   -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
@@ -65,34 +66,53 @@
 /* @group Single Chosen */
 .chosen-container-single .chosen-single {
   position: relative;
-  display: block;
   overflow: hidden;
-  padding: 0 0 0 8px;
-  height: 25px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  background-color: #fff;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), color-stop(50%, #f6f6f6), color-stop(52%, #eee), to(#f4f4f4));
-  background: linear-gradient(#fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
-  background-clip: padding-box;
-  -webkit-box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
-  color: #444;
-  text-decoration: none;
-  white-space: nowrap;
-  line-height: 24px;
+  width: 100%;
+  min-height: 26px;
+  height: auto;
+  cursor: text;
+  
+
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #FFF;
+    font-weight: 600;
+    transition: 0.1s ease-in;
 }
 
-.chosen-container-single .chosen-default {
-  color: #999;
+.chosen-container-single .chosen-single:focus {
+  outline: none;
+  border: none;
 }
+
+
 
 .chosen-container-single .chosen-single span {
-  display: block;
-  overflow: hidden;
-  margin-right: 26px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-bottom: 10px;
+  
+  height: 25px;
+  outline: 0;
+  border: 0 !important;
+  background: transparent !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #FFF;
+  font-weight: 500;
+  font-family: "Rubik";
+  font-size: 100%;
+  line-height: normal;
+  border-radius: 0;
+  width: 25px;
+}
+
+.chosen-container-single .chosen-single span:focus {
+  outline: none;
+  border: none;
 }
 
 .chosen-container-single .chosen-single-with-deselect span {
@@ -203,9 +223,9 @@
 }
 
 .chosen-container .chosen-results li.highlighted {
-  background-color: #3875d7;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
-  background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);
+  background-color: #8075FF;
+  background-image: #8075FF;
+  background-image: linear-gradient(#8075FF 20%, #8075FF 90%);
   color: #fff;
 }
 
@@ -352,11 +372,6 @@
 
 /* @end */
 /* @group Active  */
-.chosen-container-active .chosen-single {
-  border: 1px solid #5897fb;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
 
 .chosen-container-active.chosen-with-drop .chosen-single {
   border: 1px solid #aaa;

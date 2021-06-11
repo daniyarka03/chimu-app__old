@@ -67,8 +67,18 @@
                     ?>
                 </optgroup>
             </select>
-            <input type="text" name="country" class="section-register__input" placeholder="Страна *" require/>
-            <input type="text" name="city" class="section-register__input" placeholder="Город *" require/>
+            <select name="country" class="section-register__input" id="mselectCountry">
+                <option value=""></option>
+                <?php
+                    $countries = R::findAll('TBLCountries');
+                    foreach ($countries as $country) {  
+                ?>
+                    <option value="<?=$country->country_name?>"><?=$country->country_name?></option>
+                <?php
+                    }
+                ?>
+            </select>
+            <!-- <input type="text" name="city" class="section-register__input" placeholder="Город *" require/> -->
             <input type="date" name="birthdate" class="section-register__input" placeholder="Дата рождения *" require/>
         </div>
         <div class="section-controls">

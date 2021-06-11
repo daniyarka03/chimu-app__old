@@ -131,6 +131,7 @@ body {
 
 .section-register__button_next:hover {
   background-color: #FFDE88;
+  cursor: pointer;
 }
 
 .section-register__button_next:focus {
@@ -166,6 +167,12 @@ body {
   margin: 0 auto;
   border: none;
   background: none;
+  cursor: pointer;
+  transition: 0.6s ease;
+}
+
+.section-register__button_back:hover {
+  color: #FFFFFF;
 }
 
 .register__step_4 {
