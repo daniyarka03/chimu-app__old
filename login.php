@@ -15,10 +15,10 @@
 
 
             // Переменные данных с разметки
-            $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
-            $pass = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
+            $email = filter_var(trim($_POST['email'] ?? ""), FILTER_SANITIZE_STRING);
+            $pass = filter_var(trim($_POST['password'] ?? ""), FILTER_SANITIZE_STRING);
 
-            if ($_POST['do_signup']) {
+            if ($_POST['do_signup'] ?? "") {
                 $erros = array();
                 $user = R::findOne('users', 'email = ?', array($email));
                 if ($user) {

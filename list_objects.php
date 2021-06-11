@@ -15,7 +15,7 @@ try {
     }
 
 
-    $query = $_GET['query'];
+    $query = $_GET['query'] ?? "";
     if (isset($_GET['query'])) {
         $projects = R::findAll('projects', "title LIKE '%$query%'");
         if (isset($_GET['type'])) {

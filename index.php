@@ -13,9 +13,9 @@
     </style>
 </head>
 <body>
-    <?php include './php/components/sidebar.php' ?>
+    <?php if (($_COOKIE['user'] ?? "") != "") include './php/components/sidebar.php' ?>
     <main>
-    <?php if ($_COOKIE['user'] == ''): ?>
+    <?php if (($_COOKIE['user'] ?? "") == ''): ?>
         <a href="./register">Регистрация</a>
         <a href="./login">Авторизация</a>
     <?php else: ?>

@@ -17,9 +17,9 @@
                 }
             }
 
-            $req_message = filter_var(trim($_POST['request_message']), FILTER_SANITIZE_STRING);
-            $project_creator = filter_var(trim($_POST['creator_id']), FILTER_SANITIZE_STRING);
-            $id_project = filter_var(trim($_POST['id_project']), FILTER_SANITIZE_STRING);
+            $req_message = filter_var(trim($_POST['request_message'] ?? ""), FILTER_SANITIZE_STRING);
+            $project_creator = filter_var(trim($_POST['creator_id'] ?? ""), FILTER_SANITIZE_STRING);
+            $id_project = filter_var(trim($_POST['id_project'] ?? ""), FILTER_SANITIZE_STRING);
 
             $notifications = R::dispense('notifications');
             $notifications->id_notification = $id_notification;

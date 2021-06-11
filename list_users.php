@@ -17,10 +17,10 @@ try {
 
 
     // Search items script
-    if ($_GET['reset_data'] == 'Сброс') {
+    if (($_GET['reset_data'] ?? "") == 'Сброс') {
         header("Location: ./list_users");
     } else {
-        $query = $_GET['query'];
+        $query = $_GET['query'] ?? "";
 
         if (isset($query)) {
             $users = R::findAll('users', "first_name LIKE '%$query%'");
@@ -132,7 +132,7 @@ try {
                         </div>
                         <div class="section-card__controls">
                             <button class="section-card__button-join">Пригласить в проект</button>
-                            <a href="profile?id=<?= $user->id ?>"><button class="section-card__button-view">Посмотреть пользователя</button></a>
+                            <a href="user?id=<?= $user->id ?>"><button class="section-card__button-view">Посмотреть пользователя</button></a>
                             <span class="section-card__date">16 Апреля</span>
                         </div>
                     </div>

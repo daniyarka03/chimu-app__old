@@ -266,25 +266,25 @@
             'JP' => 'Япония',
         );
 
-        $firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
-        $lastname = filter_var(trim($_POST['lastname']), FILTER_SANITIZE_STRING);
-        $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
-        $pass = filter_var(trim($_POST['password']), FILTER_SANITIZE_STRING);
-        $pass2 = filter_var(trim($_POST['password_2']), FILTER_SANITIZE_STRING);
-        $country = filter_var(trim($_POST['country']), FILTER_SANITIZE_STRING);
-        $city = filter_var(trim($_POST['city']), FILTER_SANITIZE_STRING);
-        $birthdate = filter_var(trim($_POST['birthdate']), FILTER_SANITIZE_STRING);
-        $gender = filter_var(trim($_POST['gender']), FILTER_SANITIZE_STRING);
-        $descr = filter_var(trim($_POST['descr']), FILTER_SANITIZE_STRING);
+        $firstname = filter_var(trim($_POST['firstname'] ?? ""), FILTER_SANITIZE_STRING);
+        $lastname = filter_var(trim($_POST['lastname'] ?? ""), FILTER_SANITIZE_STRING);
+        $email = filter_var(trim($_POST['email'] ?? ""), FILTER_SANITIZE_STRING);
+        $pass = filter_var(trim($_POST['password'] ?? ""), FILTER_SANITIZE_STRING);
+        $pass2 = filter_var(trim($_POST['password_2'] ?? ""), FILTER_SANITIZE_STRING);
+        $country = filter_var(trim($_POST['country'] ?? ""), FILTER_SANITIZE_STRING);
+        $city = filter_var(trim($_POST['city'] ?? ""), FILTER_SANITIZE_STRING);
+        $birthdate = filter_var(trim($_POST['birthdate'] ?? ""), FILTER_SANITIZE_STRING);
+        $gender = filter_var(trim($_POST['gender'] ?? ""), FILTER_SANITIZE_STRING);
+        $descr = filter_var(trim($_POST['descr'] ?? ""), FILTER_SANITIZE_STRING);
 
-        $social_media_vk = filter_var(trim($_POST['social_media_vk']), FILTER_SANITIZE_STRING);
-        $social_media_facebook = filter_var(trim($_POST['social_media_facebook']), FILTER_SANITIZE_STRING);
-        $social_media_instagram = filter_var(trim($_POST['social_media_instagram']), FILTER_SANITIZE_STRING);
-        $social_media_telegram = filter_var(trim($_POST['social_media_telegram']), FILTER_SANITIZE_STRING);
+        $social_media_vk = filter_var(trim($_POST['social_media_vk'] ?? ""), FILTER_SANITIZE_STRING);
+        $social_media_facebook = filter_var(trim($_POST['social_media_facebook'] ?? ""), FILTER_SANITIZE_STRING);
+        $social_media_instagram = filter_var(trim($_POST['social_media_instagram'] ?? ""), FILTER_SANITIZE_STRING);
+        $social_media_telegram = filter_var(trim($_POST['social_media_telegram'] ?? ""), FILTER_SANITIZE_STRING);
 
 
 
-        if ($_POST['do_signup']) {
+        if ($_POST['do_signup'] ?? "") {
 
             if ($pass != $pass2) {
                 echo 'Пароли не совпадают!';

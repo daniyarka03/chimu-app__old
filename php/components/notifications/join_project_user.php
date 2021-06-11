@@ -1,13 +1,13 @@
 <?php
 
 try {
-    $notification_data_id = $_GET['order'];
+    $notification_data_id = $_GET['order'] ?? "";
 
     $data = R::findOne('notifications', 'id_notification = ?', array($notification_data_id));
-    $data_project = R::findOne('projects', 'id_project = ?', array($data['id_project']));
-    $id_project = explode(', ', $data_project->id_project);
+    $data_project = R::findOne('projects', 'id_project = ?', array($data['id_project']  ?? ""));
+    $id_project = explode(', ', $data_project->id_project ?? "");
 
-    $user_sender = R::findOne('users', 'id_user = ?', array($data['user_sender']));
+    $user_sender = R::findOne('users', 'id_user = ?', array($data['user_sender'] ?? ""));
 
 
     if (isset($_POST['request_join'])) {
