@@ -16,6 +16,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/profile.css" />
     <link rel="stylesheet" href="css/sidebar.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <title><?=$profile['first_name']?></title>
 </head>
 <body>
@@ -40,7 +44,7 @@
                 <div class="block">
                     <h2 class="section-basic__name"><?= $profile->first_name ?> <br> <?= $profile->last_name ?></h2>
                     <span class="section-basic__date"><?= $profile->birthdate ?></span>
-                    <span class="section-basic__geolocation"><?= $profile->country . ', ' . $profile->city?></span>
+                    <span class="section-basic__geolocation"><?= $profile->country?></span>
                 </div>
                 <div class="block">
                     <a href="edit_profile"><button class="section-basic__button">Редактировать профиль</button></a>
@@ -84,8 +88,8 @@
         <div class="section section-projects">
             <div class="container">
                 <h2 class="section-projects__title section__title">Мои проекты</h2>
-                <div class="section-projects__cards">
-
+                <div class="section-projects__cards swiper-container mySwiper">
+                    <div class="swiper-wrapper">
                 <?php
                     $id_user = $profile->id_user;
                     $projects = R::findAll('projects', 'members_project = ?', array($id_user));
@@ -115,7 +119,10 @@
                     </div>
 
                 <?php } ?>
-                
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
@@ -164,5 +171,23 @@
         
         
     </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
 </body>
 </html>

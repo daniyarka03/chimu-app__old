@@ -43,14 +43,14 @@ try {
         $notifications = R::dispense('notifications');
         $notifications->id_notification = $id_notification;
         $notifications->id_project = $project;
-        $notifications->text = "Пользователь $current_user->first_name принял ваше приглашение по вступлению в проект: $project->title";
+        $notifications->text = "Пользователь $current_user->first_name принял ваше приглашение по вступлению в проект: ". ($project->title ?? "");
         $notifications->user_sender = $_COOKIE['id'];
         $notifications->is_checked = "false";
         $notifications->user_recipient = $user_recepient_id;
         $notifications->theme = "Принятие приглашение в проект";
         R::store($notifications);
 
-        header("Location: ./notifications.php");
+        // header("Location: notifications");
 
     } else {
     }

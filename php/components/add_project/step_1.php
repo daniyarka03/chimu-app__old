@@ -16,7 +16,7 @@
                 }
                 ?>
             </select>
-            <input type="email" class="section-add-project__input require" name="email" value="<?php @$_POST['email'] ?>" placeholder="Эл. почта *" require />
+            <!-- <input type="email" class="section-add-project__input require" name="email" value="<?php @$_POST['email'] ?>" placeholder="Эл. почта *" require /> -->
             <textarea class="section-add-project__description" name="descr" placeholder="Описание проекта"></textarea>
         </div>
         <div class="section-controls">

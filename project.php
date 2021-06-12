@@ -48,6 +48,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/project.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <title>Project <?= $project['title'] ?></title>
     <style>
 
@@ -141,7 +145,8 @@
     <div class="section section-projects">
         <div class="container">
             <h2 class="section-projects__title section__title">Все участники проекта</h2>
-            <div class="section-projects__cards">
+            <div class="section-projects__cards swiper-container mySwiper">
+                <div class="swiper-wrapper">
 
             <?php
                 $members = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
@@ -154,7 +159,7 @@
                     $member = R::findOne('users', 'id_user = ?', array($member_id));
 
             ?>
-                <div class="card__block">
+                <div class="card__block swiper-slide">
                     <img src="img/card__img.png" alt="" class="card__img">
                     <h2 class="card__title"><?= $member['first_name'] ?></h2>
                     <span class="card__text" id="descr_card"><?= $member['descr'] ?></span>
@@ -170,11 +175,14 @@
                             }
                         ?> 
                     </div>
-                    <a href="profile?id=<?= $member->id ?>"><button class="card__button">Посмотреть</button></a>
+                    <a href="user?id=<?= $member->id ?>"><button class="card__button">Посмотреть</button></a>
                 </div>
 
             <?php }  ?>
-            
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -248,6 +256,25 @@
 
         });
     </script>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
 
 </body>
 </html>

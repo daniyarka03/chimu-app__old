@@ -102,14 +102,14 @@ try {
                 Сообщение: <?= $data['text'] ?>
             </p>
             <p>
-                Отправитель: <?= $user_sender['first_name'] ?>
+                Отправитель: <?= $user_sender['first_name'] ?? "" ?>
             </p>
 
             <form action="notifications.php" method="POST">
-                <input type="hidden" name="user_sender" value=<?= $user_sender['id_user'] ?>>
-                <input type="hidden" name="id_project" value=<?= $data_project['id_project'] ?>>
-                <input type="hidden" name="members_project" value=<?= $data_project['members_project'] ?>>
-                <input type="hidden" name="current_notification_id" value=<?= $_GET['order'] ?>>
+                <input type="hidden" name="user_sender" value=<?= $user_sender['id_user'] ?? "" ?>>
+                <input type="hidden" name="id_project" value=<?= $data_project['id_project'] ?? "" ?>>
+                <input type="hidden" name="members_project" value=<?= $data_project['members_project'] ?? "" ?>>
+                <input type="hidden" name="current_notification_id" value=<?= $_GET['order'] ?? "" ?>>
                 <textarea type="text" name="request_message" placeholder="Пишите здесь..."></textarea>
                 <button type="submit" value="ss" name="request_join" >Принять пользователя в команду</button>
                 <button type="submit" name="cancel_join">Отказать во вступлении!</button>

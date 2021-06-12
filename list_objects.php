@@ -45,7 +45,7 @@ try {
     <body>
         <?php include './php/components/sidebar.php' ?>
         <main>
-
+            <!-- Поисковая форма -->
             <section class="search">
                 <h2 class="search__title">Поиск проектов</h2>
                 <form class="search-form">
@@ -54,7 +54,7 @@ try {
                 </form>
             </section>
 
-
+            <!-- Сортировка списка -->
             <section class="search-sort">
                 <h2 class="search-sort__title">Сортировать</h2>
                 <div class="search-sort__block">
@@ -80,20 +80,10 @@ try {
                 </div>
             </section>
 
-
-
-
+            <!-- Отображение списка запроса -->
             <?php
             foreach ($projects as $project) {
             ?>
-                <!-- <div>
-                    <h4><?= $project['title'] ?></h4>
-                    <span><?= $project->creator_name ?></span> <br>
-                    <span><?= $project->category ?></span> <br>
-                    <a href="project?id=<?= $project->id ?>">View project</a>
-                    <a href="update_objects?id=<?= $project->id ?>">Update data</a>
-                    <a href="php/delete?id=<?= $project->id ?>">Delete data</a>
-                </div> -->
 
                 <section class="section section-card">
                     <div class="container">
