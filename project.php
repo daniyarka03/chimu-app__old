@@ -77,7 +77,7 @@
     <div class="section section-basic">
         <div class="container">
             <div class="block">
-                <img src="img/Ellipse 1.png" alt="" class="section-basic__img">
+                <img src="uploades/<?= $project['project_image'] ?>" alt="" class="section-basic__img">
             </div>
             <div class="block">
                 <h2 class="section-basic__name"><?= $project['title'] ?></h2>

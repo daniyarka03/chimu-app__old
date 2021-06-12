@@ -15,7 +15,7 @@
 </head>
 <body>
     
-    <form action="php/add_object.php" method="post">
+    <form action="php/add_object.php" method="post" enctype="multipart/form-data">
         <?php include 'php/components/add_project/step_1.php' ?>
         <?php include 'php/components/add_project/step_2.php' ?>
         <?php include 'php/components/add_project/step_3.php' ?>

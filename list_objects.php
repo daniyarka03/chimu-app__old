@@ -88,7 +88,7 @@ try {
                 <section class="section section-card">
                     <div class="container">
                         <div class="section-card__content">
-                            <img src="img/card__img.png" alt="logo" class="section-card__img">
+                            <img src="uploades/<?= $project['project_image'] ?>" alt="logo" class="section-card__img">
                             <div class="content__text">
                                 <h2 class="section-card__title"><?= $project['title'] ?></h2>
                                 <span class="section-card__description" id="descr_card"><?= $project['descr'] ?></span>
