@@ -159,11 +159,14 @@ button:focus {
 .section-basic__img {
   border: 10px solid #FAFAFA;
   width: 228px;
+  height: 228px;
   border-radius: 1000px;
+  object-fit: cover;
 }
 
 @media (max-width: 1024px) {
   .section-basic__img {
+    width: 180px;
     width: 180px;
     border: 7px solid #FAFAFA;
   }
@@ -180,6 +183,7 @@ button:focus {
 @media (max-width: 400px) {
   .section-basic__img {
     width: 140px;
+    height: 140px;
     border: 5px solid #FAFAFA;
   }
 }
@@ -230,6 +234,22 @@ button:focus {
   .section-basic__geolocation {
     text-align: center;
   }
+}
+
+.section-basic .button__red {
+  background-color: #FF616D;
+  margin-top: 20px;
+}
+
+.section-basic .button__red:hover {
+  background-color: #ff3748;
+  color: #FFFFFF;
+}
+
+.section-basic .button__red:focus {
+  background-color: #cc0919;
+  color: #FFFFFF;
+  outline: none;
 }
 
 .section-basic__button {
@@ -384,6 +404,24 @@ button:focus {
   height: auto;
   padding: 70px 60px;
   margin-top: 47px;
+}
+
+@media (max-width: 500px) {
+  .section-projects {
+    padding: 70px 40px 70px 40px;
+  }
+}
+
+@media (max-width: 432px) {
+  .section-projects {
+    padding: 70px 20px 70px 20px;
+  }
+}
+
+@media (max-width: 348px) {
+  .section-projects {
+    padding: 70px 10px 70px 10px;
+  }
 }
 
 .section-projects__title {

@@ -166,6 +166,7 @@ button:focus {
 @media (max-width: 1024px) {
   .section-basic__img {
     width: 180px;
+    height: 180px;
     border: 7px solid #FAFAFA;
   }
 }
@@ -181,6 +182,7 @@ button:focus {
 @media (max-width: 400px) {
   .section-basic__img {
     width: 140px;
+    height: 140px;
     border: 5px solid #FAFAFA;
   }
 }
@@ -385,6 +387,24 @@ button:focus {
   height: auto;
   padding: 70px 60px;
   margin-top: 47px;
+}
+
+@media (max-width: 500px) {
+  .section-projects {
+    padding: 70px 40px 70px 40px;
+  }
+}
+
+@media (max-width: 432px) {
+  .section-projects {
+    padding: 70px 20px 70px 20px;
+  }
+}
+
+@media (max-width: 348px) {
+  .section-projects {
+    padding: 70px 10px 70px 10px;
+  }
 }
 
 .section-projects__title {

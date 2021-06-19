@@ -16,9 +16,10 @@
             }
         }
 
-        $fileExt = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-        move_uploaded_file($_FILES['file']['tmp_name'], "../uploades/".$project_image_id.'.'.$fileExt);
+        $fileExt = pathinfo($_FILES['file']['name'] ?? "", PATHINFO_EXTENSION);
+        move_uploaded_file($_FILES['file']['tmp_name'] ?? "", "../uploades/".$project_image_id.'.'.$fileExt);
         
+
         $id_project = uniqid(rand(), true);
         $notifications_item = R::findAll('projects');
         foreach ($notifications_item as $item) {
@@ -37,7 +38,9 @@
         $project->social_media = $social_media;
         $project->descr = $descr;
         $project->keywords_need_users = $keywords_need_users;
-        $project->project_image = $project_image_id.'.'.$fileExt;
+        if ($_FILES['file']['name'] != "") {
+            $project->project_image = $project_image_id.'.'.$fileExt;
+        }
 
         R::store($project);
         R::close();

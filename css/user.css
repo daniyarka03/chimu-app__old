@@ -159,12 +159,15 @@ button:focus {
 .section-basic__img {
   border: 10px solid #FAFAFA;
   width: 228px;
+  height: 228px;
   border-radius: 1000px;
+  object-fit: cover;
 }
 
 @media (max-width: 1024px) {
   .section-basic__img {
     width: 180px;
+    height: 180px;
     border: 7px solid #FAFAFA;
   }
 }
@@ -180,6 +183,7 @@ button:focus {
 @media (max-width: 400px) {
   .section-basic__img {
     width: 140px;
+    height: 140px;
     border: 5px solid #FAFAFA;
   }
 }
@@ -386,6 +390,24 @@ button:focus {
   margin-top: 47px;
 }
 
+@media (max-width: 500px) {
+  .section-projects {
+    padding: 70px 40px 70px 40px;
+  }
+}
+
+@media (max-width: 432px) {
+  .section-projects {
+    padding: 70px 20px 70px 20px;
+  }
+}
+
+@media (max-width: 348px) {
+  .section-projects {
+    padding: 70px 10px 70px 10px;
+  }
+}
+
 .section-projects__title {
   margin-bottom: 30px;
 }
@@ -488,6 +510,7 @@ button:focus {
 .modal:target {
   visibility: visible;
   opacity: 1;
+  position: fixed;
 }
 
 .modal__content {

@@ -282,9 +282,21 @@
         $social_media_instagram = filter_var(trim($_POST['social_media_instagram'] ?? ""), FILTER_SANITIZE_STRING);
         $social_media_telegram = filter_var(trim($_POST['social_media_telegram'] ?? ""), FILTER_SANITIZE_STRING);
 
+        $profile_photo_id = uniqid(rand(), true);
+        $profile_photo_item = R::findAll('users');
+        foreach ($profile_photo_item as $item) {
+            if ($item->avatar == $profile_photo_id) {
+                $profile_photo_id = uniqid(rand(), true);
+            }
+        }
 
+        $fileExt = pathinfo($_FILES['file']['name'] ?? "", PATHINFO_EXTENSION);
+        move_uploaded_file($_FILES['file']['tmp_name'] ?? "", "uploades/profile_photo/".$profile_photo_id.'.'.$fileExt);
+
+        
 
         if ($_POST['do_signup'] ?? "") {
+
 
             if ($pass != $pass2) {
                 echo 'Пароли не совпадают!';
@@ -318,11 +330,12 @@
             $user->social_media_facebook = $social_media_facebook;
             $user->social_media_instagram = $social_media_instagram;
             $user->social_media_telegram = $social_media_telegram;
+            $user->avatar = $profile_photo_id.'.'.$fileExt;
 
             R::store($user);
 
 
-            header('Location: /chimu-app');
+            header('Location: login');
             }
         }
 
@@ -333,7 +346,7 @@
     }
 ?>
 
-    <form action="./register.php" method="POST">
+    <form action="./register.php" method="POST" enctype="multipart/form-data">
         <?php include 'php/components/register_user/step_1.php' ?>    
         <?php include 'php/components/register_user/step_2.php' ?>    
         <?php include 'php/components/register_user/step_3.php' ?>    
@@ -347,11 +360,13 @@
             const block = document.querySelectorAll(`.section-register`);
             const button = document.querySelectorAll(`.section-register__button_next`);
             const button_back = document.querySelectorAll(`.section-register__button_back`);
+            const require_input = document.querySelectorAll('.require');
             
     </script>
     <script src="js/multiple_windows.js"></script>
     <script>
 
+    // step_function(4, block, button, button_back, 5, 4, 1);
     step_function(4, block, button, button_back);
 
         $(document).ready(function(){
@@ -362,17 +377,7 @@
             $('#mselectGender').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_single: "Выберите пол"});
         });
 
-        const require_input = document.querySelectorAll('.require');
-
-        // $('.section-register__button_next').on('click', () => {
-        //     for (let i = 0; i < require_input.length; i++) {
-        //         if (require_input.value == "") {
-        //             alert('Заполните все поля');
-        //         } else {
-        //             alert('Error')
-        //         }
-        //     }
-        // });
     </script>
+    <script src="js/register.js"></script>
 </body>
 </html>

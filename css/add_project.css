@@ -169,6 +169,10 @@ body {
   background: none;
 }
 
+.section-add-project__button_back:hover {
+  cursor: pointer;
+}
+
 .section-add-project__description {
   margin-top: 50px;
   width: 100%;

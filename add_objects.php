@@ -11,10 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/multiselect_plugin/chosen.css">
     <link rel="stylesheet" href="css/add_project.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
     <title>Создание нового проекта</title>
 </head>
 <body>
     
+    <?php include 'php/components/sidebar.php' ?>
+
     <form action="php/add_object.php" method="post" enctype="multipart/form-data">
         <?php include 'php/components/add_project/step_1.php' ?>
         <?php include 'php/components/add_project/step_2.php' ?>

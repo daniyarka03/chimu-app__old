@@ -150,7 +150,7 @@
 
             <?php
                 $members = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
-               
+                    
             ?>
             <?php 
             
@@ -160,7 +160,7 @@
 
             ?>
                 <div class="card__block swiper-slide">
-                    <img src="img/card__img.png" alt="" class="card__img">
+                    <img src="uploades/profile_photo/<?= $member->avatar ?>" alt="" class="card__img">
                     <h2 class="card__title"><?= $member['first_name'] ?></h2>
                     <span class="card__text" id="descr_card"><?= $member['descr'] ?></span>
                     <div class="card__tags">
@@ -261,19 +261,34 @@
 
 <!-- Initialize Swiper -->
 <script>
-  var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
+ 
+ const swiper_plugin = (count_slides) => {
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: count_slides,   
+        spaceBetween: 30,
+        loop: false,
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        },
+    });
+    }
+
+    if (window.innerWidth > 1179) {
+        swiper_plugin(3)
+    }
+
+    if (window.innerWidth <= 1179) {
+        swiper_plugin(2)
+    }
+
+    if (window.innerWidth < 897) {
+        swiper_plugin(1)
+    } 
 </script>
 
 </body>

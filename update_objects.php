@@ -26,128 +26,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/multiselect_plugin/chosen.min.css">
+    <link rel="stylesheet" href="css/multiselect_plugin/chosen.css">
+    <link rel="stylesheet" href="css/edit_project.css">
+
+    
     <title>Document</title>
 </head>
 <body>
-    <h2>Изменение объекта: <?= $project['title'] ?></h2>
-    <form action="./php/update_object.php" method="post">
-        <input type="hidden" name="id" value="<?= $id?>"/>
-        <div class="form-block">
-            <span></span>
-            <input type="text" placeholder="Название" name="title_object" value="<?= $project['title'] ?>">
-        </div>
-        <br>
-        <div class="form-block">
-            <select data-placeholder="Выберите теги..." name="category_object[]" id="mselect" multiple="" style="width: 300px;">
-                <?php
-
-
-                $work_tags = R::findAll('TBLWorkActivity');
-
-
-
-                foreach ($work_tags as $tag) {
-
-                    if(in_array($tag->name_tag, $project_category)) {
-                        ?>
-                        <option value="<?=$tag->name_tag?>" selected><?=$tag->name_tag?></option>
-                        <?php
-                    } else {
-                        ?>
-                        <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                        <?php
-                    }
-
-                }
-
-                ?>
-            </select>
-        </div>
-        <br>
-        <div>
-            <span>Кто нужен в проект? (Теги)</span>
-            <select name="keywords_need_users[]" id="mselectKeywords" multiple="" style="width: 300px;">
-                <optgroup label="Программирование">
-                    <?php
-                    $tags = R::findAll('TBLTags');
-
-                    foreach ($tags as $tag) {
-                        if ($tag->type == "prog") {
-                            if(in_array($tag->name_tag, $project_keywords_need_users)) {
-                                ?>
-                                <option value="<?=$tag->name_tag?>" selected><?=$tag->name_tag?></option>
-                                <?php
-                            } else {
-                                ?>
-                                <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                                <?php
-                            }
-                        }
-                    }
-
-                    ?>
-                </optgroup>
-                <optgroup label="Дизайн">
-                    <?php
-                    $tags = R::findAll('TBLTags');
-
-                    foreach ($tags as $tag) {
-                        if ($tag->type == "design") {
-                            if(in_array($tag->name_tag, $project_keywords_need_users)) {
-                                ?>
-                                <option value="<?=$tag->name_tag?>" selected><?=$tag->name_tag?></option>
-                                <?php
-                            } else {
-                                ?>
-                                <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                                <?php
-                            }
-                        }
-                    }
-
-                    ?>
-                </optgroup>
-                <optgroup label="Другое">
-                    <?php
-                    $tags = R::findAll('TBLTags');
-
-                    foreach ($tags as $tag) {
-                        if ($tag->type == "" ) {
-                            if(in_array($tag->name_tag, $project_keywords_need_users)) {
-                                ?>
-                                <option value="<?=$tag->name_tag?>" selected><?=$tag->name_tag?></option>
-                                <?php
-                            } else {
-                                ?>
-                                <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-                                <?php
-                            }
-                        }
-                    }
-
-                    ?>
-                </optgroup>
-            </select>
-        </div>
-        <div>
-            <span>Описание</span>
-            <textarea name="descr" value="<?php @$_POST['descr'] ?>"><?= $project->descr ?></textarea>
-        </div>
-        <div>
-            <span>Социальные сети</span>
-            <input name="social_media" value="<?= $project->social_media ?>" />
-        </div>
-        <div class="form-block">
-            <input type="submit" value="Изменить">
-        </div>
+    
+    <form action="./php/update_object.php" method="post" enctype="multipart/form-data">
+        <?php include "php/components/edit_project/step_1.php" ?>
+        <?php include "php/components/edit_project/step_2.php" ?>
+        <?php include "php/components/edit_project/step_3.php" ?>
     </form>
+
     <script src="js/jquery.js"></script>
     <script src="js/multiselect_plugin/chosen.jquery.min.js"></script>
+    <script src="js/inputs.js"></script>
+    <script src="js/multiple_windows.js"></script>
     <script>
+
+        const block = document.querySelectorAll(`.section-add-project`);
+        const button = document.querySelectorAll(`.section-add-project__button_next`);
+        const button_back = document.querySelectorAll(`.section-add-project__button_back`);
+        const req_input = document.querySelectorAll(`.require`);
+        
+
+    // step_function(4, block, button, button_back, 5, 4, 1);
+    step_function(3, block, button, button_back);
+
         $(document).ready(function(){
-            $('#mselect').chosen();
-            $('#mselectKeywords').chosen();
+            $('#mselectArea').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_multiple: "Интересующая область"});
+            $('#mselectKeywordsProject').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_multiple: "Кто нужен в проект"});
         });
     </script>
 </body>

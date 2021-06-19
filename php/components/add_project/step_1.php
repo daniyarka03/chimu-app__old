@@ -21,7 +21,7 @@
         </div>
         <div class="section-controls">
             <button type="button" class="section-add-project__button_next next_1">Далее</button>
-            <a href="login" class="section-add-project__button_login">Отмена</a>
+            <a href="profile" class="section-add-project__button_login">Отмена</a>
         </div>
     </div>
 </section>

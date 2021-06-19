@@ -7,7 +7,7 @@
         <div class="section-forms">
             <div class="section-register__file_block">
                 <label for="file_upload">Добавить <br> фото</label>
-                <input type="file" class="section-register__input" id="file_upload" placeholder="Пол" />
+                <input type="file" name="file" class="section-register__input" id="file_upload" />
             </div>
             <textarea class="section-register__description" maxlength="900" name="descr" placeholder="О себе"></textarea>
         </div>

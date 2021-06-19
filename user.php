@@ -84,7 +84,7 @@
         <div class="section section-basic">
             <div class="container">
                 <div class="block">
-                    <img src="img/Ellipse 1.png" alt="" class="section-basic__img">
+                    <img src="uploades/profile_photo/<?= $profile->avatar ?>" alt="" class="section-basic__img">
                 </div>
                 <div class="block">
                     <h2 class="section-basic__name"><?= $profile->first_name ?> <br> <?= $profile->last_name ?></h2>
@@ -93,6 +93,24 @@
                 </div>
                 <div class="block">
                     <a href="#demo-modal"><button class="section-basic__button">Пригласить в проект</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="section section-skills">
+            <div class="container">
+                <h2 class="section-skills__title section__title">
+                    Область деятельности
+                </h2>
+                <div class="section-skills__block">
+                    <?php 
+                        $tags = explode(', ', $profile->work_activity);
+                                    
+                        foreach ($tags as $tag) {
+                            ?>
+                            <span class="section-skills__tag"><?=$tag?></span>
+                            <?php
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -280,19 +298,35 @@
 
 <!-- Initialize Swiper -->
 <script>
-  var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
+
+const swiper_plugin = (count_slides) => {
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: count_slides,   
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        },
+    });
+    }
+
+    if (window.innerWidth > 1179) {
+        swiper_plugin(3)
+    }
+
+    if (window.innerWidth <= 1179) {
+        swiper_plugin(2)
+    }
+
+    if (window.innerWidth < 897) {
+        swiper_plugin(1)
+    } 
 </script>
+<script src="js/user.js"></script>
 </body>
 </html>

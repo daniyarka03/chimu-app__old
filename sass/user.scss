@@ -117,10 +117,13 @@ br {
     &__img {
         border: 10px solid #FAFAFA;
         width: 228px;
+        height: 228px;
         border-radius: 1000px;
+        object-fit: cover;
 
         @media(max-width:1024px) {
             width: 180px;
+            height: 180px;
             border: 7px solid #FAFAFA;
         }
 
@@ -132,6 +135,7 @@ br {
 
         @media(max-width:400px) {
             width: 140px;
+            height: 140px;
             border: 5px solid #FAFAFA;
         }
 
@@ -334,6 +338,17 @@ br {
     height: auto;
     padding: 70px 60px;
     margin-top: 47px;
+    @media (max-width: 500px) {
+        padding: 70px 40px 70px 40px;
+    }
+
+    @media (max-width: 432px) {
+        padding: 70px 20px 70px 20px;
+    }
+
+    @media (max-width: 348px) {
+        padding: 70px 10px 70px 10px;
+    }
 
     &__title {
         margin-bottom: 30px;
@@ -443,6 +458,7 @@ br {
 .modal:target {
     visibility: visible;
     opacity: 1;
+    position: fixed;
 }
 
 .modal__content {
