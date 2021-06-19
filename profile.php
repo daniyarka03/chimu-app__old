@@ -153,7 +153,7 @@
                         <img src="img/Mail.svg" alt="">
                     </div>
                     <div class="social-text">
-                        <span>@john_insta</span>
+                        <span><?= $profile->email ?></span>
                     </div>
                 </div>
                 <div class="section-contacts__block">
@@ -161,7 +161,7 @@
                         <img src="img/instagram.svg" alt="">
                     </div>
                     <div class="social-text">
-                        <span>@john_insta</span>
+                        <span><?php if ($profile->social_media_instagram == "") { echo "Не заполнено"; } else { echo $profile->social_media_instagram; }?>  </span>
                     </div>
                 </div>
                 <div class="section-contacts__block">
@@ -169,7 +169,8 @@
                         <img src="img/telegram.svg" alt="">
                     </div>
                     <div class="social-text">
-                        <span>@john_insta</span>
+                    <span><?php if ($profile->social_media_telegram == "") { echo "Не заполнено"; } else { echo $profile->social_media_telegram; }?>  </span>
+
                     </div>
                 </div>
             </div>

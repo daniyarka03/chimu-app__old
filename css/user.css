@@ -505,6 +505,7 @@ button:focus {
   justify-content: center;
   background: rgba(77, 77, 77, 0.7);
   transition: all .4s;
+  z-index: 1000;
 }
 
 .modal:target {

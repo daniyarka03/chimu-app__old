@@ -186,7 +186,7 @@
             </div>
         </div>
     </div>
-    <div class="section section-contacts">
+    <!-- <div class="section section-contacts">
         <div class="container">
             <h2 class="section-contacts__title section__title">Мои контакты</h2>
             <div class="section-contacts__block">
@@ -214,7 +214,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </main>
 <?php include 'footer.php' ?>
 <script src="js/jquery.js"></script>

@@ -55,6 +55,7 @@
                 <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter">
                 <input type="submit" value="Поиск" class="search-form__button" />
             </form>
+            <a href="list_users"><button class="search__button_users">Поиск пользователей</button></a>
         </section>
 
         <!-- Сортировка списка -->

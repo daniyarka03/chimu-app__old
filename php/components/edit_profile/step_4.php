@@ -9,7 +9,7 @@
                 <label for="file_upload">Добавить <br> фото</label>
                 <input type="file" name="file" class="section-register__input" id="file_upload" />
             </div>
-            <textarea class="section-register__description" maxlength="900" name="descr" placeholder="О себе"></textarea>
+            <textarea class="section-register__description" maxlength="900" name="descr" placeholder="О себе"><?= $profile->descr ?></textarea>
         </div>
         <div class="section-controls">
             <button type="submit" class="section-register__button_next next_4" value="register" name="do_signup">Завершить</button>

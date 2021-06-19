@@ -28,12 +28,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/multiselect_plugin/chosen.css">
     <link rel="stylesheet" href="css/edit_project.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+
 
     
     <title>Document</title>
 </head>
 <body>
     
+    <?php include "php/components/sidebar.php" ?>
+
     <form action="./php/update_object.php" method="post" enctype="multipart/form-data">
         <?php include "php/components/edit_project/step_1.php" ?>
         <?php include "php/components/edit_project/step_2.php" ?>

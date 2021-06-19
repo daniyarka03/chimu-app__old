@@ -75,6 +75,7 @@
                 <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter">
                 <input type="submit" value="Поиск" class="search-form__button" />
             </form>
+            <a href="list_objects"><button class="search__button_projects">Поиск проектов</button></a>
         </section>
 
 

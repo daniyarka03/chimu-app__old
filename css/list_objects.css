@@ -57,6 +57,35 @@ main {
   margin-top: 75px;
 }
 
+.search__button_users {
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 165px;
+  margin-right: 13px;
+  margin-top: 13px;
+  background: none;
+  height: 41px;
+  cursor: pointer;
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 20px;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 16px;
+  color: #FFFFFF;
+  transition: 0.2s ease;
+}
+
+.search__button_users:hover {
+  background-color: #ffffff;
+  color: #8075FF;
+}
+
+.search__button_users:focus {
+  outline: none;
+}
+
 .search-form {
   display: flex;
   align-items: center;

@@ -277,8 +277,8 @@
         $gender = filter_var(trim($_POST['gender'] ?? ""), FILTER_SANITIZE_STRING);
         $descr = filter_var(trim($_POST['descr'] ?? ""), FILTER_SANITIZE_STRING);
 
-        $social_media_vk = filter_var(trim($_POST['social_media_vk'] ?? ""), FILTER_SANITIZE_STRING);
-        $social_media_facebook = filter_var(trim($_POST['social_media_facebook'] ?? ""), FILTER_SANITIZE_STRING);
+        // $social_media_vk = filter_var(trim($_POST['social_media_vk'] ?? ""), FILTER_SANITIZE_STRING);
+        // $social_media_facebook = filter_var(trim($_POST['social_media_facebook'] ?? ""), FILTER_SANITIZE_STRING);
         $social_media_instagram = filter_var(trim($_POST['social_media_instagram'] ?? ""), FILTER_SANITIZE_STRING);
         $social_media_telegram = filter_var(trim($_POST['social_media_telegram'] ?? ""), FILTER_SANITIZE_STRING);
 
@@ -326,8 +326,8 @@
             $user->birthdate = $birthdate;
             $user->gender = $gender;
             $user->descr = $descr;
-            $user->social_media_vk = $social_media_vk;
-            $user->social_media_facebook = $social_media_facebook;
+            // $user->social_media_vk = $social_media_vk;
+            // $user->social_media_facebook = $social_media_facebook;
             $user->social_media_instagram = $social_media_instagram;
             $user->social_media_telegram = $social_media_telegram;
             $user->avatar = $profile_photo_id.'.'.$fileExt;

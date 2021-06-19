@@ -10,6 +10,9 @@
        $birthdate = filter_var(trim($_POST['birthdate']), FILTER_SANITIZE_STRING);
        $gender = filter_var(trim($_POST['gender']), FILTER_SANITIZE_STRING);
        $descr = filter_var(trim($_POST['descr']), FILTER_SANITIZE_STRING);
+       $social_media_instagram = filter_var(trim($_POST['social_media_instagram'] ?? ""), FILTER_SANITIZE_STRING);
+       $social_media_telegram = filter_var(trim($_POST['social_media_telegram'] ?? ""), FILTER_SANITIZE_STRING);
+
 
        if ($_POST['do_signup'] == true) {
            $work_activity = implode(', ', $_REQUEST['work_activity']);
@@ -26,6 +29,8 @@
            $user->keywords_profile = $category_object;
            $user->gender = $gender;
            $user->descr = $descr;
+           $user->social_media_instagram = $social_media_instagram;
+           $user->social_media_telegram = $social_media_telegram;
 
            $user->id_user = $_COOKIE['id'];
 
