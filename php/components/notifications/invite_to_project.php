@@ -59,7 +59,7 @@ try {
         $project_id = $_POST['id_project'];
         $project = R::findOne('projects', 'id_project = ?', array($project_id));
 
-        header("Location: project.php?id=$project->id");
+        header("Location: project?id=$project->id");
     }
 
     if (isset($_POST['cancel_invite'])) {

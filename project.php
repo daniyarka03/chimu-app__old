@@ -53,9 +53,6 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
     <title>Project <?= $project['title'] ?></title>
-    <style>
-
-    </style>
 </head>
 <body>
     

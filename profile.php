@@ -1,13 +1,9 @@
 <?php
     require 'php/includes/db.php';
-
     $profile = R::findOne('users', 'id_user = ?', array($_COOKIE['id']));
-    
-  
 ?>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/profile.css" />
     <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/crop_image.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -33,13 +30,17 @@
         <a href="php/exit.php" class="panel__item"><button>Sign out</button></a>
     </div> -->
 
-    <?php include "php/components/sidebar.php" ?>
+    <?php include 'php/components/sidebar.php' ?>
 
     <main>
         <div class="section section-basic">
             <div class="container">
-                <div class="block">
+                <div class="block block-photo">
                     <img src="uploades/profile_photo/<?= $profile->avatar ?>" alt="" class="section-basic__img">
+                    <label for="file_upload" class="block-photo__overlay">
+                        <div class="block-photo__text">+</div>
+                    </label>
+                   
                 </div>
                 <div class="block">
                     <h2 class="section-basic__name"><?= $profile->first_name ?> <br> <?= $profile->last_name ?></h2>
@@ -175,54 +176,24 @@
                 </div>
             </div>
         </div>
+        <form action="php/edit_avatar.php" enctype="multipart/form-data" method="POST">
+            <input type="file" name="file" class="block-photo__file" id="file_upload" />        
+            <div id="demo-modal" class="modal">
+                <div class="modal__content">
+                    <h1>Вы уверены, что хотите заменить вашу фотографию профиля?</h1>
+                    <button class="modal__button_success" type="submit" name="edit_image">Да, уверен!</button>
+                    <button class="modal__button_cancel cancel-action">Отмените действие</button>
+                    <a class="modal__close">&times;</a>
+                </div>
+            </div>      
+        </form>
+        
     </main>
+
+
     <?php include 'footer.php' ?>
     <script src="js/jquery.js"></script>
-    <script>
-
-        $(document).ready(() => {
-            const descr = $('#descr_card').text().trim();
-            
-            if (descr.length >= 80) {
-                $('#descr_card').text(descr.slice(0, 80) + '...');
-            }
-        });
-        
-        
-        
-    </script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-
-    const swiper_plugin = (count_slides) => {
-        var swiper = new Swiper(".mySwiper", {
-        slidesPerView: count_slides,   
-        spaceBetween: 30,
-        loop: false,
-        pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        },
-        navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-        },
-    });
-    }
-
-    if (window.innerWidth > 1179) {
-        swiper_plugin(3)
-    }
-
-    if (window.innerWidth <= 1179) {
-        swiper_plugin(2)
-    }
-
-    if (window.innerWidth < 897) {
-        swiper_plugin(1)
-    } 
-</script>
+    <script src="js/profile.js"></script>
 </body>
 </html>

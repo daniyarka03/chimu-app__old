@@ -91,6 +91,48 @@ button:focus {
   }
 }
 
+.block-photo {
+  position: relative;
+  width: 228px;
+  height: 228px;
+}
+
+.block-photo__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 228px;
+  width: 228px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0.33);
+  cursor: pointer;
+}
+
+.block-photo__text {
+  color: white;
+  font-weight: 700;
+  font-size: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.block-photo__file {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.block-photo:hover .block-photo__overlay {
+  opacity: 1;
+}
+
 .section-basic {
   padding: 70px 60px;
   margin-top: 80px;
@@ -495,4 +537,88 @@ button:focus {
   font-weight: 500;
   font-family: 'Rubik', sans-serif;
   margin-top: 20px;
+}
+
+.wrapper a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 3px;
+  text-transform: uppercase;
+  color: #585858;
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 77, 77, 0.7);
+  transition: all .4s;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+  position: fixed;
+}
+
+.modal__content {
+  border-radius: 4px;
+  position: relative;
+  width: 500px;
+  max-width: 90%;
+  background: #fff;
+  padding: 1em 2em;
+}
+
+.modal__footer {
+  text-align: right;
+}
+
+.modal__footer a {
+  color: #585858;
+}
+
+.modal__footer i {
+  color: #d02d2c;
+}
+
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #585858;
+  text-decoration: none;
+  font-size: 36px;
+  color: red;
+}
+
+.modal__content textarea {
+  display: block;
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+}
+
+.modal__content form button {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.modal__button_success {
+  margin-top: 80px;
+}
+
+.modal__button_cancel {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

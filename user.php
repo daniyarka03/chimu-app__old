@@ -219,8 +219,8 @@
             </div>
         </div>
     </main>
-    <div id="demo-modal" class="modal">
-    <div class="modal__content">
+<div id="demo-modal" class="modal">
+        <div class="modal__content">
         <h1>Заявка по приглашению в проект</h1>
         <p>
             Выберите проект, в который вы хотите пригласить пользователя!

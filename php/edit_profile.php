@@ -38,6 +38,10 @@
            R::close();
            header("Location: ../profile.php");
        }
+
+
+       
+
    } catch (Throwable $e) {
        echo $e;
    }

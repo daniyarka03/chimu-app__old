@@ -1,0 +1,47 @@
+.crop_image_block .image_area {
+  position: relative;
+}
+
+.crop_image_block img {
+  display: block;
+  max-width: 100%;
+}
+
+.crop_image_block .preview {
+  overflow: hidden;
+  width: 160px;
+  height: 160px;
+  margin: 10px;
+  border: 1px solid red;
+}
+
+.crop_image_block .modal-lg {
+  max-width: 1000px !important;
+}
+
+.crop_image_block .overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  height: 0;
+  transition: .5s ease;
+  width: 100%;
+}
+
+.crop_image_block .image_area:hover .overlay {
+  height: 50%;
+  cursor: pointer;
+}
+
+.crop_image_block .text {
+  color: #333;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

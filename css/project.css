@@ -480,17 +480,6 @@ button:focus {
   margin-top: 20px;
 }
 
-.wrapper a {
-  display: inline-block;
-  text-decoration: none;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 3px;
-  text-transform: uppercase;
-  color: #585858;
-  font-family: 'Roboto', sans-serif;
-}
-
 .modal {
   visibility: hidden;
   opacity: 0;
@@ -504,11 +493,6 @@ button:focus {
   justify-content: center;
   background: rgba(77, 77, 77, 0.7);
   transition: all .4s;
-}
-
-.modal:target {
-  visibility: visible;
-  opacity: 1;
 }
 
 .modal__content {

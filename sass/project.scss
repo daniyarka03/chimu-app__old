@@ -430,16 +430,7 @@ br {
 
 }
 
-.wrapper a {
-    display: inline-block;
-    text-decoration: none;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 3px;
-    text-transform: uppercase;
-    color: #585858;
-    font-family: 'Roboto', sans-serif;
-}
+
 
 .modal {
     visibility: hidden;
@@ -456,10 +447,10 @@ br {
     transition: all .4s;
 }
 
-.modal:target {
-    visibility: visible;
-    opacity: 1;
-}
+// .modal:target {
+//     visibility: visible;
+//     opacity: 1;
+// }
 
 .modal__content {
     border-radius: 4px;
