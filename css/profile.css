@@ -97,6 +97,27 @@ button:focus {
   height: 228px;
 }
 
+@media (max-width: 870px) {
+  .block-photo {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .block-photo {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .block-photo {
+    width: 140px;
+    height: 140px;
+  }
+}
+
 .block-photo__overlay {
   position: absolute;
   top: 0;
@@ -110,6 +131,27 @@ button:focus {
   transition: .5s ease;
   background-color: rgba(0, 0, 0, 0.33);
   cursor: pointer;
+}
+
+@media (max-width: 870px) {
+  .block-photo__overlay {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .block-photo__overlay {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .block-photo__overlay {
+    width: 140px;
+    height: 140px;
+  }
 }
 
 .block-photo__text {
@@ -492,6 +534,7 @@ button:focus {
   height: 96px;
   border-radius: 1000px;
   margin: 0 auto;
+  object-fit: cover;
 }
 
 .section-projects .card__title {

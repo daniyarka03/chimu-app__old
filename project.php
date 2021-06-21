@@ -73,8 +73,11 @@
 <main>
     <div class="section section-basic">
         <div class="container">
-            <div class="block">
+            <div class="block block-photo">
                 <img src="uploades/<?= $project['project_image'] ?>" alt="" class="section-basic__img">
+                <label for="file_upload" class="block-photo__overlay">
+                    <div class="block-photo__text">+</div>
+                </label>
             </div>
             <div class="block">
                 <h2 class="section-basic__name"><?= $project['title'] ?></h2>
@@ -82,7 +85,11 @@
                 <span class="section-basic__geolocation"></span>
             </div>
             <div class="block">
-                <?php if ($project['creator_id'] == $_COOKIE['id']) echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-basic__button">Редактировать проект</button></a>' ?>
+                <?php 
+                    if ($project['creator_id'] == $_COOKIE['id']) { 
+                        echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-basic__button">Редактировать проект</button></a>';
+                        echo '<a href="php/delete.php?id='.$project->id.'"><button class="section-basic__button button__red">Удалить проект</button></a>';
+                    }?>
                 <?php if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>' ?>
             </div>
         </div>
@@ -212,6 +219,18 @@
             </div>
         </div>
     </div> -->
+    <form action="php/edit_avatar.php" enctype="multipart/form-data" method="POST">
+            <input type="hidden" name="id_project" value=<?= $project['id_project'] ?>>        
+            <input type="file" name="file" class="block-photo__file" id="file_upload" />        
+            <div id="demo-modal" class="modal modal__edit_image">
+                <div class="modal__content">
+                    <h1>Вы уверены, что хотите заменить вашу фотографию проекта?</h1>
+                    <button class="modal__button_success" type="submit" name="edit_image_project">Да, уверен!</button>
+                    <button class="modal__button_cancel cancel-action">Отмените действие</button>
+                    <a class="modal__close">&times;</a>
+                </div>
+            </div>      
+        </form>
 </main>
 <?php include 'footer.php' ?>
 <script src="js/jquery.js"></script>
@@ -255,38 +274,7 @@
     </script>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
- 
- const swiper_plugin = (count_slides) => {
-        var swiper = new Swiper(".mySwiper", {
-        slidesPerView: count_slides,   
-        spaceBetween: 30,
-        loop: false,
-        pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        },
-        navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-        },
-    });
-    }
-
-    if (window.innerWidth > 1179) {
-        swiper_plugin(3)
-    }
-
-    if (window.innerWidth <= 1179) {
-        swiper_plugin(2)
-    }
-
-    if (window.innerWidth < 897) {
-        swiper_plugin(1)
-    } 
-</script>
+<script src="js/project.js"></script>
 
 </body>
 </html>

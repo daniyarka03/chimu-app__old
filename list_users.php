@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="section-card__controls">
-                    <button class="section-card__button-join">Пригласить в проект</button>
+                    <a href="user?id=<?= $user->id ?>#demo-modal"><button class="section-card__button-join">Пригласить в проект</button></a>
                     <a href="user?id=<?= $user->id ?>"><button class="section-card__button-view">Посмотреть
                             пользователя</button></a>
                     <span class="section-card__date">16 Апреля</span>

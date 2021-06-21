@@ -113,10 +113,19 @@
 
                                     $tags = explode(', ', $project->category);
                                     
+                                    $count_of_tag = 0;
+
                                     foreach ($tags as $tag) {
+                                        $count_of_tag += 1;
+                                        if ($count_of_tag != 3) {
                                         ?>
-                            <span class="section-card__tag"><?=$tag?></span>
-                            <?php
+                                        
+                                        <span class="section-card__tag"><?=$tag?></span>
+                                        <?php
+                                        } else {
+                                            echo '<span class="section-card__tag">...</span>';
+                                            break;
+                                        }
                                     }
 
                                     ?>

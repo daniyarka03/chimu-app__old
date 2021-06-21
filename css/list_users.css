@@ -212,6 +212,7 @@ main {
 }
 
 .section-card__button-join {
+  width: 200px;
   color: #323232;
   padding: 14px 0;
   background-color: #E1BF66;

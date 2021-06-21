@@ -57,6 +57,19 @@ br {
     position: relative;
     width: 228px;
     height: 228px;
+    @media(max-width: 870px) {
+        display: block;
+        margin: 0 auto;
+    }
+    @media(max-width:1024px) {
+        width: 180px;
+        height: 180px;
+    }
+
+    @media(max-width:400px) {
+        width: 140px;
+        height: 140px;
+    }
 
     &__overlay {
         position: absolute;
@@ -71,6 +84,19 @@ br {
         transition: .5s ease;
         background-color: rgba(0,0,0,0.33);
         cursor: pointer;
+        @media(max-width: 870px) {
+            display: block;
+            margin: 0 auto;
+        }
+        @media(max-width:1024px) {
+            width: 180px;
+            height: 180px;
+        }
+    
+        @media(max-width:400px) {
+            width: 140px;
+            height: 140px;
+        }
       }
     &__text {
         color: white;
@@ -435,6 +461,7 @@ br {
             height: 96px;
             border-radius: 1000px;
             margin: 0 auto;
+            object-fit: cover;
         }
 
         &__title {

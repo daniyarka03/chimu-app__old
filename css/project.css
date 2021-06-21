@@ -91,6 +91,94 @@ button:focus {
   }
 }
 
+.block-photo {
+  position: relative;
+  width: 228px;
+  height: 228px;
+}
+
+@media (max-width: 870px) {
+  .block-photo {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .block-photo {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .block-photo {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.block-photo__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 228px;
+  width: 228px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0.33);
+  cursor: pointer;
+}
+
+@media (max-width: 870px) {
+  .block-photo__overlay {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .block-photo__overlay {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .block-photo__overlay {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.block-photo__overlay:focus {
+  border-radius: 50%;
+}
+
+.block-photo__text {
+  color: white;
+  font-weight: 700;
+  font-size: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.block-photo__file {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.block-photo:hover .block-photo__overlay {
+  opacity: 1;
+}
+
 .section-basic {
   padding: 70px 60px;
   margin-top: 80px;
@@ -156,11 +244,28 @@ button:focus {
   }
 }
 
+.section-basic .button__red {
+  background-color: #FF616D;
+  margin-top: 20px;
+}
+
+.section-basic .button__red:hover {
+  background-color: #ff3748;
+  color: #FFFFFF;
+}
+
+.section-basic .button__red:focus {
+  background-color: #cc0919;
+  color: #FFFFFF;
+  outline: none;
+}
+
 .section-basic__img {
   border: 10px solid #FAFAFA;
   width: 228px;
   height: 228px;
   border-radius: 1000px;
+  object-fit: cover;
 }
 
 @media (max-width: 1024px) {
@@ -333,6 +438,7 @@ button:focus {
 }
 
 .section-about__text {
+  overflow-wrap: break-word;
   font-size: 18px;
   color: #FAFAFA;
   font-weight: 500;

@@ -5,10 +5,6 @@
             <h2 class="section-register__title">О себе</h2>
         </div>
         <div class="section-forms">
-            <div class="section-register__file_block">
-                <label for="file_upload">Добавить <br> фото</label>
-                <input type="file" name="file" class="section-register__input" id="file_upload" />
-            </div>
             <textarea class="section-register__description" maxlength="900" name="descr" placeholder="О себе"><?= $profile->descr ?></textarea>
         </div>
         <div class="section-controls">
