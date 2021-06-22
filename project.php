@@ -75,9 +75,15 @@
         <div class="container">
             <div class="block block-photo">
                 <img src="uploades/<?= $project['project_image'] ?>" alt="" class="section-basic__img">
-                <label for="file_upload" class="block-photo__overlay">
-                    <div class="block-photo__text">+</div>
-                </label>
+                <?php 
+                
+                if ($_COOKIE['id'] == $project['creator_id']) {
+                    echo '<label for="file_upload" class="block-photo__overlay">
+                                <div class="block-photo__text">+</div>
+                            </label>';
+                }
+
+                ?>
             </div>
             <div class="block">
                 <h2 class="section-basic__name"><?= $project['title'] ?></h2>
@@ -170,12 +176,17 @@
                     <div class="card__tags">
                         <?php 
                             $tags = explode(', ', $member['keywords_profile']);
-                                
+                            $count_of_tag = 0;     
                             foreach ($tags as $tag) {
-                                
+                                $count_of_tag += 1;
+                                if ($count_of_tag != 4) {
                                 ?>
                                 <span class="tag"><?=$tag?></span>
                                 <?php
+                                 } else {
+                                    echo '<span class="tag">...</span>';
+                                    break;
+                                }
                             }
                         ?> 
                     </div>
@@ -222,7 +233,7 @@
     <form action="php/edit_avatar.php" enctype="multipart/form-data" method="POST">
             <input type="hidden" name="id_project" value=<?= $project['id_project'] ?>>        
             <input type="file" name="file" class="block-photo__file" id="file_upload" />        
-            <div id="demo-modal" class="modal modal__edit_image">
+            <div id="demo-modal2" class="modal modal__edit_image">
                 <div class="modal__content">
                     <h1>Вы уверены, что хотите заменить вашу фотографию проекта?</h1>
                     <button class="modal__button_success" type="submit" name="edit_image_project">Да, уверен!</button>
@@ -244,7 +255,7 @@
     });
 </script>
 
-    <div id="demo-modal" class="modal">
+    <div id="demo-modal" class="modal modal-join">
         <div class="modal__content">
             <h1>Заявка по вступлению в проект</h1>
             <p>
@@ -267,10 +278,10 @@
    
 
     <script>
-        const join_project__button = document.querySelector('.join_project__button');
-        join_project__button.addEventListener('click', () => {
+        // const join_project__button = document.querySelector('.join_project__button');
+        // join_project__button.addEventListener('click', () => {
 
-        });
+        // });
     </script>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

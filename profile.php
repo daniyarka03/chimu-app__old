@@ -111,13 +111,16 @@
                 <div class="section-projects__cards swiper-container mySwiper">
                     <div class="swiper-wrapper">
                 <?php
-                    $id_user = $profile->id_user;
-                    $projects = R::findAll('projects', 'members_project = ?', array($id_user));
+                      $id_user = $profile->id_user;
+                      $projects = R::findAll('projects', 'ORDER BY id');
                 ?>
                 <?php 
                 
                     foreach ($projects as $project) {
-
+                    $members = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
+                    foreach ($members as $member) {
+                        if ($member == $id_user) {
+                   
                 ?>
                     <div class="card__block swiper-slide">
                         <img src="uploades/<?= $project->project_image ?>" alt="" class="card__img">
@@ -126,19 +129,24 @@
                         <div class="card__tags">
                             <?php 
                                 $tags = explode(', ', $project->category);
-                                    
+                                $count_of_tag = 0;    
                                 foreach ($tags as $tag) {
-                                    
+                                    $count_of_tag += 1;
+                                    if ($count_of_tag != 3) {
                                     ?>
                                     <span class="tag"><?=$tag?></span>
                                     <?php
+                                    } else {
+                                        echo '<span class="tag">...</span>';
+                                        break;
+                                    }
                                 }
                             ?>
                         </div>
                         <a href="project?id=<?= $project->id ?>"><button class="card__button">Посмотреть проект</button></a>
                     </div>
 
-                <?php } ?>
+                <?php }} } ?>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>

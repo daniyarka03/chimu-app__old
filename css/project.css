@@ -601,6 +601,11 @@ button:focus {
   transition: all .4s;
 }
 
+.modal-join:target {
+  visibility: visible;
+  opacity: 1;
+}
+
 .modal__content {
   border-radius: 4px;
   position: relative;

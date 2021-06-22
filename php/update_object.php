@@ -9,9 +9,6 @@
     $category_object = implode(', ', $_REQUEST['category_object']);
     $keywords_need_users = implode(', ', $_REQUEST['keywords_need_users']);
 
-    
-
-  
     $project = R::load('projects', $id);
     $project->title = $title_object;
     $project->category = $category_object;

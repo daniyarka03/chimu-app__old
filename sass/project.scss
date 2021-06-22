@@ -538,10 +538,10 @@ br {
     transition: all .4s;
 }
 
-// .modal:target {
-//     visibility: visible;
-//     opacity: 1;
-// }
+.modal-join:target {
+    visibility: visible;
+    opacity: 1;
+}
 
 .modal__content {
     border-radius: 4px;
