@@ -51,8 +51,10 @@
         <section class="search">
             <h2 class="search__title">Поиск проектов</h2>
             <form class="search-form">  
-                <input type="text" class="search-form__input" value="<?= $_GET['query'] ?? "" ?>" name="query" placeholder="Введите текст" />
-                <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter">
+                <div class="search-form__block">
+                    <input type="text" class="search-form__input" value="<?= $_GET['query'] ?? "" ?>" name="query" placeholder="Введите текст" />
+                    <!-- <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter"> -->
+                </div>
                 <input type="submit" value="Поиск" class="search-form__button" />
             </form>
             <a href="list_users"><button class="search__button_users">Поиск пользователей</button></a>
@@ -138,7 +140,7 @@
                     <?php if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="project?id='.$project->id.'#demo-modal"><button class="section-card__button-join">Вступить</button></a>' ?>
                     <a href="project?id=<?= $project->id ?>"><button class="section-card__button-view">Посмотреть
                             проект</button></a>
-                    <span class="section-card__date">16 Апреля</span>
+                    <span class="section-card__date"></span>
                 </div>
             </div>
         </section>
@@ -150,6 +152,7 @@
         ?>
     </main>
 </body>
+<?php include 'footer.php'; ?>
 <script src="js/jquery.js"></script>
 <script>
     const button = document.querySelectorAll('.search-sort__btn');

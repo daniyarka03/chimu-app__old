@@ -71,11 +71,13 @@
         <section class="search">
             <h2 class="search__title">Поиск пользователей</h2>
             <form class="search-form">
+            <div class="search-form__block">    
                 <input type="text" class="search-form__input" value="<?= $_GET['query'] ?? "" ?>" name="query" placeholder="Введите текст" />
-                <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter">
+            </div>
+                <!-- <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter"> -->
                 <input type="submit" value="Поиск" class="search-form__button" />
             </form>
-            <a href="list_objects"><button class="search__button_projects">Поиск проектов</button></a>
+            <a href="list_objects"><button class="search__button_users">Поиск проектов</button></a>
         </section>
 
 
@@ -146,7 +148,7 @@
                     <a href="user?id=<?= $user->id ?>#demo-modal"><button class="section-card__button-join">Пригласить в проект</button></a>
                     <a href="user?id=<?= $user->id ?>"><button class="section-card__button-view">Посмотреть
                             пользователя</button></a>
-                    <span class="section-card__date">16 Апреля</span>
+                    <span class="section-card__date"></span>
                 </div>
             </div>
         </section>
@@ -157,7 +159,7 @@
         }
         ?>
     </main>
-
+    <?php include 'footer.php'; ?>
     <script src="js/jquery.js"></script>
 
     <script>
