@@ -7,30 +7,33 @@
         </div>
         <div class="section-forms">
             <input type="text" class="section-add-project__input require" name="title_object" value="<?= $project['title'] ?>" placeholder="Название проекта *" require />
-            <select name="category_object[]" id="mselectArea" class="section-register__input require" multiple="" require>
-            <?php
+            <div class="block__span">
+                <span class="span">Область проекта:</span>
+                <select name="category_object[]" id="mselectArea" class="section-add-project__input category_object require" multiple="" require>
+                    <?php
 
 
-$work_tags = R::findAll('TBLWorkActivity');
+                        $work_tags = R::findAll('TBLWorkActivity');
 
 
 
-foreach ($work_tags as $tag) {
+                            foreach ($work_tags as $tag) {
 
-    if(in_array($tag->name_tag, $project_category)) {
-        ?>
-        <option value="<?=$tag->name_tag?>" selected><?=$tag->name_tag?></option>
-        <?php
-    } else {
-        ?>
-        <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
-        <?php
-    }
+                                if(in_array($tag->name_tag, $project_category)) {
+                                    ?>
+                                    <option value="<?=$tag->name_tag?>" selected><?=$tag->name_tag?></option>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <option value="<?=$tag->name_tag?>"><?=$tag->name_tag?></option>
+                                    <?php
+                                }
 
-}
+                            }
 
-?>
-            </select>
+                    ?>
+                </select>
+            </div>
             <!-- <input type="email" class="section-add-project__input require" name="email" value="<?php @$_POST['email'] ?>" placeholder="Эл. почта *" require /> -->
             <textarea class="section-add-project__description" name="descr"  placeholder="Описание проекта"><?= $project->descr ?></textarea>
         </div>

@@ -41,7 +41,7 @@
 
     <script>
         $(document).ready(function(){
-            $('#mselectArea').chosen({width: "100%", placeholder_text_multiple: "Тип проекта"});
+            $('#mSelectArea').chosen({width: "100%", placeholder_text_multiple: "Тип проекта", no_results_text: "Ничего не найдено под: "});
             $('#mselectKeywordsProfile').chosen({width: "100%", placeholder_text_multiple: "Кто нужен в проект"});
         });
 

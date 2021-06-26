@@ -2,6 +2,10 @@
         try {
             require "php/includes/db.php";
             $id = $_GET['id'];
+            
+            if (!isset($_COOKIE['id'])) {
+                header('Location: ./');
+            }
 
             if (!isset($id)) {
                 header("Location: /chimu-app");

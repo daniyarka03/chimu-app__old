@@ -97,6 +97,12 @@ body {
   transition: 0.1s ease-in;
 }
 
+@media (max-width: 560px) {
+  .section-add-project__input {
+    padding-bottom: 0;
+  }
+}
+
 .section-add-project__input::placeholder {
   color: #E3DFFF;
 }
@@ -104,6 +110,25 @@ body {
 .section-add-project__input:focus {
   outline: none;
   border-bottom: 2px solid #FFDE88;
+}
+
+.section-add-project .block__span {
+  margin-top: 30px;
+}
+
+.section-add-project .span {
+  position: relative;
+  color: #E3DFFF;
+  font-weight: 600;
+  font-family: 'Rubik';
+}
+
+.section-add-project__input.keywords_need_users {
+  margin-top: 10px;
+}
+
+.section-add-project__input.category_object {
+  margin-top: 10px;
 }
 
 .section-add-project-controls {

@@ -5,8 +5,11 @@
             <h2 class="section-add-project__title">Создание проекта</h2>
         </div>
         <div class="section-forms">
+            
             <input type="text" class="section-add-project__input require" name="title_object" value="<?php @$_POST['firstname'] ?>" placeholder="Название проекта *" require />
-            <select name="category_object[]" id="mselectArea" class="section-register__input require" multiple="" require>
+            <div class="block__span">
+            <span class="span">Область проекта:</span>
+            <select name="category_object[]" id="mSelectArea" class="section-add-project__input category_object require" multiple="" require>
                 <?php
                 $work_tags = R::findAll('TBLWorkActivity');
                 foreach ($work_tags as $tag) {
@@ -16,6 +19,7 @@
                 }
                 ?>
             </select>
+            </div>
             <!-- <input type="email" class="section-add-project__input require" name="email" value="<?php @$_POST['email'] ?>" placeholder="Эл. почта *" require /> -->
             <textarea class="section-add-project__description" name="descr" placeholder="Описание проекта"></textarea>
         </div>

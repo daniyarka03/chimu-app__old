@@ -241,10 +241,8 @@
 
             <div class="project__card">
                 <h4><?= $project['title']?></h4>
-                <span><?= $project->creator_name?></span> <br>
-                <span><?= $project->category?></span> <br>
-                <a href="project.php?id=<?= $project->id?>">View project</a>
-                <a href="./user.php?id=<?= $_GET['id'] ?>&id_project=<?= $project->id?>#additional_modal">Select project</a>
+                <a href="project.php?id=<?= $project->id?>">Посмотреть проект</a>
+                <a href="./user.php?id=<?= $_GET['id'] ?>&id_project=<?= $project->id?>#additional_modal">Выбрать проект</a>
             </div>
         <?php
             }

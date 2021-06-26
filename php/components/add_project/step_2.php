@@ -4,7 +4,9 @@
             <h2 class="section-add-project__title">Создание проекта</h2>
         </div>
         <div class="section-forms">
-            <select name="keywords_need_users[]" id="mselectKeywordsProfile" class="section-add-project__input require" multiple="" require>
+        <div class="block__span">
+            <span class="span">Кто нужен в проект:</span>
+            <select name="keywords_need_users[]" id="mselectKeywordsProfile" class="section-add-project__input keywords_need_users require" multiple="" require>
                 <optgroup label="Программирование">
                     <?php
                     $tags = R::findAll('TBLTags');
@@ -57,6 +59,7 @@
                     ?>
                 </optgroup>
             </select>
+                </div>
             <input type="text" name="instagram" class="section-add-project__input" placeholder="Instagram" require/>
             <input type="text" name="telegram" class="section-add-project__input" placeholder="Telegram" require/>
         </div>

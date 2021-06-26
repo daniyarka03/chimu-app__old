@@ -4,6 +4,10 @@
         $id_user = $_COOKIE['id'];
         $notifications = R::findAll('notifications', "user_recipient LIKE ? ", array($id_user));
 
+        if (!isset($_COOKIE['id'])) {
+            header('Location: ./');
+        }
+
     } catch (Throwable $e) {
         echo $e;
     }

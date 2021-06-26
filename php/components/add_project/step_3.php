@@ -4,7 +4,10 @@
             <h2 class="section-add-project__title">Создание проекта</h2>
         </div>
         <div class="section-forms">
+        <div class="block__span">
+            <span class="span">Фотография проекта:</span>
             <input type="file" name="file" class="section-add-project__input" placeholder="Загрузить изображение"/>
+        </div>  
         </div>
         <div class="section-controls">
             <button type="submit" name="submit" class="section-add-project__button_next next_2">Завершить</button>

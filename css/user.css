@@ -519,9 +519,41 @@ button:focus {
   border-radius: 4px;
   position: relative;
   width: 500px;
+  margin-top: 50px;
   max-width: 90%;
   background: #fff;
   padding: 1em 2em;
+}
+
+.modal__content h1 {
+  font-size: 30px;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 465px) {
+  .modal__content h1 {
+    font-size: 24px;
+  }
+}
+
+.modal__content p {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 465px) {
+  .modal__content p {
+    font-size: 14px;
+  }
+}
+
+.modal__content h4 {
+  margin-top: 10px;
+}
+
+.modal__content a {
+  display: block;
+  margin-top: 10px;
 }
 
 .modal__footer {
@@ -571,7 +603,20 @@ button:focus {
   margin-bottom: 20px;
 }
 
+@media (max-width: 465px) {
+  .project__card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .project__card {
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
 .project__cards {
   overflow: scroll;
-  height: 400px;
+  height: 300px;
 }
