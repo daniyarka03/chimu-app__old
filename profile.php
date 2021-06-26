@@ -108,6 +108,7 @@
         <div class="section section-projects">
             <div class="container">
                 <h2 class="section-projects__title section__title">Мои проекты</h2>
+                <a href="add_objects"><button class="section-projects__button_add">Создать проект</button></a>
                 <div class="section-projects__cards swiper-container mySwiper">
                     <div class="swiper-wrapper">
                 <?php

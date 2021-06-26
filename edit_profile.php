@@ -9,7 +9,7 @@
     $work_activity_tags = explode(', ', $profile->work_activity);
     $profile_tags = explode(', ', $profile->keywords_profile);
     $profile_country = explode(', ', $profile->country);
-    $gender = explode(', ', $profile->gender);
+    $gender = $profile->gender;
     $city = explode(', ', $profile->city);
     $birthdate = $profile->birthdate;
     $descr = $profile->descr;

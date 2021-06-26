@@ -95,6 +95,7 @@ button:focus {
   position: relative;
   width: 228px;
   height: 228px;
+  object-fit: cover;
 }
 
 @media (max-width: 870px) {
@@ -251,7 +252,7 @@ button:focus {
 @media (max-width: 1024px) {
   .section-basic__img {
     width: 180px;
-    width: 180px;
+    height: 180px;
     border: 7px solid #FAFAFA;
   }
 }
@@ -506,6 +507,21 @@ button:focus {
   .section-projects {
     padding: 70px 10px 70px 10px;
   }
+}
+
+.section-projects__button_add {
+  display: block;
+  width: 200px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  height: 50px;
+  border: none;
+  color: #323232;
+  font-weight: 600;
+  background-color: #E1BF66;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: 0.6s ease;
+  font-size: 14px;
 }
 
 .section-projects__title {

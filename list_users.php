@@ -71,7 +71,7 @@
         <section class="search">
             <h2 class="search__title">Поиск пользователей</h2>
             <form class="search-form">
-                <input type="text" class="search-form__input" name="query" placeholder="Введите текст" />
+                <input type="text" class="search-form__input" value="<?= $_GET['query'] ?? "" ?>" name="query" placeholder="Введите текст" />
                 <img src="img/search/filter.svg" alt="search__icon" class="search-form__img icon__filter">
                 <input type="submit" value="Поиск" class="search-form__button" />
             </form>

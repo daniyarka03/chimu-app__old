@@ -80,6 +80,17 @@ body {
   width: 100%;
 }
 
+.section-register .block__span {
+  margin-top: 30px;
+}
+
+.section-register .span {
+  position: relative;
+  color: #E3DFFF;
+  font-weight: 600;
+  font-family: 'Rubik';
+}
+
 .section-register__input {
   display: block;
   width: 100%;
@@ -96,6 +107,12 @@ body {
   transition: 0.1s ease-in;
 }
 
+@media (max-width: 560px) {
+  .section-register__input {
+    padding-bottom: 0;
+  }
+}
+
 .section-register__input::placeholder {
   color: #E3DFFF;
 }
@@ -103,6 +120,26 @@ body {
 .section-register__input:focus {
   outline: none;
   border-bottom: 2px solid #FFDE88;
+}
+
+.section-register__input.keywords_profile {
+  margin-top: 10px;
+}
+
+.section-register__input.work_activity {
+  margin-top: 10px;
+}
+
+.section-register__input[name=country] {
+  margin-top: 10px;
+}
+
+.section-register__input[name=birthdate] {
+  margin-top: 10px;
+}
+
+.section-register__input[name=gender] {
+  margin-top: 10px;
 }
 
 .section-register-controls {

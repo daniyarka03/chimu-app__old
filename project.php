@@ -96,7 +96,16 @@
                         echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-basic__button">Редактировать проект</button></a>';
                         echo '<a href="php/delete.php?id='.$project->id.'"><button class="section-basic__button button__red">Удалить проект</button></a>';
                     }?>
-                <?php if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>' ?>
+                <!-- <?php  ?> -->
+                <?php 
+                    $members_proj = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
+                    $status = in_array($_COOKIE['id'], $members_proj);
+                    
+
+                    if (!$status) { 
+                        if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>';
+                    }
+                    ?>
             </div>
         </div>
     </div>
@@ -262,7 +271,7 @@
                 Расскажите о себе, а также напишите, чем полезны вы могли бы быть проекту!
             </p>
 
-            <form action="project.php" method="POST">
+            <form action="project" method="POST">
                 <input type="hidden" name="creator_id" value=<?= $project['creator_id'] ?>>
                 <input type="hidden" name="id_project" value=<?= $project['id_project'] ?>>
                 <textarea type="text" name="request_message" placeholder="Пишите здесь..."></textarea>
@@ -270,6 +279,14 @@
             </form>
 
 
+            <a href="#" class="modal__close">&times;</a>
+        </div>
+    </div>
+
+    <div id="success-modal" class="modal modal-join">
+        <div class="modal__content">
+            <h1>Ваша заявка успешно была отправлена</h1>
+            <a href="#"><button style="width: 100%; padding: 10px; margin-top: 200px;">Закрыть</button></a>
             <a href="#" class="modal__close">&times;</a>
         </div>
     </div>

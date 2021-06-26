@@ -4,7 +4,9 @@
             <h2 class="section-register__title">Основная информация</h2>
         </div>
         <div class="section-forms">
-            <select name="work_activity[]" id="mselectWorkEdit" class="section-register__input require" multiple="" require>
+        <div class="block__span">
+            <span class="span">Интересующая область:</span>
+            <select name="work_activity[]" id="mselectWorkEdit" class="section-register__input work_activity require" multiple="" require>
             <?php
                 foreach ($work_tags as $tag) {
                     if (in_array($tag->name_tag, $work_activity_tags)) {
@@ -15,7 +17,10 @@
                 }
                 ?>
             </select>
-            <select name="category_object[]" id="mselectKeywordsEdit" class="section-register__input require" multiple="" require>
+            </div>
+            <div class="block__span">
+            <span class="span">Навыки:</span>
+            <select name="category_object[]" id="mselectKeywordsEdit" class="section-register__input category_object require" multiple="" require>
                 <optgroup label="Программирование">
                 <?php
                     foreach ($tags as $tag) {
@@ -56,6 +61,9 @@
                 ?>
                 </optgroup>
             </select>
+            </div>
+            <div class="block__span">
+            <span class="span">Страна:</span>
             <select name="country" class="section-register__input require" id="mselectCountryEdit">
                 <option value=""></option>
                 <?php
@@ -68,8 +76,12 @@
                     }
                 ?>
             </select>
+                </div>
             <!-- <input type="text" name="city" class="section-register__input" placeholder="Город *" require/> -->
-            <input type="date" name="birthdate" class="section-register__input require" value="<?= $profile->birthdate ?>" placeholder="Дата рождения *" require/>
+            <div class="block__span">
+                <span class="span">Дата рождения:</span>
+                <input type="date" name="birthdate" class="section-register__input require" value="<?= $profile->birthdate ?>" placeholder="Дата рождения *" require/>
+            </div>
         </div>
         <div class="section-controls">
             <button type="button" class="section-register__button_next next_2">Далее</button>

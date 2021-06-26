@@ -1,2 +1,5 @@
+$('.span').hide();
 
-button.
+if (window.innerWidth < 560) {
+    $('.span').show();
+}

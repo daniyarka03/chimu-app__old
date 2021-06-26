@@ -155,15 +155,17 @@
                     <div class="swiper-wrapper">
                 <?php
                     $id_user = $profile->id_user;
-                    $projects = R::findAll('projects', 'members_project = ?', array($id_user));
+                    $projects = R::findAll('projects', 'ORDER BY id');
                 ?>
                 <?php 
                 
                     foreach ($projects as $project) {
-
+                        $members = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
+                        foreach ($members as $member) {
+                        if ($member == $id_user) {
                 ?>
                     <div class="card__block">
-                        <img src="img/card__img.png" alt="" class="card__img">
+                        <img src="uploades/<?= $project['project_image'] ?>" alt="" class="card__img">
                         <h2 class="card__title"><?= $project->title ?></h2>
                         <span class="card__text" id="descr_card"><?= $project->descr ?></span>
                         <div class="card__tags">
@@ -186,7 +188,7 @@
                         <a href="project?id=<?= $project->id ?>"><button class="card__button">Посмотреть проект</button></a>
                     </div>
 
-                <?php } ?>
+                <?php }}} ?>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>

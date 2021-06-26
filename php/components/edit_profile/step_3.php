@@ -5,21 +5,21 @@
             <h2 class="section-register__title">Дополнительная информация</h2>
         </div>
         <div class="section-forms">
+        <div class="block__span">
+            <span class="span">Пол:</span>
             <select name="gender" id="mselectGenderEdit" class="section-register__input" require>
                 <option value=""></option>
                 <?php
                     foreach ($gender_data as $tag) {
-                        if (in_array($tag, $gender)) {
+                        if ($tag == $gender) {
                             echo "<option value=$tag selected>$tag</option>";
                         } else {
                             echo "<option value=$tag>$tag</option>";
                         }
                     }
                 ?>
-                
-                
-               
             </select>
+                </div>
             <!-- <input type="text" name="social_media_facebook" class="section-register__input" placeholder="Facebook" /> -->
             <input type="text" name="social_media_instagram" value="<?= $profile->social_media_instagram ?>" class="section-register__input" placeholder="Instagram" />
             <!-- <input type="text" name="social_media_vk" class="section-register__input" placeholder="Vk" /> -->
