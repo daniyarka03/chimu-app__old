@@ -122,6 +122,14 @@ body {
   border-bottom: 2px solid #FFDE88;
 }
 
+.section-register__error_message {
+  display: block;
+  margin-top: 10px;
+  color: #ff3748;
+  font-weight: 500;
+  font-family: 'Rubik', 'sans-serif';
+}
+
 .section-register__input.category_object {
   margin-top: 10px;
 }

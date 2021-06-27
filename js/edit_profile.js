@@ -12,7 +12,7 @@ email_input.addEventListener('blur', () => {
     let email_format = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     $.ajax({
 		type: "POST",
-		url: "./send.php",
+		url: "./send_edit.php",
         dataType: 'json',
 		data: {
             email: email_input_val
@@ -47,7 +47,7 @@ email_input.addEventListener('blur', () => {
             }
 		},
 		error:  function(xhr, str){
-			alert("Возникла ошибка!");
+			alert("Возникла ошибка!" + str + xhr);
 		}
 	});
 });
@@ -84,81 +84,13 @@ lastname_input.addEventListener('blur', () => {
     }
 });
 
-firstname_input.addEventListener('blur', () => {
-    if ($(firstname_input).val().length < 2) {
-        $('#error_message_firstname').text('Ваше имя должно состоять минимум из 2 символов');
-        $(firstname_input).css({
-            'color': '#ff3748',
-            'border-bottom': '1px solid #ff3748'
-        });
-    } else {
-        $('#error_message_firstname').text('');
-        $(firstname_input).css({
-            'color': '',
-            'border-bottom': ''
-        });
-    }
-});
+const errors_spans = $('.section-register__error_message');
+button_next_1.addEventListener('mouseenter', function(e){
 
-confirm_password_input.addEventListener('blur', () => {
-    if ($(confirm_password_input).val() != $(password_input).val()) {
-        $('#error_message_password').text('Пароли не совпадают');
-        $('#error_message_confirm_password').text('Пароли не совпадают');
-        $(confirm_password_input).css({
-            'color': '#ff3748',
-            'border-bottom': '1px solid #ff3748'
-        });
-        $(password_input).css({
-            'color': '#ff3748',
-            'border-bottom': '1px solid #ff3748'
-        });
-    } else {
-        $('#error_message_password').text('');
-        $('#error_message_confirm_password').text('');
-        $(confirm_password_input).css({
-            'color': '',
-            'border-bottom': ''
-        });
-        $(password_input).css({
-            'color': '',
-            'border-bottom': ''
-        });
-    }
-});
-
-password_input.addEventListener('blur', () => {
-    if ($(confirm_password_input).val() != $(password_input).val()) {
-        $('#error_message_password').text('Пароли не совпадают');
-        $('#error_message_confirm_password').text('Пароли не совпадают');
-        $(confirm_password_input).css({
-            'color': '#ff3748',
-            'border-bottom': '1px solid #ff3748'
-        });
-        $(password_input).css({
-            'color': '#ff3748',
-            'border-bottom': '1px solid #ff3748'
-        });
-    } else {
-        $('#error_message_password').text('');
-        $('#error_message_confirm_password').text('');
-        $(confirm_password_input).css({
-            'color': '',
-            'border-bottom': ''
-        });
-        $(password_input).css({
-            'color': '',
-            'border-bottom': ''
-        });
-    }
 });
 
 
 
-
-// File Upload Change Event
-$('#file_upload').on('change', function() {
-    $('.section-register__label_text').text('Фото загружено!')
-});
 
 let count = 4;
 
@@ -191,7 +123,6 @@ for (let i = 0; i < count; i++) {
                 } 
             }
             if (i == 1) {
-
                 if ($('.chosen-single span').text() != "") {
                     for (let n = 0; n < 2; n++) {
                         const dropdown_item = document.querySelectorAll('.chosen-choices');
@@ -227,8 +158,6 @@ for (let i = 0; i < count; i++) {
                     block[i + 1].style.display = 'block';
                     block[i].style.display = 'none';
                 }
-                
-                    
             }
             
             if (i == 2) {

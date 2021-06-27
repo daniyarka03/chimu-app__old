@@ -17,6 +17,7 @@
                 }
                 ?>
             </select>
+            <span class="section-register__error_message error_message_step_2" id="error_message_work_activity"></span>  
             </div>
             <div class="block__span">
             <span class="span">Навыки:</span>
@@ -61,6 +62,8 @@
                 ?>
                 </optgroup>
             </select>
+            <span class="section-register__error_message error_message_step_2" id="error_message_keywords_profile"></span>    
+            
             </div>
             <div class="block__span">
             <span class="span">Страна:</span>
@@ -76,11 +79,15 @@
                     }
                 ?>
             </select>
+            <span class="section-register__error_message error_message_step_2" id="error_message_country"></span>    
+            
                 </div>
             <!-- <input type="text" name="city" class="section-register__input" placeholder="Город *" require/> -->
             <div class="block__span">
                 <span class="span">Дата рождения:</span>
                 <input type="date" name="birthdate" class="section-register__input require" value="<?= $profile->birthdate ?>" placeholder="Дата рождения *" require/>
+                <span class="section-register__error_message error_message_step_2" id="error_message_country"></span>    
+                
             </div>
         </div>
         <div class="section-controls">

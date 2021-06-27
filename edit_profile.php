@@ -62,7 +62,7 @@
     const require_input = document.querySelectorAll('.require');
 
     // step_function(4, block, button, button_back, 5, 4, 1);
-    step_function(4, block, button, button_back);
+    // step_function(4, block, button, button_back);
 
         $(document).ready(function(){
             $('#mselectCountryEdit').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_single: "Страна проживания", allow_single_deselect: true});
@@ -73,5 +73,6 @@
         });
 
     </script>
+    <script src="js/edit_profile.js"></script>
 </body>
 </html>
