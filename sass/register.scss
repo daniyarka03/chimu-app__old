@@ -4,11 +4,17 @@
 @import "colors", "mixins";
 
 
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+}
+
+.error {
+    color: #ff3748;
 }
 
 body {
@@ -117,6 +123,14 @@ body {
             border-bottom: 2px solid #FFDE88;
         }
 
+    }
+
+    &__error_message {
+        display: block;
+        margin-top: 10px;
+        color: #ff3748;
+        font-weight: 500;
+        font-family: 'Rubik', 'sans-serif';
     }
 
     &__input.keywords_profile {

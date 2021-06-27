@@ -45,7 +45,7 @@
         <h2 class="section-login__title">Войти в аккаунт</h2>
         <form action="./login" method="POST">
             <div class="section-login__forms">
-                <input class="section-login__input input-form" type="email" name="email" value="<?php echo $email; ?>" placeholder="Эл. почта">
+                <input class="section-login__input input-form" type="email" name="email" value="<?php if ($email == ""){echo $_COOKIE['temporary_email'] ?? ""; } else { echo $email; } ?>" placeholder="Эл. почта">
                 <input class="section-login__input input-form" type="password" name="password" value="<?php @$_POST['password'] ?>" placeholder="Пароль">
                 <span class="section-login__error">
                     <?php if (!empty($errors)) {

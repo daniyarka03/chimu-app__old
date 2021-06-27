@@ -265,6 +265,7 @@
             'JM' => 'Ямайка',
             'JP' => 'Япония',
         );
+        
 
         $firstname = filter_var(trim($_POST['firstname'] ?? ""), FILTER_SANITIZE_STRING);
         $lastname = filter_var(trim($_POST['lastname'] ?? ""), FILTER_SANITIZE_STRING);
@@ -334,7 +335,7 @@
 
             R::store($user);
 
-
+            setcookie('temporary_email', $email, time() + 120, "/");
             header('Location: login');
             }
         }
@@ -345,7 +346,7 @@
         echo $e;
     }
 ?>
-
+   
     <form action="./register.php" method="POST" enctype="multipart/form-data">
         <?php include 'php/components/register_user/step_1.php' ?>    
         <?php include 'php/components/register_user/step_2.php' ?>    
@@ -367,7 +368,7 @@
     <script>
 
     // step_function(4, block, button, button_back, 5, 4, 1);
-    step_function(4, block, button, button_back);
+    // step_function(4, block, button, button_back);
 
         $(document).ready(function(){
             $('#mselectCountry').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_single: "Страна проживания", allow_single_deselect: true});
