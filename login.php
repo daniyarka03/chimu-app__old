@@ -32,9 +32,7 @@
                 } else {
                     $errors[] = 'Пользователь с таким email не найден';
                 }
-                if (!empty($errors)) {
-                    echo array_shift($errors);
-                }
+                
             }
 
             R::close();
@@ -47,8 +45,13 @@
         <h2 class="section-login__title">Войти в аккаунт</h2>
         <form action="./login" method="POST">
             <div class="section-login__forms">
-                <input class="section-login__input input-form" type="email" name="email" value="<?php @$_POST['email'] ?>" placeholder="Эл. почта">
+                <input class="section-login__input input-form" type="email" name="email" value="<?php echo $email; ?>" placeholder="Эл. почта">
                 <input class="section-login__input input-form" type="password" name="password" value="<?php @$_POST['password'] ?>" placeholder="Пароль">
+                <span class="section-login__error">
+                    <?php if (!empty($errors)) {
+                        echo array_shift($errors);
+                    } ?>
+                </span>  
             </div>
             <div class="section-login__controls">
                 <button type="submit" name="do_signup" value="1" class="section-login__button_login">Войти</button>
