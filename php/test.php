@@ -1,5 +1,8 @@
 <?php
-
+    if (isset($_POST['submit'])) {
+        $size = getimagesize("https://rendering.ru/media/catalog/product/cache/5eba369889d231319121094e533c3c45/i/t/itrees-palms-03.jpg");
+        echo var_dump($size);
+    }
 ?>
 
 <!doctype html>
@@ -14,13 +17,7 @@
 </head>
 <body>
 <form action="./test.php" method="POST">
-    <select name="my_select[]" id="mselect" multiple="" style="width: 300px;">
-        <optgroup label="Русская кухня">
-            <option value="Закуска Барская">Закуска Барская</option>
-            <option value="Раки, фаршированные по-царски">Раки, фаршированные по-царски</option>
-            <option value="Биточки в горшочке">Биточки в горшочке</option>
-        </optgroup>
-    </select>
+    <input type="file" name="file" />
     <input type="submit" name="submit" value="Submit"/>
 </form>
 

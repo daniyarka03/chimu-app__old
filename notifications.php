@@ -53,21 +53,23 @@
                             <img src="img/card__img.png" alt="logo" class="section-card__img">
                             <div class="content__text">
                                 <h2 class="section-card__title"><?= $notification['theme'] ?></h2>
-                                <span class="section-card__description" id="descr_card"><?= $notification['text'] ?></span>
+                                <!-- <span class="section-card__description" id="descr_card"><?= $notification['text'] ?></span> -->
+                                
                             </div>
+                            
                         </div>
                         <div class="section-card__controls">
-                            <?php if ($notification['theme'] == 'Вступление в проект') echo '<a href="?order='.$notification["id_notification"].'&#demo-modal"><button class="section-card__button-join">Посмотреть</button></a>' ?>
-                            <?php if ($notification['theme'] == 'Принятие в проект') echo '<a href="?order='.$notification["id_notification"].'&#accept_user"><button class="section-card__button-join">Посмотреть</button></a>' ?>
-                            <?php if ($notification['theme'] == 'Отказ во вступлении в проект') echo '<a href="?order='.$notification["id_notification"].'&#cancel_join"><button class="section-card__button-join">Посмотреть</button></a>' ?>
-                            <?php if ($notification['theme'] == 'Приглашение в проект') echo '<a href="?order='.$notification["id_notification"].'&#invite_project"><button class="section-card__button-join">Посмотреть</button></a>' ?>
-                            <form action="notifications" method="post">
-                                <input type="hidden" name="id_notification" value=<?= $notification['id'] ?>>
-                                <a href="notifications"><button type="submit" name="delete_notification" class="section-card__button-view">Удалить</button></a>
-                            </form>
-                            
-                            <span class="section-card__date">16 Апреля</span>
-                        </div>
+                                    <?php if ($notification['theme'] == 'Вступление в проект') echo '<a href="?order='.$notification["id_notification"].'&#join_project"><button class="section-card__button-join">Посмотреть</button></a>' ?>
+                                    <?php if ($notification['theme'] == 'Принятие в проект') echo '<a href="?order='.$notification["id_notification"].'&#accept_user"><button class="section-card__button-join">Посмотреть</button></a>' ?>
+                                    <?php if ($notification['theme'] == 'Отказ во вступлении в проект') echo '<a href="?order='.$notification["id_notification"].'&#cancel_join"><button class="section-card__button-join">Посмотреть</button></a>' ?>
+                                    <?php if ($notification['theme'] == 'Приглашение в проект') echo '<a href="?order='.$notification["id_notification"].'&#invite_project"><button class="section-card__button-join">Посмотреть</button></a>' ?>
+                                    <form action="notifications" method="post">
+                                        <input type="hidden" name="id_notification" value=<?= $notification['id'] ?>>
+                                        <a href="notifications"><button type="submit" name="delete_notification" class="section-card__button-view">Удалить</button></a>
+                                    </form>
+                                    <span class="section-card__date">16 Апреля</span>
+                                </div>
+                        
                     </div>
                 </section>
 

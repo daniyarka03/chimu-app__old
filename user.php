@@ -164,7 +164,7 @@
                         foreach ($members as $member) {
                         if ($member == $id_user) {
                 ?>
-                    <div class="card__block">
+                    <div class="card__block swiper-slide">
                         <img src="uploades/<?= $project['project_image'] ?>" alt="" class="card__img">
                         <h2 class="card__title"><?= $project->title ?></h2>
                         <span class="card__text" id="descr_card"><?= $project->descr ?></span>
@@ -226,33 +226,36 @@
             </div>
         </div>
     </main>
-<div id="demo-modal" class="modal">
+
+
+
+    <div id="demo-modal" class="modal modal-invite">
         <div class="modal__content">
-        <h1>Заявка по приглашению в проект</h1>
-        <p>
-            Выберите проект, в который вы хотите пригласить пользователя!
-        </p>
-        <div class="project__cards">
-        <?php
-            $id_user = $_COOKIE['id'];
-            $projects = R::findAll('projects', "creator_id LIKE '%$id_user%'");
-            foreach($projects as $project) {
-        ?>
+            <h1 class="modal__title">Заявка по приглашению в проект</h1>
+            <p class="modal__subtext">
+                Выберите проект, в который вы хотите пригласить пользователя!
+            </p>
+            <div class="project__cards">
+                <?php
+                    $id_user = $_COOKIE['id'];
+                    $projects = R::findAll('projects', "creator_id LIKE '%$id_user%'");
+                    foreach($projects as $project) {
+                ?>
 
-            <div class="project__card">
-                <h4><?= $project['title']?></h4>
-                <a href="project.php?id=<?= $project->id?>">Посмотреть проект</a>
-                <a href="./user.php?id=<?= $_GET['id'] ?>&id_project=<?= $project->id?>#additional_modal">Выбрать проект</a>
+                    <div class="project__card">
+                        <h4 class="project__title"><?= $project['title']?></h4>
+                        <a href="./user.php?id=<?= $_GET['id'] ?>&id_project=<?= $project->id?>#additional_modal"><button class="project__button_get">Выбрать проект</button></a>
+                        <a class="project__button_view" href="project.php?id=<?= $project->id?>">Посмотреть проект</a>
+                    </div>
+                <?php
+                    }
+            ?>
             </div>
-        <?php
-            }
-    ?>
+            <a href="#" ><button class="modal__button modal__button_close">Закрыть</button></a>
         </div>
-        <a href="#" class="modal__close">&times;</a>
     </div>
-</div>
 
-<div id="additional_modal" class="modal">
+<div id="additional_modal" class="modal modal-addtional">
     <div class="modal__content">
         <?php
         $id_user = $_GET['id'];
@@ -260,8 +263,8 @@
         $selected_project = R::load('projects', $_GET['id_project']);
 
         ?>
-        <h1>Уверены, что хотите пользователя пригласить в проект <?= $selected_project->title ?></h1>
-        <p>
+        <h1 class="modal__title">Уверены, что хотите пользователя пригласить в проект: <?= $selected_project->title ?></h1>
+        <p class="modal__subtext">
             Если вы уверены, то нажмите на "пригласить".
         </p>
 
@@ -270,19 +273,16 @@
             <input type="hidden" name="id_project" value=<?= $selected_project['id_project'] ?>>
             <input type="hidden" name="title_project" value=<?= $selected_project['title'] ?>>
             <input type="hidden" name="id_user" value=<?= $user['id_user'] ?>>
-            <button type="submit" name="request">Пригласить</button>
-            <button type="submit" name="cancel_request">Отмена</button>
+            <button class="modal__button_invite" type="submit" name="request">Пригласить</button>
+            <a href="#" ><button class="modal__button modal__button_close">Закрыть</button></a>
         </form>
 
-        <a href="#" class="modal__close">&times;</a>
+        
     </div>
 </div>
 
 <script>
-    const join_project__button = document.querySelector('.join_project__button');
-    join_project__button.addEventListener('click', () => {
-
-    });
+    
 </script>
     <?php include 'footer.php' ?>
     <script src="js/jquery.js"></script>
@@ -305,32 +305,32 @@
 <script>
 
 const swiper_plugin = (count_slides) => {
-        var swiper = new Swiper(".mySwiper", {
-        slidesPerView: count_slides,   
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        },
-        navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-        },
-    });
-    }
+    var swiper = new Swiper(".mySwiper", {
+    slidesPerView: count_slides,   
+    spaceBetween: 30,
+    loop: false,
+    pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    },
+    navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+    },
+});
+}
 
-    if (window.innerWidth > 1179) {
-        swiper_plugin(3)
-    }
+if (window.innerWidth > 1179) {
+    swiper_plugin(3)
+}
 
-    if (window.innerWidth <= 1179) {
-        swiper_plugin(2)
-    }
+if (window.innerWidth <= 1179) {
+    swiper_plugin(2)
+}
 
-    if (window.innerWidth < 897) {
-        swiper_plugin(1)
-    } 
+if (window.innerWidth < 897) {
+    swiper_plugin(1)
+} 
 </script>
 <script src="js/user.js"></script>
 </body>

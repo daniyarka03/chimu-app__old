@@ -25,18 +25,22 @@
             $project_creator = filter_var(trim($_POST['creator_id'] ?? ""), FILTER_SANITIZE_STRING);
             $id_project = filter_var(trim($_POST['id_project'] ?? ""), FILTER_SANITIZE_STRING);
 
-            $notifications = R::dispense('notifications');
-            $notifications->id_notification = $id_notification;
-            $notifications->id_project = $id_project;
-            $notifications->text = $req_message;
-            $notifications->user_sender = $_COOKIE['id'];
-            $notifications->is_checked = "false";
-            $notifications->user_recipient = $project_creator;
-            $notifications->theme = "Вступление в проект";
+            if (isset($_POST['request'])) {
+                $notifications = R::dispense('notifications');
+                $notifications->id_notification = $id_notification;
+                $notifications->id_project = $id_project;
+                $notifications->text = $req_message;
+                $notifications->user_sender = $_COOKIE['id'];
+                $notifications->is_checked = "false";
+                $notifications->user_recipient = $project_creator;
+                $notifications->theme = "Вступление в проект";
 
 
 
-            R::store($notifications);
+                R::store($notifications);
+                header('Location: project?id='.$id.'#success-modal');
+            }
+            
         } catch (Throwable $e) {
             echo $e;
         }
@@ -270,28 +274,28 @@
 
     <div id="demo-modal" class="modal modal-join">
         <div class="modal__content">
-            <h1>Заявка по вступлению в проект</h1>
-            <p>
+            <h1 class="modal__title">Заявка по вступлению в проект</h1>
+            <p class="modal__subtext">
                 Расскажите о себе, а также напишите, чем полезны вы могли бы быть проекту!
             </p>
 
             <form action="project" method="POST">
                 <input type="hidden" name="creator_id" value=<?= $project['creator_id'] ?>>
                 <input type="hidden" name="id_project" value=<?= $project['id_project'] ?>>
-                <textarea type="text" name="request_message" placeholder="Пишите здесь..."></textarea>
-                <button type="submit" name="request">Отправить</button>
+                <textarea class="modal__textarea" type="text" name="request_message" placeholder="Пишите здесь..."></textarea>
+                <button class="modal__button modal__button_submit" type="submit" name="request">Отправить</button>
             </form>
+            <a href="#" ><button class="modal__button modal__button_close">Отмена</button></a>
 
 
-            <a href="#" class="modal__close">&times;</a>
         </div>
     </div>
 
     <div id="success-modal" class="modal modal-join">
         <div class="modal__content">
-            <h1>Ваша заявка успешно была отправлена</h1>
-            <a href="#"><button style="width: 100%; padding: 10px; margin-top: 200px;">Закрыть</button></a>
-            <a href="#" class="modal__close">&times;</a>
+            <h1 class="modal__title">Ваша заявка успешно была отправлена</h1>
+            <a href="list_objects"><button class="modal__button" style="width: 100%; padding: 10px; margin-top: 200px;">Закрыть</button></a>
+
         </div>
     </div>
 

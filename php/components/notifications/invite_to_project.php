@@ -86,7 +86,7 @@ try {
         $notifications->user_recipient = $user_sender_id;
         $notifications->theme = "Отказ во вступлении в проект";
         R::store($notifications);
-        header("Location: ./notifications.php");
+        header("Location: ./notifications");
 
     }
 } catch (Throwable $e) {
@@ -96,29 +96,48 @@ try {
 ?>
 
 
-<div id="invite_project" class="modal">
+<div id="invite_project" class="modal modal_invite_project">
     <div class="modal__content">
-        <h2>
+        <h2 class="modal__title">
             <?= $data['theme'] . ': ' . $data_project->title ?>
         </h2>
-        <p>
-            Сообщение: <?= $data['text'] ?>
-        </p>
-        <p>
+       
+        <p class="modal__subtext">
             Отправитель: <?= $user_sender['first_name'] ?>
         </p>
+
+        <p class="modal__subtext">
+            Сообщение: <br> <?= $data['text'] ?>
+        </p>
+
+        <?php 
+            
+            if ($data['is_checked'] == "true") :
+            
+        ?>
 
         <form action="notifications.php" method="POST">
             <input type="hidden" name="user_sender" value=<?= $user_sender['id_user'] ?>>
             <input type="hidden" name="id_project" value=<?= $data_project['id_project'] ?>>
             <input type="hidden" name="members_project" value=<?= $data_project['members_project'] ?>>
             <input type="hidden" name="current_notification_id" value=<?= $_GET['order'] ?>>
-            <button type="submit" value="ss" name="request_invite" >Вступить в проект</button>
-            <button type="submit" name="cancel_invite">Отказать в предложении</button>
-            <button type="submit" name="check_project">Посмотреть профиль пользователя</button>
+            <button class="modal__button" type="submit" name="check_project">Посмотреть профиль пользователя</button>
         </form>
+        <a href="#" ><button class="modal__button modal__button_close">Закрыть</button></a>
 
-        <a href="?" class="modal__close">&times;</a>
+        <?php else : ?>
+
+        <form action="notifications.php" method="POST">
+            <input type="hidden" name="user_sender" value=<?= $user_sender['id_user'] ?>>
+            <input type="hidden" name="id_project" value=<?= $data_project['id_project'] ?>>
+            <input type="hidden" name="members_project" value=<?= $data_project['members_project'] ?>>
+            <input type="hidden" name="current_notification_id" value=<?= $_GET['order'] ?>>
+            <button class="modal__button" type="submit" value="ss" name="request_invite" >Вступить в проект</button>
+            <button class="modal__button" type="submit" name="check_project">Посмотреть профиль пользователя</button>
+            <button class="modal__button_close" type="submit" name="cancel_invite">Отказать в предложении</button>
+        </form>
+        <a href="#" ><button class="modal__button modal__button_close">Закрыть</button></a>
+        <?php endif; ?>
     </div>
 </div>
 
