@@ -104,7 +104,6 @@
                         echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-basic__button">Редактировать проект</button></a>';
                         echo '<a href="php/delete.php?id='.$project->id.'"><button class="section-basic__button button__red">Удалить проект</button></a>';
                     }?>
-                <!-- <?php  ?> -->
                 <?php 
                     $members_proj = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
                     $status = in_array($_COOKIE['id'], $members_proj);
@@ -114,6 +113,10 @@
                         if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>';
                     }
                     ?>
+                     <?php 
+                    if (in_array($_COOKIE['id'], $members_proj)) { 
+                        echo '<a href="php/exit_project.php?id='.$project->id.'"><button class="section-basic__button button__red">Выйти из проекта</button></a>';
+                    }?>
             </div>
         </div>
     </div>
