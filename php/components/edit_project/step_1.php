@@ -3,7 +3,7 @@
     <div class="container">
     <input type="hidden" name="id" value="<?= $id?>"/>
         <div class="section-header">
-            <h2 class="section-add-project__title">Создание проекта</h2>
+            <h2 class="section-add-project__title">Изменение проекта</h2>
         </div>
         <div class="section-forms">
             <input type="text" class="section-add-project__input require" name="title_object" value="<?= $project['title'] ?>" placeholder="Название проекта *" require />
@@ -13,7 +13,7 @@
                     <?php
 
 
-                        $work_tags = R::findAll('TBLWorkActivity');
+                        $work_tags = R::findAll('tblworkactivity');
 
 
 

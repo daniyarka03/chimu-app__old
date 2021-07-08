@@ -2,10 +2,9 @@
     require 'php/includes/db.php';
     $profile = R::findOne('users', 'id_user = ?', array($_COOKIE['id']));
 
-    if (!isset($_COOKIE['id'])) {
+ if (!isset($_COOKIE['id'])) {
         header('Location: ./');
     }
-
 ?>
 
 <!DOCTYPE html>

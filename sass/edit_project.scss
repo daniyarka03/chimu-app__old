@@ -92,9 +92,6 @@ body {
         color: $white_color;
         font-weight: 500;
         padding-bottom: 10px;
-        @media (max-width: 560px){
-            padding-bottom: 0;
-        }
 
         &::placeholder {
             color: #E3DFFF;
@@ -107,25 +104,6 @@ body {
             border-bottom: 2px solid #FFDE88;
         }
 
-    }
-
-    .block__span {
-        margin-top: 30px;
-    }
-
-    .span {
-        position: relative;
-        color: #E3DFFF;
-        font-weight: 600;
-        font-family: 'Rubik';
-    }
-
-    &__input.keywords_need_users {
-        margin-top: 10px;
-    }
-
-    &__input.category_object {
-        margin-top: 10px;
     }
 
     &-controls {

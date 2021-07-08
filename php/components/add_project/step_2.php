@@ -9,7 +9,7 @@
             <select name="keywords_need_users[]" id="mselectKeywordsProfile" class="section-add-project__input keywords_need_users require" multiple="" require>
                 <optgroup label="Программирование">
                     <?php
-                    $tags = R::findAll('TBLTags');
+                    $tags = R::findAll('tbltags');
 
                     foreach ($tags as $tag) {
                         if ($tag->type == "prog") {
@@ -25,7 +25,7 @@
                 </optgroup>
                 <optgroup label="Дизайн">
                     <?php
-                    $tags = R::findAll('TBLTags');
+                    $tags = R::findAll('tbltags');
 
                     foreach ($tags as $tag) {
                         if ($tag->type == "design") {
@@ -43,7 +43,7 @@
                 </optgroup>
                 <optgroup label="Другое">
                     <?php
-                    $tags = R::findAll('TBLTags');
+                    $tags = R::findAll('tbltags');
 
                     foreach ($tags as $tag) {
                         if ($tag->type == "" ) {

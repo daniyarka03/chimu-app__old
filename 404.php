@@ -14,7 +14,7 @@
     <div class="section-404-left">
       <h2 class="section-404-left__title">Что-то пошло не так...</h2>
       <p class="section-404-left__descr">Страница, которую вы искали была не найдена</p>
-      <a href="./"><button class="section-404-left__button">Перейти на главную</button></a>
+      <a href="/"><button class="section-404-left__button">Перейти на главную</button></a>
     </div>
     <div class="section-404-right">
       <img src="img/404/404.png" alt="404" class="section-404-right__img">

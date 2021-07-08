@@ -8,7 +8,7 @@
                 <span class="span">Интересующая область: *</span>
                 <select name="work_activity[]" id="mselectWork" class="section-register__input work_activity require" multiple="" require>
                     <?php
-                    $work_tags = R::findAll('TBLWorkActivity');
+                    $work_tags = R::findAll('tblworkactivity');
                     foreach ($work_tags as $tag) {
                     ?>
                         <option value="<?= $tag->name_tag ?>"><?= $tag->name_tag ?></option>
@@ -24,7 +24,7 @@
                 <select name="keywords_profile[]" id="mselectKeywords" class="section-register__input keywords_profile require" multiple="" require>
                     <optgroup label="Программирование">
                         <?php
-                        $tags = R::findAll('TBLTags');
+                        $tags = R::findAll('tbltags');
 
                         foreach ($tags as $tag) {
                             if ($tag->type == "prog") {
@@ -40,7 +40,7 @@
                     </optgroup>
                     <optgroup label="Дизайн">
                         <?php
-                        $tags = R::findAll('TBLTags');
+                        $tags = R::findAll('tbltags');
 
                         foreach ($tags as $tag) {
                             if ($tag->type == "design") {
@@ -58,7 +58,7 @@
                     </optgroup>
                     <optgroup label="Другое">
                         <?php
-                        $tags = R::findAll('TBLTags');
+                        $tags = R::findAll('tbltags');
 
                         foreach ($tags as $tag) {
                             if ($tag->type == "" ) {
@@ -82,7 +82,7 @@
                 <select name="country" class="section-register__input require" id="mselectCountry">
                     <option value="">Выберите</option>
                     <?php
-                        $countries = R::findAll('TBLCountries');
+                        $countries = R::findAll('tblcountries');
                         foreach ($countries as $country) {  
                     ?>
                         <option value="<?=$country->country_name?>"><?=$country->country_name?></option>

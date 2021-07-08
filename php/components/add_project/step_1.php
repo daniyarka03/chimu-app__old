@@ -9,9 +9,9 @@
             <input type="text" class="section-add-project__input require" name="title_object" value="<?php @$_POST['firstname'] ?>" placeholder="Название проекта *" require />
             <div class="block__span">
             <span class="span">Область проекта:</span>
-            <select name="category_object[]" id="mSelectArea" class="section-add-project__input category_object require" multiple="" require>
+            <select name="category_object[]" id="mselectArea2" class="section-add-project__input category_object require" multiple="" require>
                 <?php
-                $work_tags = R::findAll('TBLWorkActivity');
+                $work_tags = R::findAll('tblworkactivity');
                 foreach ($work_tags as $tag) {
                 ?>
                     <option value="<?= $tag->name_tag ?>"><?= $tag->name_tag ?></option>

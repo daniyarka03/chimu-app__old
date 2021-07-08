@@ -94,13 +94,6 @@ body {
         @media (max-width:562px) {}
     }
 
-    &__error {
-        display: block;
-        margin-top: 10px;
-        font-family: 'Rubik', 'sans-serif';
-        color: #ff3748;
-    }
-
     &__button_login {
         @include button;
         width: 100%;

@@ -1,49 +1,52 @@
 <?php
     try {
-    require "php/includes/db.php";
-
-
-    if (isset($_GET['type'])) {
-    $type = $_GET['type'];
-    } else {
-    $type = 'id';
-    }
-
-    if (isset($_GET['sort'])) {
-    $status = $_GET['sort'];
-    } else {
-    $status = 'DESC';
-    }
-
-
-    // Search items script
-    if (($_GET['reset_data'] ?? "") == 'Сброс') {
-    header("Location: ./list_users");
-    } else {
-    $query = $_GET['query'] ?? "";
-
-    if (isset($query)) {
-    $users = R::findAll('users', "first_name LIKE '%$query%'");
-    if (isset($_GET['type'])) {
-    $users = R::findAll('users', "first_name LIKE '%$query%' ORDER BY " . $type . ' ' . $status);
-    }
-    } else {
-    $users = R::findAll('users', 'ORDER BY ' . $type . ' ' . $status);
-    }
-
-
-    $id = $_COOKIE['id'];
-
-    $test = str_split($_SERVER['REQUEST_URI']);
-    $e = array_search('q', $test);
-    }
-    $id = $_COOKIE['id'];
-
-    $status == 'DESC' ? $status = 'ASC' : $status = 'DESC';
-
-
-    $test = str_split($_SERVER['REQUEST_URI']);
-    $e = array_search('q', $test);
+	    require "php/includes/db.php";
+	
+	      if (!isset($_COOKIE['id'])) {
+	        header('Location: ./');
+	    }
+	
+	    if (isset($_GET['type'])) {
+	    	$type = $_GET['type'];
+	    } else {
+	    	$type = 'id';
+	    }
+	
+	    if (isset($_GET['sort'])) {
+	    	$status = $_GET['sort'];
+	    } else {
+	    	$status = 'ASC';
+	    }
+	
+	
+	    // Search items script
+	    if (($_GET['reset_data'] ?? "") == 'Сброс') {
+	    header("Location: ./list_users");
+	    } else {
+	    $query = $_GET['query'] ?? "";
+	
+	    if (isset($query)) {
+	    	$users = R::findAll('users', "first_name LIKE '%$query%'");
+	    	if (isset($_GET['type'])) {
+	    		$users = R::findAll('users', "first_name LIKE '%$query%' ORDER BY " . $type . ' ' . $status);
+	    	}
+	    } else {
+	    	$users = R::findAll('users', 'ORDER BY ' . $type . ' ' . $status);
+	    }
+	
+	
+	    $id = $_COOKIE['id'];
+	
+	    $test = str_split($_SERVER['REQUEST_URI']);
+	    $e = array_search('q', $test);
+	    }
+	    $id = $_COOKIE['id'];
+	
+	    $status == 'ASC' ? $status = 'DESC' : $status = 'ASC';
+	
+	
+	    $test = str_split($_SERVER['REQUEST_URI']);
+	    $e = array_search('q', $test);
 
 ?>
 
@@ -128,7 +131,7 @@
                         <span class="section-card__description"><?= $user['descr'] ?></span>
                     </div>
                     <div class="content__tags">
-                        <div class="block">
+                                                <div class="block">
                             <?php
 
                                     $tags = explode(', ', $user->work_activity);

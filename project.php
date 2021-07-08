@@ -8,7 +8,7 @@
             }
 
             if (!isset($id)) {
-                header("Location: /chimu-app");
+                header("Location: /");
             }
 
             $project = R::load('projects', $id);
@@ -104,45 +104,16 @@
                         echo '<a href="update_objects.php?id='.$project->id.'"><button class="section-basic__button">Редактировать проект</button></a>';
                         echo '<a href="php/delete.php?id='.$project->id.'"><button class="section-basic__button button__red">Удалить проект</button></a>';
                     }?>
+                <!-- <?php  ?> -->
                 <?php 
                     $members_proj = explode(',',  filter_var(trim($project['members_project']), FILTER_SANITIZE_STRING));
                     $status = in_array($_COOKIE['id'], $members_proj);
-                    $status_send_notification = 1;
-                    $notification_project = R::findAll('notifications', 'id_project = ?', array($project['id_project']));
-
-                    foreach ($notification_project as $proj) {
-                        if ($proj['user_sender'] == $_COOKIE['id'] and $proj['is_checked'] != "true") {
-                            if ($project['creator_id'] != $_COOKIE['id']) {
-                                echo '<a href="#demo-modal"><button class="section-basic__button" disabled>Вы уже подали заявку!</button></a>' ;
-                                break;
-                            }
-                        }
-
-                        if ($proj['is_checked'] == "true" and $proj['user_sender'] == $_COOKIE['id']) {
-                            if (!$status) {
-                                if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>';
-                                break;
-                            }
-                            if ($notification_project == []) {
-                                if (!$status) {
-                                    if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>';
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-
+                    
 
                     if (!$status) { 
+                        if ($project['creator_id'] != $_COOKIE['id']) echo '<a href="#demo-modal"><button class="section-basic__button">Вступить в проект</button></a>';
                     }
-
-
                     ?>
-                     <?php 
-                    if (in_array($_COOKIE['id'], $members_proj)) { 
-                        echo '<a href="php/exit_project.php?id='.$project->id.'"><button class="section-basic__button button__red">Выйти из проекта</button></a>';
-                    }?>
             </div>
         </div>
     </div>

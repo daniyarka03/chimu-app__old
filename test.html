@@ -1,51 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css" />
 </head>
+
 <body>
-    <main>
-        <h1>Test file</h1>
-        <form action="#" class="validate">
-            <input type="text" placeholder="Введите имя" class="name"> <br><br>
-            <span id="span" style="color: red;">Error message</span> <br><br>   
-            <input type="email" class="email" placeholder="Введите email"> <br><br>
-            <input type="password" placeholder="Введите пароль"> <br><br>
-            <input type="password" placeholder="Введите пароль повторно"> <br><br>
-            <button type="submit">Зайти</button>
-        </form>
-    </main>
-</body>
-<script src="js/jquery.js"></script>
-<script src="js/jquery_validate/jquery.validate.min.js"></script>
-<script>
     
-    let span = $('#span').text();
-    console.log('Span: ', span)
+    <input type="search" id="place-search-input" placeholder="Start Searching..." />
+</body>
 
-    // $('button[type=submit]').click(() => {
-    //     $(".validate").validate({
-    //     rules: {
-    //         name: {
-    //             required: true
-    //         },
-    //         email: {
-    //             required: true,
-    //             email: true
-    //         }
-    //     },
-    //     messages: {
-    //         name: "Please specify your name",
-    //         email: {
-    //             required: "We need your email address to contact you",
-    //             email: "Your email address must be in the format of name@domain.com"
-    //         }
-    //     }
-    // });
-    // });
+<script>
+    placeSearch({
+        key: '0BZdWnNKpJGfZfY3LTYpewQpBmRKj6Z9',
+        container: document.querySelector('#place-search-input'),
+        collection: "adminArea",
+        type: 'city'
+    });
 
+    
 </script>
+
 </html>

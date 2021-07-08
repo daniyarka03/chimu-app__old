@@ -319,7 +319,7 @@ main {
 
 .section-card__controls {
   display: grid;
-  grid-template-columns: 155px 155px 1fr;
+  grid-template-columns: 200px 200px 1fr;
   margin-top: 28px;
   grid-gap: 20px;
 }

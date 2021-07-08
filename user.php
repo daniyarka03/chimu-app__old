@@ -1,11 +1,15 @@
 <?php
     try {
         require 'php/includes/db.php';
+      
+      if (!isset($_COOKIE['id'])) {
+        header('Location: ./');
+    }
 
         $id = $_GET['id'];
 
         if (!isset($id)) {
-            header("Location: /chimu-app");
+            header("Location: /");
         }
 
         $current_user = R::findOne('users', 'id_user = ?', array($_COOKIE['id']));
@@ -148,7 +152,7 @@
                 </p>
             </div>
         </section>
-        <div class="section section-projects">
+<div class="section section-projects">
             <div class="container">
                 <h2 class="section-projects__title section__title">Проекты пользователя</h2>
                 <div class="section-projects__cards swiper-container mySwiper">
@@ -281,9 +285,7 @@
     </div>
 </div>
 
-<script>
-    
-</script>
+
     <?php include 'footer.php' ?>
     <script src="js/jquery.js"></script>
     <script>
@@ -305,32 +307,32 @@
 <script>
 
 const swiper_plugin = (count_slides) => {
-    var swiper = new Swiper(".mySwiper", {
-    slidesPerView: count_slides,   
-    spaceBetween: 30,
-    loop: false,
-    pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    },
-    navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-    },
-});
-}
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: count_slides,   
+        spaceBetween: 30,
+        loop: false,
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        },
+    });
+    }
 
-if (window.innerWidth > 1179) {
-    swiper_plugin(3)
-}
+    if (window.innerWidth > 1179) {
+        swiper_plugin(3)
+    }
 
-if (window.innerWidth <= 1179) {
-    swiper_plugin(2)
-}
+    if (window.innerWidth <= 1179) {
+        swiper_plugin(2)
+    }
 
-if (window.innerWidth < 897) {
-    swiper_plugin(1)
-} 
+    if (window.innerWidth < 897) {
+        swiper_plugin(1)
+    } 
 </script>
 <script src="js/user.js"></script>
 </body>

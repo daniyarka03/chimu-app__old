@@ -1,3 +1,15 @@
+<?php
+
+	if (isset($_COOKIE['id'])) {
+    	header('Location: list_objects');
+    }
+
+	if (!isset($_COOKIE['id'])) {
+    	header('Location: login');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,22 +22,25 @@
         main {
             margin-left: 158px;
         }
+      
+      button {
+      	width: 200px; 
+        padding: 10px;
+      }
     </style>
 </head>
 <body>
     <?php if (($_COOKIE['user'] ?? "") != "") include './php/components/sidebar.php' ?>
     <main>
     <?php if (($_COOKIE['user'] ?? "") == ''): ?>
-        <a href="./register">Регистрация</a>
-        <a href="./login">Авторизация</a>
+      	<a href="./register"><button>Регистрация</button></a>
+        <a href="./login"><button>Авторизация</button></a>
     <?php else: ?>
-        <p>Привет <?=$_COOKIE['user']?>. Чтобы выйти нажмите <a href="./php/exit.php">здесь</a></p>
-        <a href="./profile">Зайти в профиль</a> <br>
-        <a href="add_objects">Добавить объекты</a> <br>
-        <a href="./list_objects">Показать объекты</a>
-        <a href="./list_users">Показать пользователей</a>
-        <a href="./notifications">Уведомление</a>
+       
     <?php endif; ?>
+      
+      
+      
     </main>
 </body>
 </html>

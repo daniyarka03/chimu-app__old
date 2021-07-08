@@ -1,7 +1,11 @@
 <?php
     require 'php/includes/db.php';
-    $work_tags = R::findAll('TBLWorkActivity');
-    $tags = R::findAll('TBLTags');
+    $work_tags = R::findAll('tblworkactivity');
+
+if (!isset($_COOKIE['id'])) {
+        header('Location: ./');
+    }
+    $tags = R::findAll('tbltags');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -41,7 +45,7 @@
 
     <script>
         $(document).ready(function(){
-            $('#mSelectArea').chosen({width: "100%", placeholder_text_multiple: "Тип проекта", no_results_text: "Ничего не найдено под: "});
+            $('#mselectArea2').chosen({width: "100%", placeholder_text_multiple: "Тип проекта"});
             $('#mselectKeywordsProfile').chosen({width: "100%", placeholder_text_multiple: "Кто нужен в проект"});
         });
 

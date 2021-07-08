@@ -5,6 +5,9 @@
     $id = $_GET['id'];
     $project = R::load('projects', $id);
 
+if (!isset($_COOKIE['id'])) {
+        header('Location: ./');
+    }
 
     $project_category = explode(', ', $project['category']);
     $project_keywords_need_users = explode(', ', $project['keywords_need_users']);

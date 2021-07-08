@@ -2,6 +2,10 @@
     // Импорт бд
     require 'php/includes/db.php';
 
+if (!isset($_COOKIE['id'])) {
+        header('Location: ./');
+    }
+
     // Поиск текущего пользователя по id
     $profile = R::findOne('users', 'id_user = ?', array($_COOKIE['id']));
 
@@ -15,11 +19,11 @@
     $descr = $profile->descr;
 
     // Импорт доп. данных с бд
-    $tags = R::findAll('TBLTags');
-    $tagsCountry = R::findAll('TBLCountries');
+    $tags = R::findAll('tbltags');
+    $tagsCountry = R::findAll('tblcountries');
     $gender_data = ['Мужской', 'Женский', 'Другое'];
-    $work_tags = R::findAll('TBLWorkActivity');
-    $tagsCity = R::findAll('TBLCity');
+    $work_tags = R::findAll('tblworkactivity');
+    $tagsCity = R::findAll('tblcity');
 
     $country = $profile->country;
 
@@ -62,7 +66,7 @@
     const require_input = document.querySelectorAll('.require');
 
     // step_function(4, block, button, button_back, 5, 4, 1);
-    // step_function(4, block, button, button_back);
+   // step_function(4, block, button, button_back);
 
         $(document).ready(function(){
             $('#mselectCountryEdit').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_single: "Страна проживания", allow_single_deselect: true});
@@ -71,8 +75,10 @@
             $('#mselectKeywordsEdit').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_multiple: "Навыки"});
             $('#mselectGenderEdit').chosen({no_results_text: "Ничего не найдено под: ", width: "100%", placeholder_text_single: "Выберите пол"});
         });
+      
+
 
     </script>
-    <script src="js/edit_profile.js"></script>
+        <script src="js/edit_profile.js"></script>
 </body>
 </html>

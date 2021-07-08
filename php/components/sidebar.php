@@ -1,7 +1,7 @@
 <div class="navbar">
     <ul class="navbar-nav">
         <li class="logo">
-            <a href="./" class="nav-link">
+            <a href="/" class="nav-link">
                 <span class="link-text logo-text">Chimu</span>
                 <img class="nav-icon logo-icon" src="img/logo.svg" alt="">
             </a>

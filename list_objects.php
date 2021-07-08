@@ -1,6 +1,10 @@
 <?php
     try {
         require "php/includes/db.php";
+      
+      if (!isset($_COOKIE['id'])) {
+        header('Location: ./');
+    }
 
         if (isset($_GET['type'])) {
             $type = $_GET['type'];

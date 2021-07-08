@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-    <link rel="stylesheet" href="css/login.css">
-</head>
-<body>
-    <?php
+<?php
         try {
             // Импортируем файл db.php, чтобы соединиться с бд
             require "php/includes/db.php";
@@ -25,7 +15,7 @@
                     if (password_verify($pass, $user->pass)) {
                         setcookie('user', $user['first_name'], time() + 3600 * 24 * 30, "/");
                         setcookie('id', $user['id_user'], time() + 3600 * 24 * 30, "/");
-                        header('Location: /chimu-app');
+                        header('Location: /');
                     } else {
                         $errors[] = 'Пароль введен не верно!';
                     }
@@ -41,6 +31,18 @@
             echo $e;
         }
     ?>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    
     <div class="section-login">
         <h2 class="section-login__title">Войти в аккаунт</h2>
         <form action="./login" method="POST">
