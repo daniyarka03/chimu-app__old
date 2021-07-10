@@ -16,6 +16,17 @@ if (!isset($_COOKIE['id'])) {
     <link rel="stylesheet" href="css/multiselect_plugin/chosen.css">
     <link rel="stylesheet" href="css/add_project.css" />
     <link rel="stylesheet" href="css/sidebar.css" />
+
+    <!-- Библиотеки для Crop image -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap_v3/bootstrap.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+    <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+    <script src="https://unpkg.com/dropzone"></script>
+    <script src="https://unpkg.com/cropperjs"></script>
+    <!-- Конец библиотек -->
+
     <title>Создание нового проекта</title>
 </head>
 <body>
@@ -28,7 +39,7 @@ if (!isset($_COOKIE['id'])) {
         <?php include 'php/components/add_project/step_3.php' ?>
     </form>
 
-    <script src="js/jquery.js"></script>
+    <!-- <script src="js/jquery.js"></script> -->
     <script src="js/multiselect_plugin/chosen.jquery.min.js"></script>
 
     <script>
@@ -51,5 +62,6 @@ if (!isset($_COOKIE['id'])) {
 
         step_function(3, block, button, button_back);
     </script>
+    <script src="js/add_project.js"></script>
 </body>
 </html>

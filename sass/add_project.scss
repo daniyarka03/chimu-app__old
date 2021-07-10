@@ -91,7 +91,11 @@ body {
         font-size: 18px;
         color: $white_color;
         font-weight: 500;
+
         padding-bottom: 10px;
+        @media (max-width: 560px){
+            padding-bottom: 0;
+        }
 
         &::placeholder {
             color: #E3DFFF;
@@ -104,6 +108,25 @@ body {
             border-bottom: 2px solid #FFDE88;
         }
 
+    }
+
+    .block__span {
+        margin-top: 30px;
+    }
+
+    .span {
+        position: relative;
+        color: #E3DFFF;
+        font-weight: 600;
+        font-family: 'Rubik';
+    }
+
+    &__input.keywords_need_users {
+        margin-top: 10px;
+    }
+
+    &__input.category_object {
+        margin-top: 10px;
     }
 
     &-controls {
@@ -270,4 +293,63 @@ body {
     option {
         color: #000;
     }
+}
+
+
+// Image uploader and modal styles
+.image_area {
+    position: relative;
+    width: 155px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+#uploaded_image {
+    width: 155px;
+    height: 155px;
+}
+
+.preview {
+    overflow: hidden;
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    border: 1px solid red;
+}
+
+.modal-lg {
+    max-width: 1000px !important;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    height: 0;
+    transition: .5s ease;
+    width: 155px;
+}
+
+.image_area:hover .overlay {
+    height: 95%;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.text {
+    color: #333;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
 }

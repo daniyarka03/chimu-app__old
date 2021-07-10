@@ -76,6 +76,17 @@ body {
         width: 100%;
     }
 
+    .block__span {
+        margin-top: 30px;
+    }
+
+    .span {
+        position: relative;
+        color: #E3DFFF;
+        font-weight: 600;
+        font-family: 'Rubik';
+    }
+
     &__input {
         display: block;
         width: 100%;
@@ -91,6 +102,9 @@ body {
         color: $white_color;
         font-weight: 500;
         padding-bottom: 10px;
+        @media (max-width: 560px){
+            padding-bottom: 0;
+        }
 
         &::placeholder {
             color: #E3DFFF;
@@ -103,6 +117,34 @@ body {
             border-bottom: 2px solid #FFDE88;
         }
 
+    }
+
+    &__error_message {
+        display: block;
+        margin-top: 10px;
+        color: #ff3748;
+        font-weight: 500;
+        font-family: 'Rubik', 'sans-serif';
+    }
+
+    &__input.category_object {
+        margin-top: 10px;
+    }
+
+    &__input.work_activity {
+        margin-top: 10px;
+    }
+
+    &__input[name=country] {
+        margin-top: 10px;
+    }
+
+    &__input[name=birthdate] {
+        margin-top: 10px;
+    }
+
+    &__input[name=gender] {
+        margin-top: 10px;
     }
 
     &-controls {

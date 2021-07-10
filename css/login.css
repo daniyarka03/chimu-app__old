@@ -124,13 +124,6 @@ body {
   color: #E3DFFF;
 }
 
-.section-login__error {
-  display: block;
-  margin-top: 10px;
-  font-family: 'Rubik', 'sans-serif';
-  color: #ff3748;
-}
-
 .section-login__button_login {
   display: block;
   width: 100%;
