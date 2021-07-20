@@ -286,6 +286,11 @@
 </div>
 
 
+        
+    </div>
+</div>
+
+
     <?php include 'footer.php' ?>
     <script src="js/jquery.js"></script>
     <script>

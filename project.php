@@ -272,7 +272,7 @@
     });
 </script>
 
-    <div id="demo-modal" class="modal modal-join">
+<div id="demo-modal" class="modal modal-join">
         <div class="modal__content">
             <h1 class="modal__title">Заявка по вступлению в проект</h1>
             <p class="modal__subtext">
